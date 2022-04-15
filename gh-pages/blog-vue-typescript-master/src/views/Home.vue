@@ -9,67 +9,36 @@
         >
           <img
             class="home-logo"
-            src="../assets/userLogo.jpeg"
-            alt="biaochenxuying logo"
+            src="../assets/OmanLogo.jpg"
+            alt="小曼曼 logo"
           />
         </router-link>
       </div>
       <div class="home-body">
         <div class="list">
+
           <router-link
             class="link"
-            to="/articles"
+            to="/"
           >
-            文章
+            暂定
           </router-link>
           <router-link
             class="link"
-            to="/project"
+            to="/"
           >
-            项目
+            暂定
           </router-link>
           <a
             target="_blank"
             rel="noopener noreferrer"
             class="link"
-            href="https://github.com/biaochenxuying"
+            href=""
           >
             github
           </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link"
-            href="https://juejin.im/user/591d6b4d0ce463006926ae40"
-          >
-            掘金
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link"
-            href="https://www.zhihu.com/people/mo-xu-ming-53/posts"
-          >
-            知乎
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link"
-            href="https://segmentfault.com/u/biaochenxuying"
-          >
-            segmentfault
-          </a>
-          <a
-            target="_blank"
-            rel="noopener noreferrer"
-            class="link"
-            href="https://www.jianshu.com/u/91717b553bfd"
-          >
-            简书
-          </a>
         </div>
-        <div class="introduce"> 时光正好，未来可期，加油 ！ </div>
+        <div class="introduce"> 桃李不言，下自成蹊 </div>
       </div>
     </div>
   </div>
@@ -86,7 +55,7 @@ export default defineComponent({
       if (document.location.protocol === "http:") {
         ElMessage({
           message:
-            "本网站已经配置了 https，为了有更好的体验效果，请把地址前缀换成 https 哦",
+            "静态网页，加载缓慢，请耐心等待哦",
           type: "warning",
           duration: 3000,
         });
