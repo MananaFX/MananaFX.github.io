@@ -4,7 +4,7 @@ import { store, key } from './store'
 import router from "./router";
 import service from "./utils/https";
 import urls from "./utils/urls";
-import mixin from "./mixins";
+import Countdown from 'vue3-flip-countdown'
 import { 
     ElButton, 
     ElDialog,
@@ -59,4 +59,5 @@ app.config.globalProperties.$urls = urls;
 
 app.use(store, key)
 app.use(router)
+app.use(Countdown)
 app.mount('#app');

@@ -10,8 +10,8 @@
             <router-link to="/">
               <img
                 class="logo"
-                src="../assets/logo.jpg"
-                alt="BiaoChenXuYing"
+                src="../assets/cloudSheep.jpg"
+                alt="棉花羊 logo"
               >
             </router-link>
           </el-col>
@@ -46,8 +46,8 @@
                 <img
                   v-if="!userInfo.avatar"
                   class="user-img"
-                  src="../assets/user.png"
-                  alt="BiaoChenXuYing"
+                  src="../assets/OmanLogo.jpg"
+                  alt="小曼曼 logo"
                 >
                 <img
                   v-if="userInfo.avatar"
@@ -61,23 +61,23 @@
               </el-dropdown>
             </div>
           </el-col>
-          <el-col
-            v-else
-            :span="4"
-          >
-            <div class="nav-right">
-              <el-button
-                size="small"
-                type="primary"
-                @click="handleClick('login')"
-              >登录</el-button>
-              <el-button
-                size="small"
-                type="danger"
-                @click="handleClick('register')"
-              >注册</el-button>
-            </div>
-          </el-col>
+<!--          <el-col-->
+<!--            v-else-->
+<!--            :span="4"-->
+<!--          >-->
+<!--            <div class="nav-right">-->
+<!--              <el-button-->
+<!--                size="small"-->
+<!--                type="primary"-->
+<!--                @click="handleClick('login')"-->
+<!--              >登录</el-button>-->
+<!--              <el-button-->
+<!--                size="small"-->
+<!--                type="danger"-->
+<!--                @click="handleClick('register')"-->
+<!--              >注册</el-button>-->
+<!--            </div>-->
+<!--          </el-col>-->
         </el-row>
       </div>
     </div>
@@ -266,28 +266,13 @@ export default defineComponent({
         },
         {
           index: "3",
-          path: "/archive",
-          name: "归档",
-        },
-        {
-          index: "4",
-          path: "/project",
-          name: "项目",
-        },
-        {
-          index: "5",
           path: "/timeline",
           name: "历程",
         },
         {
-          index: "6",
-          path: "/message",
-          name: "留言",
-        },
-        {
-          index: "7",
-          path: "/about",
-          name: "关于",
+          index: "4",
+          path: "/ToLoveStory",
+          name: "礼物",
         },
       ] as Array<NavListItem>,
       activeIndex: "0",

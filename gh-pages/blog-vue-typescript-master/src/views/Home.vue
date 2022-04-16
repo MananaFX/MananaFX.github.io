@@ -19,23 +19,23 @@
 
           <router-link
             class="link"
-            to="/"
+            to="/articles"
           >
-            暂定
+            Manana
           </router-link>
           <router-link
             class="link"
-            to="/"
+            to="/toloveStory"
           >
-            暂定
+            生日礼物
           </router-link>
           <a
             target="_blank"
             rel="noopener noreferrer"
             class="link"
-            href=""
+            href="https://kg.qq.com/node/mwMYdsvMUK/play_v2/?s=BfcBOhB0-lY2iBa2&shareuid=66999d83232a368230&g_f=secondshare"
           >
-            github
+            香香公主
           </a>
         </div>
         <div class="introduce"> 桃李不言，下自成蹊 </div>

@@ -8,6 +8,7 @@
     <ArrowUp></ArrowUp>
     <!-- <Footer v-if="isShowNav"></Footer> -->
   </div>
+
 </template>
 
 <script lang="ts">
@@ -64,6 +65,7 @@ export default defineComponent({
         "/project",
         "/timeline",
         "/message",
+        "/ToLoveStory",
       ];
       if (navs.includes(val.path)) {
         state.isShowSlider = true;

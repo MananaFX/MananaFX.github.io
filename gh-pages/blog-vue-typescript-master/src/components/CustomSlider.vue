@@ -2,10 +2,10 @@
   <div class="right slider">
     <img
       class="right-logo"
-      src="../assets/userLogo.jpeg"
+      src="../assets/Oman2.jpg"
       alt=""
     >
-    <div class="title">夜尽天明</div>
+    <div class="title">小曼曼</div>
     <div class="right-content">
       <!-- <div class="item">
         <div class="num">123</div>粉丝
@@ -20,34 +20,44 @@
         <div class="num">123</div>收获喜欢
       </div> -->
     </div>
-    <div class="tags">
-      <div class="title">标签云</div>
-      <router-link
-        v-for="item in state.list"
-        class="item"
-        :key="item._id"
-        :to="`/articles?tag_id=${item._id}&tag_name=${item.name}&category_id=`"
-      >
-        <span :key="item._id">{{item.name}}</span>
-      </router-link>
-    </div>
+<!--    <div class="tags">-->
+<!--      <div class="title">标签云</div>-->
+<!--      <router-link-->
+<!--        v-for="item in state.list"-->
+<!--        class="item"-->
+<!--        :key="item._id"-->
+<!--        :to="`/articles?tag_id=${item._id}&tag_name=${item.name}&category_id=`"-->
+<!--      >-->
+<!--        <span :key="item._id">{{item.name}}</span>-->
+<!--      </router-link>-->
+<!--    </div>-->
     <div class="introduce">
-      <div class="title">技术以内的 BB</div>
+      <div class="title">我也没想好放什么</div>
       <div class="content">
         <img
           style="width:100%;"
-          src="../assets/BiaoChenXuYing.png"
-          alt="全栈修炼"
+          src="../assets/OmanBridge.jpg"
+          alt="图片1"
         />
       </div>
     </div>
     <div class="introduce">
-      <div class="title">开源项目的 BB</div>
+      <div class="title">索性就放</div>
+      <div class="content">
+        <img
+            style="width:100%;"
+            src="../assets/pinkHeart.jpg"
+            alt="图片2"
+        />
+      </div>
+    </div>
+    <div class="introduce">
+      <div class="title">三张图片吧</div>
       <div class="content">
         <img
           style="width:100%;"
-          src="../assets/FrontEndGitHub.png"
-          alt="前端GitHub"
+          src="../assets/OmanBro.jpg"
+          alt="图片3"
         />
       </div>
     </div>
@@ -81,7 +91,6 @@ export default defineComponent({
         params: state.params,
       });
       state.isLoading = false;
-
       state.list = [...state.list, ...data.list];
       state.total = data.count;
       state.params.pageNum++;

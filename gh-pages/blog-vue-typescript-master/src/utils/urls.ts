@@ -19,7 +19,7 @@ export const urls: any = {
 
   getLinkList: "getLinkList",
 
-  getTagList: "getTagList",
+  getTagList: "gh-pages/blog-vue-typescript-master/public/static/state/tags.json",
 
   getCategoryList: "getCategoryList",
 

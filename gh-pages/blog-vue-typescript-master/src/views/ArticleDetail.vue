@@ -12,8 +12,8 @@
             <div class="avatar">
               <img
                 class="auth-logo"
-                src="../assets/userLogo.jpeg"
-                alt="BiaoChenXuYing"
+                src="../assets/Oman2.jpg"
+                alt="小曼曼"
               >
             </div>
             <div class="info">
@@ -322,7 +322,7 @@ export default defineComponent({
     };
   },
   beforeUnmount(): void {
-    document.title = "夜尽天明的博客网站";
+    document.title = "Manana";
     document
       .getElementById("keywords")
       .setAttribute("content", "夜尽天明 的博客网站");
