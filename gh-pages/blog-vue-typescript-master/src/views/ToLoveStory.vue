@@ -15,8 +15,7 @@
         </el-row>
       </el-header>
       <el-main>
-        <el-row :gutter="24" justify="end">
-          <el-col :span="11" >
+        <el-row :gutter="24" justify="center">
             <el-button-group>
               <el-button type="success" round
                          @click="openGift()">打开礼物
@@ -25,7 +24,6 @@
                          @click="haveaLook()">加速三秒
               </el-button>
             </el-button-group>
-          </el-col>
         </el-row>
       </el-main>
     </el-container>

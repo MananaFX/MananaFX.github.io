@@ -113,63 +113,59 @@
           >
             <router-link to="/">首 页</router-link>
           </div>
+
           <div
             @click="handleClickMenu('/articles')"
             class="item"
           >
             <router-link to="/articles">文 章</router-link>
           </div>
+<!--          -->
+<!--          <div-->
+<!--            @click="handleClickMenu('/timeline')"-->
+<!--            class="item"-->
+<!--          >-->
+<!--            <router-link to="/timeline">历 程</router-link>-->
+<!--          </div>-->
+<!--          <div-->
+<!--            @click="handleClickMenu('/message')"-->
+<!--            class="item"-->
+<!--          >-->
+<!--            <router-link to="/message">留 言</router-link>-->
+<!--          </div>-->
           <div
-            @click="handleClickMenu('/archive')"
+            @click="handleClickMenu('/toLoveStory')"
             class="item"
           >
-            <router-link to="/archive">归 档</router-link>
+            <router-link to="/toLoveStory">关 于</router-link>
           </div>
-          <div
-            @click="handleClickMenu('/project')"
-            class="item"
-          >
-            <router-link to="/project">项 目</router-link>
-          </div>
-          <div
-            @click="handleClickMenu('/timeline')"
-            class="item"
-          >
-            <router-link to="/timeline">历 程</router-link>
-          </div>
-          <div
-            @click="handleClickMenu('/message')"
-            class="item"
-          >
-            <router-link to="/message">留 言</router-link>
-          </div>
-          <div
-            @click="handleClickMenu('/about')"
-            class="item"
-          >
-            <router-link to="/about">关 于</router-link>
-          </div>
-          <div
-            @click="handleClickMenu('/login')"
-            class="item"
-          >
-            <span v-if="userInfo._id">{{ userInfo.name }}</span>
-            <span v-else>登 录</span>
-          </div>
-          <div
-            v-if="!userInfo._id"
-            @click="handleClickMenu('/register')"
-            class="item"
-          >
-            注 册
-          </div>
-          <div
-            v-if="userInfo._id"
-            @click="handleClickMenu('/logout')"
-            class="item"
-          >
-            登 出
-          </div>
+<!--          <div-->
+<!--              @click="handleClickMenu('/about')"-->
+<!--              class="item"-->
+<!--          >-->
+<!--            <router-link to="/about">关 于</router-link>-->
+<!--          </div>-->
+<!--          <div-->
+<!--            @click="handleClickMenu('/login')"-->
+<!--            class="item"-->
+<!--          >-->
+<!--            <span v-if="userInfo._id">{{ userInfo.name }}</span>-->
+<!--            <span v-else>登 录</span>-->
+<!--          </div>-->
+<!--          <div-->
+<!--            v-if="!userInfo._id"-->
+<!--            @click="handleClickMenu('/register')"-->
+<!--            class="item"-->
+<!--          >-->
+<!--            注 册-->
+<!--          </div>-->
+<!--          <div-->
+<!--            v-if="userInfo._id"-->
+<!--            @click="handleClickMenu('/logout')"-->
+<!--            class="item"-->
+<!--          >-->
+<!--            登 出-->
+<!--          </div>-->
         </div>
       </div>
     </div>
