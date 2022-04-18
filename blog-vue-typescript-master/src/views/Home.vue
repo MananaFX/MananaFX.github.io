@@ -24,6 +24,12 @@
             Manana
           </router-link>
           <router-link
+              class="link"
+              to="/timeline"
+          >
+            历程
+          </router-link>
+          <router-link
             class="link"
             to="/toloveStory"
           >
