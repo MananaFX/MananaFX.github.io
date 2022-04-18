@@ -1,0 +1,70 @@
+{
+  "list": [{
+    "title": "Nana出生了",
+    "content": "这是一个坏坏的小男孩！这是他的颜色~",
+    "timestamp": "2000-10-08",
+    "color": "#eac35e",
+    "size": "large"
+  },{
+    "title": "Oman出生了",
+    "content": "这是一个可爱的小女孩！这是她的颜色~",
+    "timestamp": "2001-01-21",
+    "color": "#edb18c",
+    "size": "large"
+  },{
+    "title": "小学",
+    "content": "Oman在石浦小学，Nana在新港小学，他们各自遇到了不同的人。",
+    "timestamp": "2007-07-01",
+    "color": "#aaa6a3",
+    "size": "large"
+  },{
+    "title": "初中",
+    "content": "他们都来到了石浦中学，那时候还叫新港中学呢。不过对彼此来说，对方只是那千百万多玫瑰中的一枝...",
+    "timestamp": "2013-07-01",
+    "color": "#aaa6a3",
+    "size": "large"
+  },{
+    "title": "初见",
+    "content": "那个中午，男孩看到了机房里的那个女孩。女孩很好看，很认真，男孩不敢像靠近普通女孩那样靠近她。",
+    "timestamp": "2014的某一天",
+    "color": "#eac35e",
+    "size": "normal"
+  },{
+    "title": "同学",
+    "content": "他们幸运的成为了同班同学，实际上是Nana幸运的进了这个班呢",
+    "timestamp": "2015-07-01",
+    "color": "#657091",
+    "size": "normal"
+  },{
+    "title": "不要一直问问题",
+    "content": "Nana老是找Oman问问题，也不知是问问题还是搭话，总之这一天Nana被吓到了，他好害怕Oman讨厌他了...",
+    "timestamp": "之后的某一天",
+    "color": "#657091",
+    "size": "normal"
+  },{
+    "title": "叫我大师兄",
+    "content": "大师兄知道三师弟老是问他问题，大师兄不知道三师弟偷偷喜欢她，大师兄也不知道三师弟会期待与她一起回家，所以，大师兄是笨蛋吧！",
+    "timestamp": "2015-01-22",
+    "color": "#ccd884",
+    "size": "normal"
+  },{
+    "title": "大师兄加油",
+    "content": "Oman这一天独自在教室自习，走廊上的Nana看到了，他知道Oman压力很大呢，就走到窗台边对他说：大师兄加油呀！",
+    "timestamp": "2016-05-21",
+    "color": "#ccd884",
+    "size": "normal"
+  },{
+    "title": "开心的Oman！",
+    "content": "Oman这天考完试回来了，她成功进了提前批呢，Nana和Oman一样开心，他还偷偷留了Oman的照片在手机里。",
+    "timestamp": "2016-05-23",
+    "color": "#ccd884",
+    "size": "normal"
+  },{
+    "title": "高中",
+    "content": "他们都来到了象山中学。大师兄记得她的三师弟，三师弟也记着她的大师兄，但他们只会在偶遇时打个招呼。不过这也是Nana每次月考的时候所期待着的呢，遇到她，和她打个招呼。",
+    "timestamp": "2016-07-01",
+    "color": "#aaa6a3",
+    "size": "large"
+  }
+  ]
+}
