@@ -106,7 +106,7 @@ export default defineComponent({
         category_id: getQueryStringByName("category_id"),
       } as ArticlesParams,
       href:
-          "/articleDetail?article_title="
+          "/#/articleDetail?article_title="
     });
 
     const formatTime = (value: string | Date): string => {
