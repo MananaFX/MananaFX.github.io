@@ -18,13 +18,6 @@
             :href="state.href + article.name"
             target="_blank"
           >
-            <img
-              class="wrap-img img-blur-done"
-              :data-src="article.img_url"
-              data-has-lazy-src="false"
-              src="../assets/songguo.jpg"
-              alt="文章封面"
-            />
             <div class="content">
               <h4 class="title">{{article.title}}</h4>
               <p class="abstract">{{article.desc}}</p>
