@@ -97,15 +97,23 @@ export default defineConfig({
   resolve: {
     // 导入文件夹别名
     alias: {
-      '@': path.resolve(__dirname, './src'),
-      views: path.resolve(__dirname, './src/views'),
-      components: path.resolve(__dirname, './src/components'),
-      utils: path.resolve(__dirname, './src/utils'),
-      less: path.resolve(__dirname, "./src/less"),
-      assets: path.resolve(__dirname, "./src/assets"),
-      com: path.resolve(__dirname, "./src/components"),
-      store: path.resolve(__dirname, "./src/store"),
-      mixins: path.resolve(__dirname, "./src/mixins")
+      '@': path.resolve(__dirname, 'src'),
+      views: path.resolve(__dirname, 'src/views'),
+      components: path.resolve(__dirname, 'src/components'),
+      utils: path.resolve(__dirname, 'src/utils'),
+      less: path.resolve(__dirname, "src/less"),
+      assets: path.resolve(__dirname, "src/assets"),
+      com: path.resolve(__dirname, "src/components"),
+      store: path.resolve(__dirname, "src/store"),
+      mixins: path.resolve(__dirname, "src/mixins"),
+      config: path.resolve(__dirname, "src/config")
     },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: '@import "./src/assets/styles/common.scss";'
+      }
+    }
   }
 })
