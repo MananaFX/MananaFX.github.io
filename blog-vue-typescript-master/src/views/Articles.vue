@@ -18,16 +18,18 @@
             :href="state.href + article.name"
             target="_blank"
           >
+            <img
+                class="wrap-img img-blur-done"
+                :data-src="article.img_url"
+                data-has-lazy-src="true"
+                src="../assets/bg.jpg"
+                alt="文章封面"
+            />
             <div class="content">
               <h4 class="title">{{article.title}}</h4>
               <p class="abstract">{{article.desc}}</p>
               <div class="meta">
-                <span
-                  v-if="article.create_time"
-                  class="time"
-                >
-                  {{formatTime(article.create_time)}}
-                </span>
+                <span class="time">{{article.create_time}}</span>
               </div>
             </div>
           </a>

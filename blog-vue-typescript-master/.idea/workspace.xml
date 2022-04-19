@@ -1,70 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="2df33e61-fc27-4087-ab2c-2b7772101d8e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/MananaFX.github.io.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Archive.310fa1ab.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Archive.af3041d0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/ArticleDetail.0cf5a733.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/ArticleDetail.d0214bc1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Articles.15f60b0e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Articles.9421a67f.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Articles.9952106f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Comment.21f45677.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Comment.48f475f2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/CustomSlider.60e28d54.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/CustomSlider.e7a30393.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Footer.7908426c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Footer.9adb74fd.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/LoadEnd.1964e486.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/LoadEnd.7461bbe7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Loading.08f5832e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Loading.9edb827c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/LoveStory.60515f03.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/LoveStory.aad60f8b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Message.98ae4522.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Message.ec79306c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Nav.05eb3d4d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Nav.da732bd7.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/OldArticleDetail.6a7fe10b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/OldArticleDetail.eb72395a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Project.4d96776b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Project.b54285c8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/RegisterAndLogin.103bd385.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/RegisterAndLogin.68f177ee.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Timeline.b0a3315f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/Timeline.d5691e05.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/ToLoveStory.183aa236.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/ToLoveStory.911c2a6a.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/index.85807a61.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../assets/index.b959839e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Archive.af3041d0.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/ArticleDetail.d0214bc1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Articles.15f60b0e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Articles.9421a67f.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Comment.48f475f2.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/CustomSlider.e7a30393.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Footer.7908426c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/LoadEnd.1964e486.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Loading.9edb827c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/LoveStory.aad60f8b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Message.ec79306c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Nav.05eb3d4d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/OldArticleDetail.6a7fe10b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Project.4d96776b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/RegisterAndLogin.68f177ee.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Timeline.b0a3315f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/ToLoveStory.183aa236.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/index.85807a61.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/sheepicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/static/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/list.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/Oman2.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/Oman2.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/OmanBridge.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/OmanBridge.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/OmanBro.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/OmanBro.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/OmanLogo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/OmanLogo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/cloudSheep.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/cloudSheep.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/gooseRabbit.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/gooseRabbit.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/pinkHeart.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/pinkHeart.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/songguo.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/songguo.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/views/Articles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Articles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Timeline.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Timeline.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -77,6 +32,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="PackageJsonUpdateNotifier">
+    <dismissed value="$PROJECT_DIR$/package.json" />
+  </component>
   <component name="ProjectId" id="280XgwRSgc2HQWvnn6t21S6fbo7" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -87,8 +45,20 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="ts.external.directory.path" value="D:\Github\MananaFX.github.io\blog-vue-typescript-master\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public" />
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\assets" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="npmrun" type="js.build_tools.npm">
@@ -111,10 +81,23 @@
       <option name="presentableId" value="Default" />
       <updated>1650354605828</updated>
       <workItem from="1650354607695" duration="63000" />
+      <workItem from="1650358643628" duration="5152000" />
+      <workItem from="1650372936170" duration="548000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

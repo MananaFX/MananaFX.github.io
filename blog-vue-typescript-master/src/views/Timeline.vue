@@ -37,6 +37,7 @@ import {
 import { Params, TimelineList, TimelinesData } from "../types/index";
 import { getJsonDataApi } from "../api/index";
 import request from '../utils/request';
+import axios from "axios";
 export default defineComponent({
   name: "Timeline",
   components: {
@@ -48,22 +49,27 @@ export default defineComponent({
       isLoadEnd: false,
       isLoading: false,
       list: [] as TimelineList[],
-      total: 0
+      total: 0,
+      params: {
+        pageNum: 1,
+        pageSize: 10,
+      } as Params,
     });
 
     const formatTime = (value: string | Date): string => {
       return timestampToTime(value, true);
     };
-
+    //
     // const handleSearch = async (): Promise<void> => {
     //   state.isLoading = true;
-    //   const data: TimelinesData = await service.get(urls.getTimeAxisList, {
+    //   const data: TimelinesData = await axios.create().get(`/static/list.json`, {
     //     params: state.params,
     //   });
     //   state.isLoading = false;
-    //
-    //   state.list = [...state.list, ...data.list];
+    //   console.log(data);
+    //   state.list = [...state.list,...data.list];
     //   state.total = data.count;
+    //   console.log(state);
     //   state.params.pageNum++;
     //   if (state.total === state.list.length) {
     //     state.isLoadEnd = true;
