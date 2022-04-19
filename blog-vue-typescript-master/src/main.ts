@@ -6,6 +6,11 @@ import service from "./utils/https";
 import urls from "./utils/urls";
 import Countdown from 'vue3-flip-countdown'
 import request from "./utils/request.js";
+import "github-markdown-css";
+// 代码高亮
+import "highlight.js/styles/github.css";
+// markdown样式
+import { mdArticle } from "/public/md/index";
 import { 
     ElButton, 
     ElDialog,
@@ -62,4 +67,5 @@ app.config.globalProperties.request = request
 app.use(store, key)
 app.use(router)
 app.use(Countdown)
+app.use(mdArticle)
 app.mount('#app');

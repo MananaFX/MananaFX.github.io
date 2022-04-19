@@ -1,9 +1,9 @@
 <template>
   <div class="left clearfix">
-    <h3
-      v-if="state.params.tag_id"
-      class="left-title"
-    >{{state.tag_name}} 相关的文章：</h3>
+<!--    <h3-->
+<!--      v-if="state.params.tag_id"-->
+<!--      class="left-title"-->
+<!--    >{{state.tag_name}} 相关的文章：</h3>-->
     <ul
       class="articles-list"
       id="list"
@@ -11,27 +11,24 @@
       <transition-group name="el-fade-in">
         <li
           v-for="(article) in state.articlesList"
-          :key="article._id"
+          :key="article.title"
           class="item"
         >
           <a
-            :href="state.href + article._id"
+            :href="state.href + article.name"
             target="_blank"
           >
             <img
               class="wrap-img img-blur-done"
               :data-src="article.img_url"
               data-has-lazy-src="false"
-              src="../assets/bg.jpg"
+              src="../assets/songguo.jpg"
               alt="文章封面"
             />
             <div class="content">
               <h4 class="title">{{article.title}}</h4>
               <p class="abstract">{{article.desc}}</p>
               <div class="meta">
-                <span>查看 {{article.meta.views}}</span>
-                <span>评论 {{article.meta.comments}}</span>
-                <span>赞 {{article.meta.likes}}</span>
                 <span
                   v-if="article.create_time"
                   class="time"
@@ -51,10 +48,9 @@
 
 <script lang="ts">
 import { defineComponent, reactive, onMounted, nextTick } from "vue";
-import service from "../utils/https";
-import urls from "../utils/urls";
 import LoadEnd from "../components/LoadEnd.vue";
 import LoadingCustom from "../components/Loading.vue";
+import request from '../utils/request';
 import {
   throttle,
   getScrollTop,
@@ -111,64 +107,66 @@ export default defineComponent({
       isLoading: false,
       articlesList: [] as Array<any>,
       total: 0,
-      tag_name: decodeURI(getQueryStringByName("tag_name")),
       params: {
         keyword: "",
-        likes: "", // 是否是热门文章
-        state: 1, // 文章发布状态 => 0 草稿，1 已发布,'' 代表所有文章
         tag_id: getQueryStringByName("tag_id"),
         category_id: getQueryStringByName("category_id"),
-        pageNum: 1,
-        pageSize: 10,
       } as ArticlesParams,
       href:
-        import.meta.env.MODE === "development"
-          ? "http://localhost:3001/articleDetail?article_id="
-          : "https://biaochenxuying.cn/articleDetail?article_id="
+          "http://localhost:3001/articleDetail?article_title="
     });
 
     const formatTime = (value: string | Date): string => {
       return timestampToTime(value, true);
     };
 
-    const handleSearch = async (): Promise<void> => {
-      state.isLoading = true;
-      const data: ArticlesData = await service.get(
-        urls.getArticleList,
-        {
-          params: state.params,
-        }
-      );
-      state.isLoading = false;
-      state.articlesList = [...state.articlesList, ...data.list];
-      state.total = data.count;
-      state.params.pageNum++;
-      nextTick(() => {
-        lazyload();
-      });
-      if (data.list.length === 0 || state.total === state.articlesList.length) {
-        state.isLoadEnd = true;
-        document.removeEventListener("scroll", () => {});
-        window.onscroll = null;
-      }
+    // const handleSearch = async (): Promise<void> => {
+    //   state.isLoading = true;
+    //   const data: ArticlesData = await service.get(
+    //     urls.getArticleList,
+    //     {
+    //       //params: state.params, //分页查询
+    //     }
+    //   );
+    //   state.isLoading = false;
+    //   state.articlesList = [...state.articlesList, ...data.list];
+    //   state.total = data.count;
+    //   state.params.pageNum++;
+    //   nextTick(() => {
+    //     lazyload();
+    //   });
+    //   if (data.list.length === 0 || state.total === state.articlesList.length) {
+    //     state.isLoadEnd = true;
+    //     document.removeEventListener("scroll", () => {});
+    //     window.onscroll = null;
+    //   }
+    // };
+    const getData = () =>{
+      request({
+        url: `/static/articleslist.json`, // json文件地址
+        method: 'get',
+      }).then((res)=>{
+        console.log(res)
+        state.total=res.list.length;
+        state.articlesList=res.list;
+      })
     };
 
     const routeChange = (val: any, oldVal: any): void => {
-      state.tag_name = decodeURI(getQueryStringByName("tag_name"));
       state.params.tag_id = getQueryStringByName("tag_id");
       state.params.category_id = getQueryStringByName("category_id");
       state.articlesList = [];
       state.params.pageNum = 1;
-      handleSearch();
+      getData();
     }
 
     onMounted(() => {
-      handleSearch();
+      getData();
       window.onscroll = () => {
         if (getScrollTop() + getWindowHeight() > getDocumentHeight() - 100) {
           // 如果不是已经没有数据了，都可以继续滚动加载
           if (state.isLoadEnd === false && state.isLoading === false) {
-            handleSearch();
+            getData();
           }
         }
       };
@@ -178,7 +176,7 @@ export default defineComponent({
     return {
       state,
       formatTime,
-      handleSearch,
+      getData,
       routeChange
     };
   }

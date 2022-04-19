@@ -1,12 +1,23 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import styleImport from 'vite-plugin-style-import'
+import markdown from 'vite-plugin-md';
+import Inspect from 'vite-plugin-inspect';
+import Pages from 'vite-plugin-pages'
+const markdownRenderer = require('markdown-it')();
+import markdownPrism from 'markdown-it-prism'
+// 引入markdwon代码块处理
+const mdConfig = require('./src/config/md.config');
+// markdown文件高亮样式
+import hljs from 'highlight.js';
 import path from 'path'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-    vue(),
+    vue({
+      include: [/\.vue$/, /\.md$/], // <--
+    }),
     styleImport({
       libs: [
         {
@@ -21,7 +32,37 @@ export default defineConfig({
           },
         }
       ]
-    })
+    }),
+    markdown({
+      markdownItOptions: {
+        html: true,
+        linkify: true,
+        typographer: true,
+        xhtmlOut: true,
+        highlight: (str: any, lang: any) => {
+          if (lang && hljs.getLanguage(lang)) {
+            try {
+              return '<pre class="hljs"><code>' +
+                  hljs.highlight(lang, str, true).value +
+                  '</code></pre>';
+            } catch (__) {
+            }
+          }
+          return '<pre class="hljs"><code>' + markdownRenderer.utils.escapeHtml(str) + '</code></pre>';
+        }
+      },
+      markdownItSetup(md) {
+        mdConfig(md);
+        // md.use(require('markdown-it-anchor'))
+        // md.use(require('markdown-it-prism'))
+      },
+      wrapperClasses: 'markdown-container',
+    }),
+    Pages({
+      pagesDir: 'pages',
+      extensions: ['vue', 'md'],
+    }),
+    Inspect(),
   ],
 
   /**

@@ -27,7 +27,6 @@ import service from "../utils/https";
 import urls from "../utils/urls";
 import LoadEnd from "../components/LoadEnd.vue";
 import LoadingCustom from "../components/Loading.vue";
-import request from "../utils/request.js";
 import {
   getScrollTop,
   getDocumentHeight,
@@ -37,7 +36,7 @@ import {
 
 import { Params, TimelineList, TimelinesData } from "../types/index";
 import { getJsonDataApi } from "../api/index";
-
+import request from '../utils/request';
 export default defineComponent({
   name: "Timeline",
   components: {
@@ -71,7 +70,10 @@ export default defineComponent({
     //   }
     // };
     const getData = () =>{
-      getJsonDataApi().then((res)=>{
+      request({
+        url: `/static/list.json`, // json文件地址
+        method: 'get',
+      }).then((res)=>{
         console.log(res)
         state.total=res.list.length;
         state.list=res.list;
