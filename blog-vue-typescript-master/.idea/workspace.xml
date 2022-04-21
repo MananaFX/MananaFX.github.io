@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2df33e61-fc27-4087-ab2c-2b7772101d8e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/views/Login.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Nav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/RegisterAndLogin.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/RegisterAndLogin.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,7 +92,7 @@
       <workItem from="1650354607695" duration="63000" />
       <workItem from="1650358643628" duration="5152000" />
       <workItem from="1650372936170" duration="548000" />
-      <workItem from="1650506705902" duration="12815000" />
+      <workItem from="1650506705902" duration="13231000" />
     </task>
     <servers />
   </component>

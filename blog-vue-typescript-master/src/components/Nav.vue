@@ -145,13 +145,10 @@
 <!--          >-->
 <!--            <router-link to="/about">关 于</router-link>-->
 <!--          </div>-->
-<!--          <div-->
-<!--            @click="handleClickMenu('/login')"-->
-<!--            class="item"-->
-<!--          >-->
-<!--            <span v-if="userInfo._id">{{ userInfo.name }}</span>-->
-<!--            <span v-else>登 录</span>-->
-<!--          </div>-->
+          <div
+            @click="handleLogout()"
+            class="item"
+          >登 出</div>
 <!--          <div-->
 <!--            v-if="!userInfo._id"-->
 <!--            @click="handleClickMenu('/register')"-->
