@@ -87,7 +87,7 @@ const router = createRouter({
 let counter = 0;
 router.beforeEach((to, from) => {
     console.log(`进行了${++counter}路由跳转`)
-    if (to.path !== "/login") {
+    if (to.path !== "/login" && to.path !=="/") {
         const token = window.localStorage.getItem("token");
         if (!token) {
             return "/login"

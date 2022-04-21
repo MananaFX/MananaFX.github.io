@@ -38,28 +38,6 @@
             v-if="userInfo._id"
             :span="5"
           >
-            <div class="nav-right">
-              <el-dropdown @command="handleLogout">
-                <span class="el-dropdown-link">
-                  {{userInfo.name}}<i class="el-icon-arrow-down el-icon--right"></i>
-                </span>
-                <img
-                  v-if="!userInfo.avatar"
-                  class="user-img"
-                  src="../assets/OmanLogo.jpg"
-                  alt="小曼曼 logo"
-                >
-                <img
-                  v-if="userInfo.avatar"
-                  class="user-img"
-                  :src="userInfo.avatar"
-                  alt="BiaoChenXuYing"
-                >
-                <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item command="logout">登 出</el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
-            </div>
           </el-col>
           <el-col
             v-else
@@ -70,12 +48,9 @@
                 size="small"
                 type="danger"
                 @click="handleLogout()"
-              >登出</el-button>
-<!--              <el-button-->
-<!--                size="small"-->
-<!--                type="danger"-->
-<!--                @click="handleClick('register')"-->
-<!--              >注册</el-button>-->
+              >
+                <router-link to="/">登出</router-link>
+              </el-button>
             </div>
           </el-col>
         </el-row>
@@ -148,7 +123,9 @@
           <div
             @click="handleLogout()"
             class="item"
-          >登 出</div>
+          >
+            <router-link to="/">登 出</router-link>
+          </div>
 <!--          <div-->
 <!--            v-if="!userInfo._id"-->
 <!--            @click="handleClickMenu('/register')"-->
@@ -156,13 +133,13 @@
 <!--          >-->
 <!--            注 册-->
 <!--          </div>-->
-          <div
-            v-if="userInfo._id"
-            @click="handleClickMenu('/logout')"
-            class="item"
-          >
-            登 出
-          </div>
+<!--          <div-->
+<!--            v-if="userInfo._id"-->
+<!--            @click="handleClickMenu('/logout')"-->
+<!--            class="item"-->
+<!--          >-->
+<!--            登 出-->
+<!--          </div>-->
         </div>
       </div>
     </div>
