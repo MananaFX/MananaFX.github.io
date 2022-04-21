@@ -1,48 +1,35 @@
 <template>
-  <el-dialog
-    title="登录"
-    :width="isMobile ? '90%' : '50%'"
-    v-model="state.dialogDodel"
-    @close="cancel"
-    :show-close="true"
+  <div
+      title="登录"
   >
     <el-form>
       <el-formItem
-        label="账号"
-        :label-width="state.formLabelWidth"
+          label="账号"
+          :label-width="state.formLabelWidth"
       >
         <el-input
-          v-model="state.params.name"
-          placeholder="账号"
-          autocomplete="off"
+            v-model="state.params.name"
+            placeholder="账号"
+            autocomplete="off"
         >
         </el-input>
       </el-formItem>
       <el-formItem
-        label="密码"
-        :label-width="state.formLabelWidth"
+          label="密码"
+          :label-width="state.formLabelWidth"
       >
         <el-input
-          type="password"
-          placeholder="密码"
-          v-model="state.params.password"
-          autocomplete="off"
+            type="password"
+            placeholder="密码"
+            v-model="state.params.password"
+            autocomplete="off"
         ></el-input>
       </el-formItem>
+      <el-button type="primary" round
+                 @click="handleOk">登录
+      </el-button>
     </el-form>
-    <div
-      slot="footer"
-      class="dialog-footer"
-    >
-      <el-button
-        v-if="handleFlag === 'login'"
-        :loading="state.btnLoading"
-        type="primary"
-        @click="handleOk"
-      >登 录</el-button>
-
-    </div>
-  </el-dialog>
+  </div>
 </template>
 
 <script lang="ts">
@@ -50,7 +37,7 @@ import { defineComponent, reactive, watch } from "vue";
 import { useRouter } from "vue-router";
 import { ElMessage } from "element-plus";
 export default defineComponent({
-  name: "RegisterAndLogin",
+  name: "Login",
   props: {
     visible: {
       type: Boolean,
@@ -98,7 +85,7 @@ export default defineComponent({
 
     const handleOk = (): void => {
       const reg = new RegExp(
-        "^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"
+          "^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$"
       ); //正则表达式
       // if (!state.params.email) {
       //   ElMessage({
@@ -184,9 +171,9 @@ export default defineComponent({
     };
   },
 });
+
 </script>
+
 <style scoped>
-.dialog-footer {
-  text-align: right;
-}
+
 </style>

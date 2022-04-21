@@ -69,6 +69,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "toLoveStory",
         component: () =>
             import(/* webpackChunkName: "toloveStory" */ "../views/ToLoveStory.vue")
+    },
+    {
+        path: "/login",
+        name: "登录",
+        component: () =>
+            import(/* webpackChunkName: "登录" */ "../views/Login.vue")
     }
 ];
 
@@ -78,4 +84,14 @@ const router = createRouter({
     routes,
 });
 
+let counter = 0;
+router.beforeEach((to, from) => {
+    console.log(`进行了${++counter}路由跳转`)
+    if (to.path !== "/login") {
+        const token = window.localStorage.getItem("token");
+        if (!token) {
+            return "/login"
+        }
+    }
+})
 export default router;

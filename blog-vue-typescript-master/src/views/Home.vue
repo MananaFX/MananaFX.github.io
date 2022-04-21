@@ -61,7 +61,7 @@ export default defineComponent({
       if (document.location.protocol === "http:") {
         ElMessage({
           message:
-            "静态网页，加载缓慢，请耐心等待哦",
+            "服务器在海外，建议挂梯子噢",
           type: "warning",
           duration: 3000,
         });

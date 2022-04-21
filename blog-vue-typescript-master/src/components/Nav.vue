@@ -61,23 +61,23 @@
               </el-dropdown>
             </div>
           </el-col>
-<!--          <el-col-->
-<!--            v-else-->
-<!--            :span="4"-->
-<!--          >-->
-<!--            <div class="nav-right">-->
-<!--              <el-button-->
-<!--                size="small"-->
-<!--                type="primary"-->
-<!--                @click="handleClick('login')"-->
-<!--              >登录</el-button>-->
+          <el-col
+            v-else
+            :span="4"
+          >
+            <div class="nav-right">
+              <el-button
+                size="small"
+                type="danger"
+                @click="handleLogout()"
+              >登出</el-button>
 <!--              <el-button-->
 <!--                size="small"-->
 <!--                type="danger"-->
 <!--                @click="handleClick('register')"-->
 <!--              >注册</el-button>-->
-<!--            </div>-->
-<!--          </el-col>-->
+            </div>
+          </el-col>
         </el-row>
       </div>
     </div>
@@ -159,13 +159,13 @@
 <!--          >-->
 <!--            注 册-->
 <!--          </div>-->
-<!--          <div-->
-<!--            v-if="userInfo._id"-->
-<!--            @click="handleClickMenu('/logout')"-->
-<!--            class="item"-->
-<!--          >-->
-<!--            登 出-->
-<!--          </div>-->
+          <div
+            v-if="userInfo._id"
+            @click="handleClickMenu('/logout')"
+            class="item"
+          >
+            登 出
+          </div>
         </div>
       </div>
     </div>
@@ -307,14 +307,7 @@ export default defineComponent({
     };
 
     const handleLogout = (): void => {
-      window.sessionStorage.userInfo = "";
-      store.commit("SAVE_USER", {
-        userInfo: {
-          _id: "",
-          name: "",
-          avatar: "",
-        },
-      });
+      window.localStorage.removeItem("token")
     };
 
     const handleClickMenu = (route?: string): void => {
