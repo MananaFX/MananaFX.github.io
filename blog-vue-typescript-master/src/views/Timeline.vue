@@ -62,7 +62,7 @@ export default defineComponent({
     //
     // const handleSearch = async (): Promise<void> => {
     //   state.isLoading = true;
-    //   const data: TimelinesData = await axios.create().get(`/static/list.json`, {
+    //   const data: TimelinesData = await axios.create().get(`/timeLineList.json`, {
     //     params: state.params,
     //   });
     //   state.isLoading = false;
@@ -77,7 +77,7 @@ export default defineComponent({
     // };
     const getData = () =>{
       request({
-        url: `/static/list.json`, // json文件地址
+        url: `/timeLineList.json`, // json文件地址
         method: 'get',
       }).then((res)=>{
         console.log(res)

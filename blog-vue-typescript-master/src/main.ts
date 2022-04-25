@@ -10,7 +10,8 @@ import "github-markdown-css";
 // 代码高亮
 import "highlight.js/styles/github.css";
 // markdown样式
-import { mdArticle } from "/public/md/index";
+import { mdArticle1 } from "/public/MananaFXMd/index";
+import { mdArticle2 } from "/public/ReviewNotesMd/index";
 import { 
     ElButton, 
     ElDialog,
@@ -67,5 +68,6 @@ app.config.globalProperties.request = request
 app.use(store, key)
 app.use(router)
 app.use(Countdown)
-app.use(mdArticle)
+app.use(mdArticle1)
+app.use(mdArticle2)
 app.mount('#app');

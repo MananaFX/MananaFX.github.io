@@ -35,6 +35,12 @@
           >
             生日礼物
           </router-link>
+          <router-link
+              class="link"
+              to="/reviewNotes"
+          >
+            复习笔记
+          </router-link>
           <a
             target="_blank"
             rel="noopener noreferrer"

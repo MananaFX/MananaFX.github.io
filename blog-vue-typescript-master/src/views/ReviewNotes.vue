@@ -138,7 +138,7 @@ export default defineComponent({
     // };
     const getData = () =>{
       request({
-        url: `/MananaFXMd/articleslist.json`, // json文件地址
+        url: `/ReviewNotesMd/articleslist.json`, // json文件地址
         method: 'get',
       }).then((res)=>{
         console.log(res)

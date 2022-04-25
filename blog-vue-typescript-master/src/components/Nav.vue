@@ -114,6 +114,12 @@
           >
             <router-link to="/toLoveStory">礼 物</router-link>
           </div>
+          <div
+              @click="handleClickMenu('/reviewNotes')"
+              class="item"
+          >
+            <router-link to="/reviewNotes">复习笔记</router-link>
+          </div>
 <!--          <div-->
 <!--              @click="handleClickMenu('/about')"-->
 <!--              class="item"-->
@@ -243,6 +249,11 @@ export default defineComponent({
           index: "4",
           path: "/ToLoveStory",
           name: "礼物",
+        },
+        {
+          index: "5",
+          path: "/reviewNotes",
+          name: "复习笔记",
         },
       ] as Array<NavListItem>,
       activeIndex: "0",
