@@ -2,10 +2,22 @@
   "list": [
     {
       "name": "note1",
+      "title": "2.微机接口指令",
+      "img_url": "public/ReviewNotesMd/2.微机接口指令.jpg",
+      "desc": "寄存器与指令",
+      "create_time": "2022-4-26"
+    },{
+      "name": "note2",
       "title": "3.端口地址译码技术",
       "img_url": "/static/img/songguo.jpg",
       "desc": "章节框架+课后简答题",
       "create_time": "2022-4-25"
+    },{
+      "name": "note3",
+      "title": "4.中断控制技术(8259A)",
+      "img_url": "/static/img/songguo.jpg",
+      "desc": "章节框架+编程+习题",
+      "create_time": "2022-4-26"
     }
   ]
 }

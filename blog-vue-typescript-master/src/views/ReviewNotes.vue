@@ -21,7 +21,7 @@
             <img
                 class="wrap-img img-blur-done"
                 :data-src="article.img_url"
-                data-has-lazy-src="true"
+                data-has-lazy-src="false"
                 src="../assets/bg.jpg"
                 alt="文章封面"
             />

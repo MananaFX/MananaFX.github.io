@@ -5,42 +5,39 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2df33e61-fc27-4087-ab2c-2b7772101d8e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/3.端口地址译码技术.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/articleslist.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/views/ReviewNotes.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/2.微机接口指令.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/2.微机接口指令.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/4.中断控制技术(8259A).md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/4.中断控制技术.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.2.26-22.3.4 以前的备忘录.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.2.26-22.3.4 以前的备忘录.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.10 第六天.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.10 第六天.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.14 安慰曼曼.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.14 安慰曼曼.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.19 曼曼的日记本.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.19 曼曼的日记本.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.25 可怜巴巴.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.25 可怜巴巴.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.28 巴巴警官.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.28 巴巴警官.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.29 好好休息下吧.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.29 好好休息下吧.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.30 奇怪的代码.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.30 奇怪的代码.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.30 给曼曼的回信.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.30 给曼曼的回信.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.31  nana日记.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.31  nana日记.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.5 第一天.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.5 第一天.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.6 第二天.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.6 第二天.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.6给曼曼妈妈的信.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.6给曼曼妈妈的信.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.7 第三天.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.7 第三天.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.8 第四天.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.8 第四天.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.3.9 第五天.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.3.9 第五天.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.4.1 小故事.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.4.1 小故事.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.4.10 亲爱的哼哼.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.4.10 亲爱的哼哼.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.4.13 谁欺负你，我就狠狠咬他一口！.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.4.13 谁欺负你，我就狠狠咬他一口！.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.4.17 你是我的冰糖雪梨.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.4.17 你是我的冰糖雪梨.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.4.2 nana日记.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.4.2 nana日记.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/22.4.3 为什么喜欢你.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/22.4.3 为什么喜欢你.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/md/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/articleslist.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/articleslist.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/list.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/timeLineList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Nav.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Nav.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/router/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/router/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Articles.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Articles.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Home.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Home.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/Timeline.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Timeline.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ReviewNotesMd/articleslist.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ReviewNotesMd/articleslist.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/ReviewNotesMd/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ReviewNotesMd/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/Archive.3805fdf8.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/ArticleDetail.57fddc1e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/Articles.25a15668.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/Comment.2bda30ba.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/CustomSlider.ca550d95.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/Footer.3a105633.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/LoadEnd.ada827e6.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/Loading.d6c68a5c.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/Login.e1bf01ce.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/LoveStory.7b83592e.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/Message.2eda998b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/Nav.0053a716.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/OldArticleDetail.a3e5a42b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/Project.3a460009.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/RegisterAndLogin.1a7bbead.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/ReviewNotes.7b50564f.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/ReviewNotes.9a6210d1.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/Timeline.642fd3a1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/ToLoveStory.3a909d6b.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/assets/index.ba2d3716.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/timeLineList.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/timeLineList.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ReviewNotesMd/articleslist.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/ReviewNotesMd/articleslist.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/ReviewNotesMd/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/ReviewNotesMd/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/timeLineList.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/timeLineList.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/ReviewNotes.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ReviewNotes.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +80,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/WJJK" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/ReviewNotesMd" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -95,17 +92,18 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\ReviewNotesMd" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\WJJK" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\views" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\ReviewNotesMd" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\MananaFXMd" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\components" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\views" />
-      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\static" />
     </key>
   </component>
   <component name="RunManager">
@@ -136,6 +134,8 @@
       <workItem from="1650788759602" duration="593000" />
       <workItem from="1650790223313" duration="14000" />
       <workItem from="1650891060180" duration="2376000" />
+      <workItem from="1650955589408" duration="3879000" />
+      <workItem from="1650978635310" duration="936000" />
     </task>
     <servers />
   </component>
