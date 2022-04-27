@@ -12,8 +12,8 @@ import "highlight.js/styles/github.css";
 // markdown样式
 import { mdArticle1 } from "/public/MananaFXMd/index";
 import { mdArticle2 } from "/public/ReviewNotesMd/index";
-import { 
-    ElButton, 
+import {
+    ElButton,
     ElDialog,
     ElForm,
     ElFormItem,
@@ -32,7 +32,12 @@ import {
     ElCard,
     ElTag,
     ElIcon,
-    ElCollapseTransition
+    ElCollapseTransition,
+    ElDatePicker,
+    ElSwitch,
+    ElRadio,
+    ElRadioGroup,
+    ElTimePicker
 } from 'element-plus';
 
 const app = createApp(App)
@@ -42,6 +47,11 @@ app.component(ElButton.name, ElButton);
 app.component(ElDialog.name, ElDialog);
 app.component(ElForm.name, ElForm);
 app.component(ElFormItem.name, ElFormItem);
+app.component(ElDatePicker.name, ElDatePicker);
+app.component(ElTimePicker.name, ElTimePicker);
+app.component(ElSwitch.name,ElSwitch);
+app.component(ElRadio.name,ElRadio);
+app.component(ElRadioGroup.name,ElRadioGroup);
 app.component(ElInput.name, ElInput);
 app.component(ElMessage.name, ElMessage);
 app.component(ElMenu.name, ElMenu);

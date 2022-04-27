@@ -5,39 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2df33e61-fc27-4087-ab2c-2b7772101d8e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/2.微机接口指令.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/2.微机接口指令.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/4.中断控制技术(8259A).md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/4.中断控制技术.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/ReviewNotesMd/articleslist.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ReviewNotesMd/articleslist.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/ReviewNotesMd/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ReviewNotesMd/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Archive.3805fdf8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/ArticleDetail.57fddc1e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Articles.25a15668.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Comment.2bda30ba.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/CustomSlider.ca550d95.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Footer.3a105633.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/LoadEnd.ada827e6.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Loading.d6c68a5c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Login.e1bf01ce.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/LoveStory.7b83592e.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Message.2eda998b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Nav.0053a716.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/OldArticleDetail.a3e5a42b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Project.3a460009.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/RegisterAndLogin.1a7bbead.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/ReviewNotes.7b50564f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/ReviewNotes.9a6210d1.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Timeline.642fd3a1.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/ToLoveStory.3a909d6b.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/index.ba2d3716.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/timeLineList.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/timeLineList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/ReviewNotesMd/articleslist.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/ReviewNotesMd/articleslist.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/ReviewNotesMd/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/ReviewNotesMd/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/timeLineList.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/timeLineList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/views/ReviewNotes.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/ReviewNotes.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/main.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/views/Timeline.vue" beforeDir="false" afterPath="$PROJECT_DIR$/src/views/Timeline.vue" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,6 +106,7 @@
       <workItem from="1650891060180" duration="2376000" />
       <workItem from="1650955589408" duration="3879000" />
       <workItem from="1650978635310" duration="936000" />
+      <workItem from="1651026238556" duration="5335000" />
     </task>
     <servers />
   </component>
