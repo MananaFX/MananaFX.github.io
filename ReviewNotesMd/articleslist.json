@@ -18,6 +18,12 @@
       "img_url": "/static/img/songguo.jpg",
       "desc": "章节框架+编程+习题",
       "create_time": "2022-4-26"
+    },{
+      "name": "note4",
+      "title": "5.计数器和定时电路（8254A）",
+      "img_url": "/static/img/songguo.jpg",
+      "desc": "章节框架+编程+习题",
+      "create_time": "2022-4-28"
     }
   ]
 }
