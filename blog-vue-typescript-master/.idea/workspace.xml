@@ -5,75 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2df33e61-fc27-4087-ab2c-2b7772101d8e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/MananaFXMd/22.5.5 到身边来陪你.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/4.中断控制技术(8259A)习题.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/4.中断控制题目(8259A)选择题.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/5.计数器和定时电路（8254A）习题.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/6. DMA技术（8237A）.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/6.DMA技术1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/6.DMA技术2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/6.DMA技术3.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/6.DMA技术（8237A）习题.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/7.并行通信及其接口电路1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/7.并行通信及其接口电路2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/7.并行通信及其接口电路3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/7.并行通信及其接口电路（8255A）.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/7.并行通信及其接口电路（8255A）习题.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/8.串行接口1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/8.串行接口2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/8.串行接口（8251A）.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/8.串行接口（8251A）习题.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/clip_image002-16518279197483.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/clip_image002-16518279338625.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/clip_image002.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/clip_image002.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/clip_image002.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/clip_image004.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/image-20220501123041490.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/image-20220501123054772.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/image-20220501123122152.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/image-20220503160148915.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/ReviewNotesMd/image-20220507085103052.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/MananaFXMd/22.3.6给曼曼妈妈的信.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/MananaFXMd/articleslist.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/MananaFXMd/articleslist.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/MananaFXMd/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/MananaFXMd/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/ReviewNotesMd/2.微机接口指令.md" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ReviewNotesMd/2.微机接口指令.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/ReviewNotesMd/4.中断控制技术(8259A).md" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ReviewNotesMd/4.中断控制技术(8259A).md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/ReviewNotesMd/5.计数器和定时电路（8254A）.md" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ReviewNotesMd/5.计数器和定时电路（8254A）.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/ReviewNotesMd/articleslist.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ReviewNotesMd/articleslist.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/ReviewNotesMd/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/ReviewNotesMd/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Archive.ec5a742c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/ArticleDetail.3d34767c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Articles.0ca00422.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Comment.d03ae728.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/CustomSlider.0ae3c3f8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Footer.00194293.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/LoadEnd.7cfa6b68.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Loading.31b97a77.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Login.561cc8df.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/LoveStory.8e4902cc.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Message.cf192859.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Nav.4fe8f832.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/OldArticleDetail.ddc0868d.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Project.491d60aa.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/RegisterAndLogin.ec1149f8.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/ReviewNotes.70d8dc20.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/Timeline.d694277f.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/ToLoveStory.bf660f68.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/assets/index.e4f75b9c.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/timeLineList.json" beforeDir="false" afterPath="$PROJECT_DIR$/dist/timeLineList.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/MananaFXMd/articleslist.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/articleslist.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/MananaFXMd/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/MananaFXMd/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/ReviewNotesMd/2.微机接口指令.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/ReviewNotesMd/2.微机接口指令.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/ReviewNotesMd/4.中断控制技术(8259A).md" beforeDir="false" afterPath="$PROJECT_DIR$/public/ReviewNotesMd/4.中断控制技术(8259A).md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/ReviewNotesMd/5.计数器和定时电路（8254A）.md" beforeDir="false" afterPath="$PROJECT_DIR$/public/ReviewNotesMd/5.计数器和定时电路（8254A）.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/ReviewNotesMd/articleslist.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/ReviewNotesMd/articleslist.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/ReviewNotesMd/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/ReviewNotesMd/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/static/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/static/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/timeLineList.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/timeLineList.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
