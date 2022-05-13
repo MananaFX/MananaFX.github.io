@@ -18,7 +18,11 @@ import article17 from "./22.4.2 nana日记.md";
 import article18 from "./22.4.3 为什么喜欢你.md";
 import article19 from "./22.4.10 亲爱的哼哼.md";
 import article20 from "./22.4.13 谁欺负你，我就狠狠咬他一口！.md";
-import article21 from "./22.4.17 你是我的冰糖雪梨.md";
+import article21 from "./22.4.19 平静的海面下是平静的海.md";
+import article22 from "./22.4.24 曼曼喜欢你.md";
+import article23 from "./22.4.17 你是我的冰糖雪梨.md";
+import article24 from "./22.4.30 今天也是爱你的一天哟😘.md";
+import article25 from "./22.5.5 到身边来陪你.md";
 
 // md文件批量引入
 
@@ -86,6 +90,18 @@ export const components = {
     },
     article21: {
         name: article21,
+    },
+    article22: {
+        name: article22,
+    },
+    article23: {
+        name: article23,
+    },
+    article24: {
+        name: article24,
+    },
+    article25: {
+        name: article25,
     }
 };
 // 注册全部md组件
