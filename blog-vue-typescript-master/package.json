@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
-    "element-plus": "^1.0.2-beta.41",
+    "element-plus": "^1.0.2-beta.50",
     "highlight.js": "^10.7.2",
     "markdown-it-container": "^3.0.0",
     "marked": "^2.0.3",
@@ -29,6 +29,8 @@
     "highlight.js": "^11.5.1",
     "less": "^4.1.1",
     "typescript": "^4.1.3",
+    "unplugin-auto-import": "^0.7.1",
+    "unplugin-vue-components": "^0.19.5",
     "vite": "^2.2.3",
     "vite-plugin-style-import": "^0.10.0",
     "vue-loader": "^17.0.0",

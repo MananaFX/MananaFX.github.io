@@ -11,20 +11,19 @@
           <el-col :span="24">
             <Countdown deadline="2023-01-21 00:00:00" :timeElapsed="itsTime"/>
           </el-col>
-
         </el-row>
+        <el-row :gutter="24" justify="center">
+        <el-button-group>
+          <el-button type="success" round
+                     @click="openGift()">打开礼物
+          </el-button>
+          <el-button type="primary" round
+                     @click="haveaLook()">加速三秒
+          </el-button>
+        </el-button-group>
+      </el-row>
       </el-header>
       <el-main>
-        <el-row :gutter="24" justify="center">
-            <el-button-group>
-              <el-button type="success" round
-                         @click="openGift()">打开礼物
-              </el-button>
-              <el-button type="primary" round
-                         @click="haveaLook()">加速三秒
-              </el-button>
-            </el-button-group>
-        </el-row>
       </el-main>
     </el-container>
   </div>
@@ -33,9 +32,8 @@
 <script>
 
 import {Countdown} from 'vue3-flip-countdown'
-import {useRouter} from "vue-router";
-import { ElMessage, ElMessageBox } from 'element-plus';
 import {ref} from "vue"
+import { ElMessage } from "element-plus";
 
 export default {
   name: "toLoveStory",
@@ -44,9 +42,8 @@ export default {
   },
   setup(){
     const centerDialogVisible = ref(false);
-    const router = useRouter();
     const openGift= () => {
-      ElMessage.error('不可以哦，时间还没到！')
+      ElMessage.error('不可以哦，时间还没到！');
     }
     const itsTime = () =>{
 
@@ -65,7 +62,6 @@ export default {
       itsTime,
       back,
       haveaLook,
-
     }
   }
 }

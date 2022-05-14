@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2df33e61-fc27-4087-ab2c-2b7772101d8e" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/ReviewNotesMd/articleslist.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/ReviewNotesMd/articleslist.json" afterDir="false" />
-    </list>
+    <list default="true" id="2df33e61-fc27-4087-ab2c-2b7772101d8e" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -50,12 +47,15 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/ReviewNotesMd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../covid19_management/covid19_management/Springboot" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
     <property name="ts.external.directory.path" value="D:\Github\MananaFX.github.io\blog-vue-typescript-master\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -69,24 +69,36 @@
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master" />
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\Vue" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\ReviewNotesMd" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\MananaFXMd" />
-      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\components" />
-      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\views" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.SpingBoot">
+    <configuration name="SpingBoot" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="blog-vue-typescript-master" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
+      <option name="ALTERNATIVE_JRE_PATH" value="1.8" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="npmrun" type="js.build_tools.npm">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
       <scripts>
         <script value="dev" />
       </scripts>
-      <node-interpreter value="project" />
+      <node-interpreter value="$PROJECT_DIR$/../../../Program Files/nodejs/node" />
       <envs />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="npm.npmrun" />
+      <item itemvalue="Spring Boot.SpingBoot" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -112,6 +124,10 @@
       <workItem from="1651278804839" duration="18000" />
       <workItem from="1651845928570" duration="6000" />
       <workItem from="1651908118968" duration="56000" />
+      <workItem from="1652445080059" duration="6337000" />
+      <workItem from="1652496758266" duration="20876000" />
+      <workItem from="1652522268621" duration="5845000" />
+      <workItem from="1652533107979" duration="754000" />
     </task>
     <servers />
   </component>
@@ -128,7 +144,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />

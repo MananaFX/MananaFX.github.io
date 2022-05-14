@@ -74,10 +74,10 @@ export default defineComponent({
       //window.localStorage.removeItem('token')
       state.btnLoading = false;
       context.emit("ok", false);
-      ElMessage({
-        message: "操作成功",
-        type: "success",
-      });
+      // ElMessage({
+      //   message: "操作成功",
+      //   type: "success",
+      // });
       await router.push({
         path: "/"
       })

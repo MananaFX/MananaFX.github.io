@@ -67,7 +67,7 @@ export default defineComponent({
       if (document.location.protocol === "http:") {
         ElMessage({
           message:
-            "服务器在海外，建议挂梯子噢",
+            "今天也要记得多喝水多走动呢！",
           type: "warning",
           duration: 3000,
         });
