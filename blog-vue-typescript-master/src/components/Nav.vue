@@ -109,10 +109,10 @@
 <!--            <router-link to="/message">留 言</router-link>-->
 <!--          </div>-->
           <div
-            @click="handleClickMenu('/toLoveStory')"
+            @click="handleClickMenu('/toGift')"
             class="item"
           >
-            <router-link to="/toLoveStory">礼 物</router-link>
+            <router-link to="/toGift">礼 物</router-link>
           </div>
           <div
               @click="handleClickMenu('/reviewNotes')"
@@ -247,7 +247,7 @@ export default defineComponent({
         },
         {
           index: "4",
-          path: "/ToLoveStory",
+          path: "/ToGift",
           name: "礼物",
         },
         {

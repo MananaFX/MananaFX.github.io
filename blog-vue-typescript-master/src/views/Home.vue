@@ -31,9 +31,9 @@
           </router-link>
           <router-link
             class="link"
-            to="/toloveStory"
+            to="/toGift"
           >
-            生日礼物
+            礼物
           </router-link>
           <router-link
               class="link"
@@ -45,7 +45,7 @@
             target="_blank"
             rel="noopener noreferrer"
             class="link"
-            href="https://kg.qq.com/node/mwMYdsvMUK/play_v2/?s=BfcBOhB0-lY2iBa2&shareuid=66999d83232a368230&g_f=secondshare"
+            :href="param.herf"
           >
             香香公主
           </a>
@@ -57,13 +57,25 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted } from "vue";
+import {defineComponent, onMounted, reactive} from "vue";
 import { ElMessage } from "element-plus";
 
 export default defineComponent({
   name: "Home",
   setup() {
+    const param = reactive({
+      herf: "https://kg.qq.com/node/mwMYdsvMUK/play_v2/?s=BfcBOhB0-lY2iBa2&shareuid=66999d83232a368230&g_f=secondshare"
+    })
+    const webChoose = () => {
+      const token = window.localStorage.getItem("changeWeb");
+      if (token) {
+        param.herf = "https://www.aliyundrive.com/s/Tr9ZChDHifz";
+        window.localStorage.removeItem("changeWeb");
+      }
+    }
+
     onMounted(() => {
+      webChoose();
       if (document.location.protocol === "http:") {
         ElMessage({
           message:
@@ -1348,7 +1360,12 @@ export default defineComponent({
           };
       })(window, "equestAnimationFrame");
     });
-  },
+
+      return {
+        param,
+        webChoose,
+      }
+    },
 });
 </script>
 

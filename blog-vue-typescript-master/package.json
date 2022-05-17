@@ -7,6 +7,7 @@
     "serve": "vite preview"
   },
   "dependencies": {
+    "@vue/cli": "^3.1.1",
     "axios": "^0.21.1",
     "element-plus": "^1.0.2-beta.50",
     "highlight.js": "^10.7.2",

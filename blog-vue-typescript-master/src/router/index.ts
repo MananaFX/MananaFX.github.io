@@ -78,6 +78,12 @@ const routes: Array<RouteRecordRaw> = [
         name: "登录",
         component: () =>
             import(/* webpackChunkName: "登录" */ "../views/Login.vue")
+    },
+    {
+        path: "/toGift",
+        name: "toGift",
+        component: () =>
+            import(/* webpackChunkName: "toGift" */ "../views/To520Gift.vue")
     }
 ];
 

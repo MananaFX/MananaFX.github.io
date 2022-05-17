@@ -11,6 +11,7 @@ import note10 from "./6.DMA技术（8237A）习题.md"
 import note11 from "./7.并行通信及其接口电路（8255A）习题.md"
 import note12 from "./8.串行接口（8251A）习题.md"
 import note13 from "./4.中断控制题目(8259A)选择题.md"
+import note14 from "./考试范围.md"
 // md文件批量引入
 
 // 创建md组件同时设置文章其他信息，单独导出使用
@@ -50,6 +51,9 @@ export const components = {
     },
     note13:{
         name: note13
+    },
+    note14:{
+        name: note14
     }
 };
 // 注册全部md组件

@@ -10,8 +10,23 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Vue Single File Component" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -36,10 +51,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-vue-typescript-master/public/ReviewNotesMd" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="ts.external.directory.path" value="D:\Github\MananaFX.github.io\blog-vue-typescript-master\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\ReviewNotesMd" />
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\views" />
+    </key>
   </component>
   <component name="RunManager" selected="npm.cnpmRun">
     <configuration name="NewCrownSpringbootApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
@@ -74,10 +96,40 @@
       <option name="presentableId" value="Default" />
       <updated>1652533913885</updated>
       <workItem from="1652533919016" duration="1091000" />
+      <workItem from="1652535276310" duration="742000" />
+      <workItem from="1652538441611" duration="986000" />
+      <workItem from="1652597863096" duration="6965000" />
+      <workItem from="1652703895754" duration="2525000" />
+      <workItem from="1652706549929" duration="1316000" />
+      <workItem from="1652708106665" duration="686000" />
+      <workItem from="1652711106406" duration="2817000" />
+      <workItem from="1652742814234" duration="10094000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/router/index.js" />
+        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/mixins/index.js" />
+        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/config/md.config.js" />
+        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/utils/config.js" />
+        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/types/index.d.js" />
+        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/store/types.js" />
+        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/store/index.js" />
+      </list>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/blog-vue-typescript-master/src/App.vue</url>
+          <line>14</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

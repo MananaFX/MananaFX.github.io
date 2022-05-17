@@ -66,6 +66,7 @@ export default defineComponent({
         "/timeline",
         "/message",
         "/ToLoveStory",
+        "/toGift"
       ];
       if (navs.includes(val.path)) {
         state.isShowSlider = true;

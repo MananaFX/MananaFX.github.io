@@ -44,14 +44,16 @@
 
     <el-dialog
         title="新增"
-        :width="isMobile ? '90%' : '50%'"
+        :width="isMobile ? '100%' : '60%'"
         v-model="state.dialogVisible"
         @close="cancel"
         :show-close="true"
         :modal-append-to-body='false'
+        center
     >
       <el-form :model="ruleForm"
-               :label-width="isMobile ? '90%' : '50%'"
+               :label-width="isMobile ? '100%' : '50%'"
+               label-position="top"
                ref="ruleFormRef"
                :rules="rules"
                :size="formSize">

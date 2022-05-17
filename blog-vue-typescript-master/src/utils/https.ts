@@ -1,6 +1,6 @@
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
-//import {ElMessage} from "element-plus";
-// import {ElMessage} from "element-plus";
+import {ElMessage} from "element-plus";
+
 
 export interface ResponseData {
   code: number;
@@ -48,16 +48,16 @@ service.interceptors.response.use(
       if (data.code === 0) {
         return data.data;
       } else {
-        // ElMessage({
-        //   message: data.message,
-        //   type: "error"
-        // });
+        ElMessage({
+          message: data.message,
+          type: "error"
+        });
       }
     } else {
-      // ElMessage({
-      //   message: "网络错误!",
-      //   type: "error"
-      // });
+      ElMessage({
+        message: "网络错误!",
+        type: "error"
+      });
       return Promise.reject(new Error(res.data.message || "Error"));
     }
   },
