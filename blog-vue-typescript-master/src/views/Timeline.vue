@@ -35,10 +35,10 @@
           :timestamp="l.timestamp"
           :size="l.size"
       >
-        <el-card>
-          <h4>{{l.title}}</h4>
-          <p>{{l.content}}</p>
-        </el-card>
+            <el-card>
+              <h4>{{l.title}}</h4>
+              <p>{{l.content}}</p>
+            </el-card>
       </el-timeline-item>
     </el-timeline>
 

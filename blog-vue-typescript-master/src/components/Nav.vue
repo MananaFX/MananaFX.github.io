@@ -109,17 +109,18 @@
 <!--            <router-link to="/message">留 言</router-link>-->
 <!--          </div>-->
           <div
-            @click="handleClickMenu('/toGift')"
-            class="item"
-          >
-            <router-link to="/toGift">礼 物</router-link>
-          </div>
-          <div
               @click="handleClickMenu('/reviewNotes')"
               class="item"
           >
             <router-link to="/reviewNotes">复习笔记</router-link>
           </div>
+          <div
+            @click="handleClickMenu('/counting')"
+            class="item"
+          >
+            <router-link to="/counting">倒 数</router-link>
+          </div>
+
 <!--          <div-->
 <!--              @click="handleClickMenu('/about')"-->
 <!--              class="item"-->
@@ -247,14 +248,14 @@ export default defineComponent({
         },
         {
           index: "4",
-          path: "/ToGift",
-          name: "礼物",
-        },
-        {
-          index: "5",
           path: "/reviewNotes",
           name: "复习笔记",
         },
+        {
+          index: "5",
+          path: "/counting",
+          name: "倒数",
+        }
       ] as Array<NavListItem>,
       activeIndex: "0",
       enterSlideUp: false,

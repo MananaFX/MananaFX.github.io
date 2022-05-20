@@ -16,7 +16,6 @@
         >
           <a
             :href="state.href + article.name"
-            target="_blank"
           >
             <img
                 class="wrap-img img-blur-done"
@@ -108,7 +107,7 @@ export default defineComponent({
         category_id: getQueryStringByName("category_id"),
       } as ArticlesParams,
       href:
-          "/#/articleDetail?article_title="
+          "/#/noteDetail?article_title="
     });
 
     const formatTime = (value: string | Date): string => {

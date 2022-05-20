@@ -4,9 +4,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.example.newcrownspringboot.entity.Timeline;
+import com.example.newcrownspringboot.mapper.TimelineMapper;
 import com.example.newcrownspringboot.service.TimelineService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.sql.Time;
 import java.util.List;
 
 @RestController
@@ -15,6 +18,9 @@ public class TimelineController {
 
     @Autowired
     private TimelineService timelineService;
+
+    @Autowired
+    private TimelineMapper timelineMapper;
 
     @GetMapping()
     public List<Timeline> findAll(){
@@ -36,5 +42,9 @@ public class TimelineController {
             queryWrapper.like("timeStamp",timeStamp);
         }
         return timelineService.page(page, queryWrapper);
+    }
+    @GetMapping("/wechat")
+    public List<Timeline> getTimeline(@RequestParam String timeStamp){
+        return timelineMapper.getTimeline(timeStamp);
     }
 }

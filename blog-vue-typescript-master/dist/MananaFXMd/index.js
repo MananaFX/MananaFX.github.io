@@ -23,6 +23,7 @@ import article22 from "./22.4.24 曼曼喜欢你.md";
 import article23 from "./22.4.17 你是我的冰糖雪梨.md";
 import article24 from "./22.4.30 今天也是爱你的一天哟😘.md";
 import article25 from "./22.5.5 到身边来陪你.md";
+import whatIsLove from "./22.5.18 520toOman.md"
 
 // md文件批量引入
 
@@ -102,6 +103,9 @@ export const components = {
     },
     article25: {
         name: article25,
+    },
+    whatIsLove: {
+        name: whatIsLove,
     }
 };
 // 注册全部md组件

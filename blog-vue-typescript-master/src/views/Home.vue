@@ -31,9 +31,9 @@
           </router-link>
           <router-link
             class="link"
-            to="/toGift"
+            to="/counting"
           >
-            礼物
+            倒数
           </router-link>
           <router-link
               class="link"

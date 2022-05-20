@@ -62,16 +62,16 @@ const routes: Array<RouteRecordRaw> = [
         import(/* webpackChunkName: "articleDetail" */ "../views/ArticleDetail.vue")
     },
     {
+        path: "/noteDetail",
+        name: "noteDetail",
+        component: () =>
+            import(/* webpackChunkName: "noteDetail" */ "../views/NoteDetail.vue")
+    },
+    {
         path: "/loveStory",
         name: "loveStory",
         component: () =>
             import(/* webpackChunkName: "loveStory" */ "../views/LoveStory.vue")
-    },
-    {
-        path: "/toLoveStory",
-        name: "toLoveStory",
-        component: () =>
-            import(/* webpackChunkName: "toloveStory" */ "../views/ToLoveStory.vue")
     },
     {
         path: "/login",
@@ -80,10 +80,10 @@ const routes: Array<RouteRecordRaw> = [
             import(/* webpackChunkName: "登录" */ "../views/Login.vue")
     },
     {
-        path: "/toGift",
-        name: "toGift",
+        path: "/counting",
+        name: "countingt",
         component: () =>
-            import(/* webpackChunkName: "toGift" */ "../views/To520Gift.vue")
+            import(/* webpackChunkName: "Counting" */ "../views/Counting.vue")
     }
 ];
 
@@ -96,7 +96,7 @@ const router = createRouter({
 let counter = 0;
 router.beforeEach((to, from) => {
     console.log(`进行了${++counter}路由跳转`)
-    if (to.path !== "/login" && to.path !=="/") {
+    if (to.path !== "/login" && to.path !=="/" && to.path !="/reviewNotes" && to.path != "/noteDetail" && to.path !="/articles") {
         const token = window.localStorage.getItem("token");
         if (!token) {
             return "/login"

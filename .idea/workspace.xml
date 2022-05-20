@@ -51,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-vue-typescript-master/public/ReviewNotesMd" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-vue-typescript-master/public/static/img" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="ts.external.directory.path" value="D:\Github\MananaFX.github.io\blog-vue-typescript-master\node_modules\typescript\lib" />
@@ -59,8 +59,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\ReviewNotesMd" />
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\static\img" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\views" />
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\assets" />
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\MananaFXMd" />
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\ReviewNotesMd" />
     </key>
   </component>
   <component name="RunManager" selected="npm.cnpmRun">
@@ -103,23 +106,16 @@
       <workItem from="1652706549929" duration="1316000" />
       <workItem from="1652708106665" duration="686000" />
       <workItem from="1652711106406" duration="2817000" />
-      <workItem from="1652742814234" duration="10094000" />
+      <workItem from="1652742814234" duration="14953000" />
+      <workItem from="1652869379847" duration="972000" />
+      <workItem from="1652870400777" duration="7123000" />
+      <workItem from="1653009014129" duration="2886000" />
+      <workItem from="1653033341432" duration="1233000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-    <option name="exactExcludedFiles">
-      <list>
-        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/router/index.js" />
-        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/mixins/index.js" />
-        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/config/md.config.js" />
-        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/utils/config.js" />
-        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/types/index.d.js" />
-        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/store/types.js" />
-        <option value="$PROJECT_DIR$/blog-vue-typescript-master/src/store/index.js" />
-      </list>
-    </option>
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

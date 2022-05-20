@@ -1,6 +1,12 @@
 {
   "list": [
     {
+      "name": "note15",
+      "title": "1.8086",
+      "img_url": "/static/img/songguo.jpg",
+      "desc": "8086习题",
+      "create_time": "2022-5-18"
+    },{
       "name": "note1",
       "title": "2.微机接口指令",
       "img_url": "/ReviewNotesMd/2.微机接口指令.jpg",
@@ -78,6 +84,12 @@
       "img_url": "/static/img/songguo.jpg",
       "desc": "章节框架+编程+习题",
       "create_time": "2022-5-7"
+    },{
+      "name": "note16",
+      "title": "9.数模和模数转换",
+      "img_url": "/static/img/songguo.jpg",
+      "desc": "章节框架+编程+习题",
+      "create_time": "2022-5-19"
     },{
       "name": "note14",
       "title": "计算机系统结构知识点",

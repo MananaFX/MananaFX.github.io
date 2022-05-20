@@ -36,7 +36,7 @@
       <div class="content">
         <img
           style="width:100%;"
-          src="../assets/OmanBridge.jpg"
+          src="../assets/moon.jpg"
           alt="图片1"
         />
       </div>
@@ -56,7 +56,7 @@
       <div class="content">
         <img
           style="width:100%;"
-          src="../assets/OmanBro.jpg"
+          src="../assets/love.jpg"
           alt="图片3"
         />
       </div>

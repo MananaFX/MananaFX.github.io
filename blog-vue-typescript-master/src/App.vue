@@ -59,14 +59,12 @@ export default defineComponent({
         referrer.setAttribute("content", "never");
       }
       const navs = [
-        "/articles",
-        "/archive",
         "/archive",
         "/project",
         "/timeline",
         "/message",
         "/ToLoveStory",
-        "/toGift"
+        "/counting"
       ];
       if (navs.includes(val.path)) {
         state.isShowSlider = true;
