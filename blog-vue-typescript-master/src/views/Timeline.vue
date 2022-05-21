@@ -191,7 +191,7 @@ export default defineComponent({
       if(state.timeStamp == null)
         state.timeStamp = "";
       request({
-        url: `http://81.69.237.168:8080/timeline/page`, // json文件地址
+        url: `https://奚黎曼.我爱你/api/timeline/page`, // json文件地址
         method: 'get',
         params:{
           pageSize: state.params.pageSize,
@@ -209,7 +209,7 @@ export default defineComponent({
       await formEl.validate((valid) => {
         if (valid) {
           request.post(
-              'http://81.69.237.168:8080/timeline/update',
+              'https://奚黎曼.我爱你/api/timeline/update',
               {
                 id: state.total+1,
                 title: ruleForm.title,

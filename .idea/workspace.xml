@@ -51,7 +51,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-vue-typescript-master/public/static/img" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/blog-vue-typescript-master/public/live2dw/demo" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
     <property name="ts.external.directory.path" value="D:\Github\MananaFX.github.io\blog-vue-typescript-master\node_modules\typescript\lib" />
@@ -59,11 +59,14 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\live2dw\demo" />
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\live2dw" />
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\static\img" />
       <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\views" />
-      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\src\assets" />
-      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\MananaFXMd" />
-      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\ReviewNotesMd" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Github\MananaFX.github.io\blog-vue-typescript-master\public\live2dw" />
     </key>
   </component>
   <component name="RunManager" selected="npm.cnpmRun">
@@ -112,6 +115,10 @@
       <workItem from="1653009014129" duration="2886000" />
       <workItem from="1653033341432" duration="1233000" />
       <workItem from="1653037717454" duration="529000" />
+      <workItem from="1653043381516" duration="9674000" />
+      <workItem from="1653057237713" duration="4548000" />
+      <workItem from="1653092932830" duration="6572000" />
+      <workItem from="1653102936020" duration="6557000" />
     </task>
     <servers />
   </component>
