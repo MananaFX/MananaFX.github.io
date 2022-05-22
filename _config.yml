@@ -122,5 +122,5 @@ deploy:
   repository: 
      github: git@github.com:MananaFX/MananaFX.github.io.git
      tencentCloud: root@81.69.237.168:/home/git/blog.git
-  branch: master
+  branch: main
 
