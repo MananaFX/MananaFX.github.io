@@ -120,5 +120,6 @@ theme: landscape
 deploy:
   type: git
   repository: git@github.com:MananaFX/MananaFX.github.io.git
+	    root@81.69.237.168:/home/git/blog.git
   branch: main
 
