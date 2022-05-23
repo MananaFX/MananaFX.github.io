@@ -1,0 +1,18 @@
+# This file is a template, and might need editing before it works on your project.
+# Official framework image. Look for the different tagged releases at:
+# https://hub.docker.com/r/library/node/tags/
+image: node:14-alpine
+
+build:
+  script:
+    - npm install
+    - npm run build
+    - cp ./dist/css/index.*.css ./dist/css/index.min.css
+    - cp ./dist/css/font.*.css ./dist/css/font.min.css
+    - cp ./dist/css/volantis.*.css ./dist/css/volantis.min.css
+    - npm config set //registry.npmjs.org/:_authToken=${NPM_TOKEN}
+    - npm publish
+
+  cache:
+    paths:
+      - node_modules/
