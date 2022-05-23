@@ -3,13 +3,14 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Hexo
+title: MewTiger
 subtitle: ''
-description: ''
+description: 喵喵虎冲呀
 keywords:
-author: John Doe
-language: en
-timezone: ''
+author: Feng Junhao
+language: zh-CN
+timezone: 
+email: nbspfjh@126.com
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
