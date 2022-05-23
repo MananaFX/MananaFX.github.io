@@ -1,0 +1,327 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>计数器和定时电路（8254A） | Hexo</title><meta name="keywords" content="大三,笔记,微机接口"><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="5.计数器和定时电路（8254A） 5.1 概述 8254引脚 8254与CPU接口 8位数据线：D0~D7 寻址控制线：A0、A1、**&#x2F;CS** 读写控制线：**&#x2F;RD、&#x2F;WR**   8254与外设接口（每个对应） 时钟输入：CLK 输入门控：GATE 波形输出：OUT      5.2 8254的控制字 D7D6： 8253:选取0-2控制寄存器 8254:11读回 D5&#x3D;0 锁存计数值">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计数器和定时电路（8254A）">
+<meta property="og:url" content="http://example.com/2022/04/25/5.%E8%AE%A1%E6%95%B0%E5%99%A8%E5%92%8C%E5%AE%9A%E6%97%B6%E7%94%B5%E8%B7%AF%EF%BC%888254A%EF%BC%89/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="5.计数器和定时电路（8254A） 5.1 概述 8254引脚 8254与CPU接口 8位数据线：D0~D7 寻址控制线：A0、A1、**&#x2F;CS** 读写控制线：**&#x2F;RD、&#x2F;WR**   8254与外设接口（每个对应） 时钟输入：CLK 输入门控：GATE 波形输出：OUT      5.2 8254的控制字 D7D6： 8253:选取0-2控制寄存器 8254:11读回 D5&#x3D;0 锁存计数值">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+<meta property="article:published_time" content="2022-04-25T05:59:10.000Z">
+<meta property="article:modified_time" content="2022-05-22T15:43:59.362Z">
+<meta property="article:author" content="John Doe">
+<meta property="article:tag" content="大三">
+<meta property="article:tag" content="笔记">
+<meta property="article:tag" content="微机接口">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/2022/04/25/5.%E8%AE%A1%E6%95%B0%E5%99%A8%E5%92%8C%E5%AE%9A%E6%97%B6%E7%94%B5%E8%B7%AF%EF%BC%888254A%EF%BC%89/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '计数器和定时电路（8254A）',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-22 23:43:59'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">计数器和定时电路（8254A）</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2022-04-25T05:59:10.000Z" title="Created 2022-04-25 13:59:10">2022-04-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2022-05-22T15:43:59.362Z" title="Updated 2022-05-22 23:43:59">2022-05-22</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3/">微机接口</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="计数器和定时电路（8254A）"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="5-计数器和定时电路（8254A）"><a href="#5-计数器和定时电路（8254A）" class="headerlink" title="5.计数器和定时电路（8254A）"></a>5.计数器和定时电路（8254A）</h2><hr>
+<h3 id="5-1-概述"><a href="#5-1-概述" class="headerlink" title="5.1 概述"></a>5.1 概述</h3><ul>
+<li><h4 id="8254引脚"><a href="#8254引脚" class="headerlink" title="8254引脚"></a>8254引脚</h4><ul>
+<li><h5 id="8254与CPU接口"><a href="#8254与CPU接口" class="headerlink" title="8254与CPU接口"></a>8254与CPU接口</h5><ul>
+<li>8位数据线：<strong>D0~D7</strong></li>
+<li>寻址控制线：<strong>A0</strong>、<strong>A1</strong>、**/CS**</li>
+<li>读写控制线：**/RD<strong>、</strong>/WR**</li>
+</ul>
+</li>
+<li><h5 id="8254与外设接口（每个对应）"><a href="#8254与外设接口（每个对应）" class="headerlink" title="8254与外设接口（每个对应）"></a>8254与外设接口（每个对应）</h5><ul>
+<li>时钟输入：<strong>CLK</strong></li>
+<li>输入门控：<strong>GATE</strong></li>
+<li>波形输出：<strong>OUT</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-2-8254的控制字"><a href="#5-2-8254的控制字" class="headerlink" title="5.2 8254的控制字"></a>5.2 8254的控制字</h3><ul>
+<li><h4 id="D7D6："><a href="#D7D6：" class="headerlink" title="D7D6："></a>D7D6：</h4><ul>
+<li><h5 id="8253-选取0-2控制寄存器"><a href="#8253-选取0-2控制寄存器" class="headerlink" title="8253:选取0-2控制寄存器"></a>8253:选取0-2控制寄存器</h5></li>
+<li><h5 id="8254-11读回"><a href="#8254-11读回" class="headerlink" title="8254:11读回"></a>8254:11读回</h5><ul>
+<li><strong>D5=0</strong> 锁存计数值</li>
+<li><strong>D4=0</strong> 将计数器状态存入状态寄存器</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="D5D4："><a href="#D5D4：" class="headerlink" title="D5D4："></a>D5D4：</h4><ul>
+<li>00：锁定计数器值（供CPU读）</li>
+<li>01：读写低8位</li>
+<li>10：读写高8位</li>
+<li>11：先读写低8位，再8高位</li>
+</ul>
+</li>
+<li><h4 id="D3D2D1："><a href="#D3D2D1：" class="headerlink" title="D3D2D1："></a>D3D2D1：</h4><ul>
+<li>选取0-6工作方式</li>
+</ul>
+</li>
+<li><h4 id="D0："><a href="#D0：" class="headerlink" title="D0："></a>D0：</h4><ul>
+<li>0：二进制</li>
+<li>1：二-十进制</li>
+</ul>
+</li>
+<li><h4 id="Tips："><a href="#Tips：" class="headerlink" title="Tips："></a>Tips：</h4><ul>
+<li>先减一，再判断是否为0，最长时间为初值0，代表65536</li>
+<li>十进制范围0001~10000←初值0000H</li>
+<li>二进制范围0001H~10000H（65536）←初值0000H</li>
+<li>共4个端口，地址从低到高为计数器0、1、2、控制字</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-3-可编程定时-计数器的工作方式"><a href="#5-3-可编程定时-计数器的工作方式" class="headerlink" title="5.3 可编程定时/计数器的工作方式"></a>5.3 可编程定时/计数器的工作方式</h3><ul>
+<li><h4 id="共同点"><a href="#共同点" class="headerlink" title="共同点:"></a>共同点:</h4><ul>
+<li>控制字写入时，复位</li>
+<li>写入初值后，经过一个时钟周期，CE才开始工作，即<strong>N+1</strong>个脉宽</li>
+<li>CLK的上升沿，门控信号GATE被采样</li>
+</ul>
+</li>
+<li><h4 id="不同点："><a href="#不同点：" class="headerlink" title="不同点："></a>不同点：</h4><ul>
+<li>输出的波形</li>
+<li>触发方式</li>
+<li>GATE对计数操作的影响</li>
+</ul>
+</li>
+<li><h4 id="方式0：-——：计数结束产生中断输出（软件控制）"><a href="#方式0：-——：计数结束产生中断输出（软件控制）" class="headerlink" title="方式0：__——：计数结束产生中断输出（软件控制）"></a>方式0：__——：计数结束产生中断输出（软件控制）</h4><ul>
+<li>预置初值后低电平，计数值减为0时，<strong>输出高电平并维持</strong></li>
+<li>GATE=0，计数停止；GATE=1,继续计数</li>
+<li>计数过程中可<strong>重写</strong>或<strong>改变</strong>计数值</li>
+</ul>
+</li>
+<li><h4 id="方式1：-——：重复触发的单稳输出（硬件触发）"><a href="#方式1：-——：重复触发的单稳输出（硬件触发）" class="headerlink" title="方式1：__ ——：重复触发的单稳输出（硬件触发）"></a>方式1：__ ——：重复触发的单稳输出（硬件触发）</h4><ul>
+<li>预置初值后低电平，计数值减为0时，<strong>输出高电平并维持</strong></li>
+<li>计数未完成时，允许GATE<strong>多次重触发</strong>，</li>
+<li>GATE<strong>上升沿触发</strong>，在下一个CLK<strong>下降沿</strong>开始计数</li>
+<li>下个GATE触发信号到来时，需当前计数值<strong>计满回0</strong>，将新初值装入<strong>CE</strong>，开始计时</li>
+</ul>
+</li>
+<li><h4 id="方式2：——-——-：分频器（软件控制）"><a href="#方式2：——-——-：分频器（软件控制）" class="headerlink" title="方式2：—— _ —— _：分频器（软件控制）"></a>方式2：—— _ —— _：分频器（软件控制）</h4><ul>
+<li><strong>计数减到1</strong>时，OUT输出<strong>一个CLK脉宽低电平</strong>，<strong>自动装入</strong>重新计数</li>
+<li>GATA上升沿<strong>重新装入</strong>初值</li>
+<li><strong>新初值</strong>下次计数才起作用</li>
+</ul>
+</li>
+<li><h4 id="方式3：—-—-：方波发生器（软件控制"><a href="#方式3：—-—-：方波发生器（软件控制" class="headerlink" title="方式3：— __ — __：方波发生器（软件控制)"></a>方式3：— __ — __：方波发生器（软件控制)</h4><ul>
+<li>计数值一半**(n+1)/2<strong>时，</strong>OUT变低**，任务完成OUT变高</li>
+<li>其他与<strong>方式2</strong>同</li>
+</ul>
+</li>
+<li><h4 id="方式4：——-—：选通信号发生器（软件控制）"><a href="#方式4：——-—：选通信号发生器（软件控制）" class="headerlink" title="方式4：—— _—：选通信号发生器（软件控制）"></a>方式4：—— _—：选通信号发生器（软件控制）</h4><ul>
+<li><strong>写入初值开始计数</strong>，计数减到0，输出<strong>一个脉宽低电平</strong></li>
+<li>GATE=0，计数停止；GATE=1,继续计数</li>
+<li><strong>新初值立即</strong>起作用</li>
+</ul>
+</li>
+<li><h4 id="方式5：——-—：选通信号发生器（硬件触发）"><a href="#方式5：——-—：选通信号发生器（硬件触发）" class="headerlink" title="方式5：—— _—：选通信号发生器（硬件触发）"></a>方式5：—— _—：选通信号发生器（硬件触发）</h4><ul>
+<li><strong>多次重触发</strong></li>
+<li><strong>GATE上升沿开始触发</strong>，计数减到0，输出<strong>一个脉宽低电平</strong></li>
+<li>下个GATE触发信号到来时，需当前计数值<strong>计满回0</strong>，将新初值装入<strong>CE</strong></li>
+</ul>
+</li>
+<li><h4 id="方式0与方式4（软件控制特点）"><a href="#方式0与方式4（软件控制特点）" class="headerlink" title="方式0与方式4（软件控制特点）"></a>方式0与方式4（软件控制特点）</h4><ul>
+<li>GATE=1，工作；GATE=0，暂停</li>
+<li><strong>无法自动重装</strong></li>
+<li>新初值<strong>立即生效</strong></li>
+<li>方式0：**__ ———** 计数结束产生中断输出</li>
+<li>方式4：<strong>—— _ —</strong>  选通信号发生器</li>
+</ul>
+</li>
+<li><h4 id="方式1与方式5（硬件触发特点）"><a href="#方式1与方式5（硬件触发特点）" class="headerlink" title="方式1与方式5（硬件触发特点）"></a>方式1与方式5（硬件触发特点）</h4><ul>
+<li>GATE<strong>上升沿触发</strong></li>
+<li>允许<strong>多次重触发</strong></li>
+<li>当前<strong>计数结束</strong>，才可在下个<strong>GATE上升沿</strong>到来时<strong>装入初值</strong>，并开始计数</li>
+<li>方式1：**__ —**   <strong>重复触发</strong>的单稳输出，技术结束后，会继续输出相应宽度的负脉冲</li>
+<li>方式5：**—— _ — **选通信号发生器</li>
+</ul>
+</li>
+<li><h4 id="方式2与方式3（波形输出）（软件控制）"><a href="#方式2与方式3（波形输出）（软件控制）" class="headerlink" title="方式2与方式3（波形输出）（软件控制）"></a>方式2与方式3（波形输出）（软件控制）</h4><ul>
+<li><p>预置初值<strong>自动装入</strong></p>
+</li>
+<li><p>方式2： <strong>—— _ —— _</strong>  分频器</p>
+</li>
+<li><p>方式3：<strong>— __ — __</strong>  方波发生器</p>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="例题"><a href="#例题" class="headerlink" title="例题"></a>例题</h2><hr>
+<h3 id="定时功能例题"><a href="#定时功能例题" class="headerlink" title="定时功能例题"></a>定时功能例题</h3><ul>
+<li><p>设某应用系统中，系统提供一个频率为<strong>10kHz</strong>的时钟信号，要求每隔<strong>100ms</strong>采集一次数据。在系统中，采用8254定时器的<strong>通道0</strong>来实现这一要求。将8254芯片的CLK0接到系统的10kHz时钟上，OUT0输出接到CPU的中断请求线上，8254的端口地址为<strong>10H~13H</strong></p>
+</li>
+<li><p>10kHZ = 1*10^-4s = 0.1ms </p>
+</li>
+<li><p>使用端口10H与13H，方式2，初值为1000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,00110101B</span><br><span class="line">OUT 13H,AL</span><br><span class="line">MOV AL,00H</span><br><span class="line">OUT 10H,AL</span><br><span class="line">MOV AL,10H</span><br><span class="line">OUT 10H,AL</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="计时功能例题"><a href="#计时功能例题" class="headerlink" title="计时功能例题"></a>计时功能例题</h3><ul>
+<li><p>通过PC机系统总线在外部扩展一个8254，利用其通道0记录外部事件的发生次数，每输入一个高脉冲表示事件发生1次。当事件发生100次后就向CPU提出中断请求（边沿触发），假设8254片选信号的I/O地址范围为200H~203H</p>
+</li>
+<li><p>中断，需要上升沿__——</p>
+</li>
+<li><p>使用端口200H与203H</p>
+</li>
+<li><p>选用方式0，初值为100H</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,00110001B</span><br><span class="line">MOV DX,203H</span><br><span class="line">OUT DX,AL</span><br><span class="line">MOV DX,200H</span><br><span class="line">MOV AL,00H</span><br><span class="line">OUT DX,AL</span><br><span class="line">MOV AL,01H</span><br><span class="line">OUT DX,AL</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="级联例题"><a href="#级联例题" class="headerlink" title="级联例题"></a>级联例题</h3><ul>
+<li><p>已知某8254占用I/O空间地址为320H~323H，如下图所示，输入其CKL1端的脉冲频率为1MHz，要求用8253连续产生10秒的定时信号。</p>
+</li>
+<li><p> 1/1MHZ=10^-6  为10^7倍，需要两片</p>
+</li>
+<li><p>设N1=500=1F4H,N2=20000=4E20H</p>
+</li>
+<li><p>通道1</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MOV DX,323H</span><br><span class="line">MOV AL,01110100B</span><br><span class="line">OUT DX,AL</span><br><span class="line">MOV DX,321H</span><br><span class="line">MOV AL,0F4H</span><br><span class="line">OUT DX,AL</span><br><span class="line">MOV AL,01H</span><br><span class="line">OUT DX,AL</span><br></pre></td></tr></table></figure></li>
+<li><p>通道2</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MOV DX,323H</span><br><span class="line">MOV AL,10110100B</span><br><span class="line">OUT DX,AL</span><br><span class="line">MOV DX,322H</span><br><span class="line">MOV AL,20H</span><br><span class="line">OUT DX,AL</span><br><span class="line">MOV AL,4EH</span><br><span class="line">OUT DX,AL</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="应用举例"><a href="#应用举例" class="headerlink" title="应用举例"></a>应用举例</h3><ul>
+<li><p>某产品的包装流水线中，一个包装箱能装24罐饮料。装箱时希望流水线上每通过24罐饮料，流水线要停4秒以等待包装箱封口，然后继续通过下一箱的24罐。流水线就是这样周而复始的运作。试利用一片8253来完成流水线控制中的定时和计数功能。假设8253的端口地址为8CH~8FH，采用的时钟频率是2KHz。</p>
+</li>
+<li><p>需要能够重复触发，1、2、3</p>
+</li>
+<li><p>通道一</p>
+<ul>
+<li>需要软件触发 2、3，计数结束后输出上升沿</li>
+<li>选择2</li>
+</ul>
+</li>
+<li><p>通道二</p>
+<ul>
+<li>需要使通道一暂停输出，需输出4s的低电平，之后持续高电平，选用方式1</li>
+<li>选择方式1，初值8000</li>
+</ul>
+</li>
+<li><p>通道一计数饮料，方式2，初值24</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">MOV DX,8FH</span><br><span class="line">MOV AL,01010101B</span><br><span class="line">OUT DX,AL</span><br><span class="line">MOV DX,8DH</span><br><span class="line">MOV AL,24H</span><br><span class="line">OUT DX,AL</span><br></pre></td></tr></table></figure></li>
+<li><p>通道二计时，方式1，初值8000</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">MOV DX,8FH</span><br><span class="line">MOV AL,10110011B</span><br><span class="line">OUT DX,AL</span><br><span class="line">MOV DX,8EH</span><br><span class="line">MOV AL,00H</span><br><span class="line">OUT DX,AL</span><br><span class="line">MOV AL,80H</span><br><span class="line">OUT DX,AL</span><br></pre></td></tr></table></figure></li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="http://example.com">John Doe</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://example.com/2022/04/25/5.%E8%AE%A1%E6%95%B0%E5%99%A8%E5%92%8C%E5%AE%9A%E6%97%B6%E7%94%B5%E8%B7%AF%EF%BC%888254A%EF%BC%89/">http://example.com/2022/04/25/5.%E8%AE%A1%E6%95%B0%E5%99%A8%E5%92%8C%E5%AE%9A%E6%97%B6%E7%94%B5%E8%B7%AF%EF%BC%888254A%EF%BC%89/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%B8%89/">大三</a><a class="post-meta__tags" href="/tags/%E7%AC%94%E8%AE%B0/">笔记</a><a class="post-meta__tags" href="/tags/%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3/">微机接口</a></div><div class="post_share"><div class="social-share" data-image="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-full"><a href="/2022/04/25/3.%E7%AB%AF%E5%8F%A3%E5%9C%B0%E5%9D%80%E8%AF%91%E7%A0%81%E6%8A%80%E6%9C%AF/"><img class="prev-cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">端口地址译码技术</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>Related Articles</span></div><div class="relatedPosts-list"><div><a href="/2022/05/20/2.%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3%E6%8C%87%E4%BB%A4/" title="微机接口指令"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-20</div><div class="title">微机接口指令</div></div></a></div><div><a href="/2022/05/20/1.8086%E4%B9%A0%E9%A2%98/" title="8086习题"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-20</div><div class="title">8086习题</div></div></a></div><div><a href="/2022/04/25/3.%E7%AB%AF%E5%8F%A3%E5%9C%B0%E5%9D%80%E8%AF%91%E7%A0%81%E6%8A%80%E6%9C%AF/" title="端口地址译码技术"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-25</div><div class="title">端口地址译码技术</div></div></a></div><div><a href="/2022/05/06/4.%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF(8259A)/" title="中断控制技术(8259A)"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-06</div><div class="title">中断控制技术(8259A)</div></div></a></div><div><a href="/2022/05/07/6.%20DMA%E6%8A%80%E6%9C%AF%EF%BC%888237A%EF%BC%89/" title="DMA技术（8237A）"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-07</div><div class="title">DMA技术（8237A）</div></div></a></div><div><a href="/2022/05/19/7.%E5%B9%B6%E8%A1%8C%E9%80%9A%E4%BF%A1%E5%8F%8A%E5%85%B6%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%EF%BC%888255A%EF%BC%89/" title="并行通信及其接口电路（8255A）"><img class="cover" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-19</div><div class="title">并行通信及其接口电路（8255A）</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E8%AE%A1%E6%95%B0%E5%99%A8%E5%92%8C%E5%AE%9A%E6%97%B6%E7%94%B5%E8%B7%AF%EF%BC%888254A%EF%BC%89"><span class="toc-number">1.</span> <span class="toc-text">5.计数器和定时电路（8254A）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1-%E6%A6%82%E8%BF%B0"><span class="toc-number">1.1.</span> <span class="toc-text">5.1 概述</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8254%E5%BC%95%E8%84%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">8254引脚</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#8254%E4%B8%8ECPU%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">8254与CPU接口</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8254%E4%B8%8E%E5%A4%96%E8%AE%BE%E6%8E%A5%E5%8F%A3%EF%BC%88%E6%AF%8F%E4%B8%AA%E5%AF%B9%E5%BA%94%EF%BC%89"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">8254与外设接口（每个对应）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-8254%E7%9A%84%E6%8E%A7%E5%88%B6%E5%AD%97"><span class="toc-number">1.2.</span> <span class="toc-text">5.2 8254的控制字</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#D7D6%EF%BC%9A"><span class="toc-number">1.2.1.</span> <span class="toc-text">D7D6：</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#8253-%E9%80%89%E5%8F%960-2%E6%8E%A7%E5%88%B6%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">8253:选取0-2控制寄存器</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#8254-11%E8%AF%BB%E5%9B%9E"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">8254:11读回</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#D5D4%EF%BC%9A"><span class="toc-number">1.2.2.</span> <span class="toc-text">D5D4：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#D3D2D1%EF%BC%9A"><span class="toc-number">1.2.3.</span> <span class="toc-text">D3D2D1：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#D0%EF%BC%9A"><span class="toc-number">1.2.4.</span> <span class="toc-text">D0：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Tips%EF%BC%9A"><span class="toc-number">1.2.5.</span> <span class="toc-text">Tips：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-3-%E5%8F%AF%E7%BC%96%E7%A8%8B%E5%AE%9A%E6%97%B6-%E8%AE%A1%E6%95%B0%E5%99%A8%E7%9A%84%E5%B7%A5%E4%BD%9C%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.</span> <span class="toc-text">5.3 可编程定时&#x2F;计数器的工作方式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%B1%E5%90%8C%E7%82%B9"><span class="toc-number">1.3.1.</span> <span class="toc-text">共同点:</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%82%B9%EF%BC%9A"><span class="toc-number">1.3.2.</span> <span class="toc-text">不同点：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F0%EF%BC%9A-%E2%80%94%E2%80%94%EF%BC%9A%E8%AE%A1%E6%95%B0%E7%BB%93%E6%9D%9F%E4%BA%A7%E7%94%9F%E4%B8%AD%E6%96%AD%E8%BE%93%E5%87%BA%EF%BC%88%E8%BD%AF%E4%BB%B6%E6%8E%A7%E5%88%B6%EF%BC%89"><span class="toc-number">1.3.3.</span> <span class="toc-text">方式0：__——：计数结束产生中断输出（软件控制）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F1%EF%BC%9A-%E2%80%94%E2%80%94%EF%BC%9A%E9%87%8D%E5%A4%8D%E8%A7%A6%E5%8F%91%E7%9A%84%E5%8D%95%E7%A8%B3%E8%BE%93%E5%87%BA%EF%BC%88%E7%A1%AC%E4%BB%B6%E8%A7%A6%E5%8F%91%EF%BC%89"><span class="toc-number">1.3.4.</span> <span class="toc-text">方式1：__ ——：重复触发的单稳输出（硬件触发）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F2%EF%BC%9A%E2%80%94%E2%80%94-%E2%80%94%E2%80%94-%EF%BC%9A%E5%88%86%E9%A2%91%E5%99%A8%EF%BC%88%E8%BD%AF%E4%BB%B6%E6%8E%A7%E5%88%B6%EF%BC%89"><span class="toc-number">1.3.5.</span> <span class="toc-text">方式2：—— _ —— _：分频器（软件控制）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F3%EF%BC%9A%E2%80%94-%E2%80%94-%EF%BC%9A%E6%96%B9%E6%B3%A2%E5%8F%91%E7%94%9F%E5%99%A8%EF%BC%88%E8%BD%AF%E4%BB%B6%E6%8E%A7%E5%88%B6"><span class="toc-number">1.3.6.</span> <span class="toc-text">方式3：— __ — __：方波发生器（软件控制)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F4%EF%BC%9A%E2%80%94%E2%80%94-%E2%80%94%EF%BC%9A%E9%80%89%E9%80%9A%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8%EF%BC%88%E8%BD%AF%E4%BB%B6%E6%8E%A7%E5%88%B6%EF%BC%89"><span class="toc-number">1.3.7.</span> <span class="toc-text">方式4：—— _—：选通信号发生器（软件控制）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F5%EF%BC%9A%E2%80%94%E2%80%94-%E2%80%94%EF%BC%9A%E9%80%89%E9%80%9A%E4%BF%A1%E5%8F%B7%E5%8F%91%E7%94%9F%E5%99%A8%EF%BC%88%E7%A1%AC%E4%BB%B6%E8%A7%A6%E5%8F%91%EF%BC%89"><span class="toc-number">1.3.8.</span> <span class="toc-text">方式5：—— _—：选通信号发生器（硬件触发）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F0%E4%B8%8E%E6%96%B9%E5%BC%8F4%EF%BC%88%E8%BD%AF%E4%BB%B6%E6%8E%A7%E5%88%B6%E7%89%B9%E7%82%B9%EF%BC%89"><span class="toc-number">1.3.9.</span> <span class="toc-text">方式0与方式4（软件控制特点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F1%E4%B8%8E%E6%96%B9%E5%BC%8F5%EF%BC%88%E7%A1%AC%E4%BB%B6%E8%A7%A6%E5%8F%91%E7%89%B9%E7%82%B9%EF%BC%89"><span class="toc-number">1.3.10.</span> <span class="toc-text">方式1与方式5（硬件触发特点）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B9%E5%BC%8F2%E4%B8%8E%E6%96%B9%E5%BC%8F3%EF%BC%88%E6%B3%A2%E5%BD%A2%E8%BE%93%E5%87%BA%EF%BC%89%EF%BC%88%E8%BD%AF%E4%BB%B6%E6%8E%A7%E5%88%B6%EF%BC%89"><span class="toc-number">1.3.11.</span> <span class="toc-text">方式2与方式3（波形输出）（软件控制）</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BE%8B%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">例题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%9A%E6%97%B6%E5%8A%9F%E8%83%BD%E4%BE%8B%E9%A2%98"><span class="toc-number">2.1.</span> <span class="toc-text">定时功能例题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E6%97%B6%E5%8A%9F%E8%83%BD%E4%BE%8B%E9%A2%98"><span class="toc-number">2.2.</span> <span class="toc-text">计时功能例题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BA%A7%E8%81%94%E4%BE%8B%E9%A2%98"><span class="toc-number">2.3.</span> <span class="toc-text">级联例题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B"><span class="toc-number">2.4.</span> <span class="toc-text">应用举例</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/4.%20%E5%AD%98%E5%82%A8%E4%BD%93%E7%B3%BB/" title="4.存储体系"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="4.存储体系"/></a><div class="content"><a class="title" href="/2022/05/20/4.%20%E5%AD%98%E5%82%A8%E4%BD%93%E7%B3%BB/" title="4.存储体系">4.存储体系</a><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/1.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%B9%B6%E8%A1%8C%E6%80%A7%E7%9A%84%E5%BC%80%E5%8F%91/" title="1.计算机系统结构基础及并行性的开发"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1.计算机系统结构基础及并行性的开发"/></a><div class="content"><a class="title" href="/2022/05/20/1.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%B9%B6%E8%A1%8C%E6%80%A7%E7%9A%84%E5%BC%80%E5%8F%91/" title="1.计算机系统结构基础及并行性的开发">1.计算机系统结构基础及并行性的开发</a><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/2.%20%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E3%80%81%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E4%B8%8E%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" title="2.数据表示、寻址方式与指令系统"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2.数据表示、寻址方式与指令系统"/></a><div class="content"><a class="title" href="/2022/05/20/2.%20%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E3%80%81%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E4%B8%8E%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" title="2.数据表示、寻址方式与指令系统">2.数据表示、寻址方式与指令系统</a><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/3.%20%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%AD%E6%96%AD%E3%80%81%E6%80%BB%E7%BA%BF%E4%B8%8E%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" title="3.存储、中断、总线与输入/输出系统"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.存储、中断、总线与输入/输出系统"/></a><div class="content"><a class="title" href="/2022/05/20/3.%20%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%AD%E6%96%AD%E3%80%81%E6%80%BB%E7%BA%BF%E4%B8%8E%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" title="3.存储、中断、总线与输入/输出系统">3.存储、中断、总线与输入/输出系统</a><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E8%8C%83%E5%9B%B4/" title="系统结构考试范围"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="系统结构考试范围"/></a><div class="content"><a class="title" href="/2022/05/20/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E8%8C%83%E5%9B%B4/" title="系统结构考试范围">系统结构考试范围</a><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/nipsilon.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":true},"log":false});</script></body></html>

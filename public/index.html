@@ -1,196 +1,453 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  
-
-  
-  <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Hexo</title><meta name="author" content="John Doe"><meta name="copyright" content="John Doe"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://example.com/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-  
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  
-<link rel="stylesheet" href="/css/style.css">
+<meta name="twitter:image" content="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://example.com/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Hexo',
+  isPost: false,
+  isHome: true,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2022-05-23 09:10:18'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
 
-<meta name="generator" content="Hexo 6.0.0"></head>
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://example.com"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main">
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2022/05/20/hello-world/" class="article-date">
-  <time datetime="2022-05-20T10:15:05.015Z" itemprop="datePublished">2022-05-20</time>
-</a>
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
     
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
         
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2022/05/20/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.0.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">Hexo</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> Music</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> Movie</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="site-info"><h1 id="site-title">Hexo</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts" id="recent-posts"><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/20/4.%20%E5%AD%98%E5%82%A8%E4%BD%93%E7%B3%BB/" title="4.存储体系"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="4.存储体系"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/20/4.%20%E5%AD%98%E5%82%A8%E4%BD%93%E7%B3%BB/" title="4.存储体系">4.存储体系</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">系统结构</a></span></div><div class="content">4. 存储体系重点一、段页式和页式虚拟存储器的原理1.页式存储把主存空间和程序空间都机械等分成固定大小的页，按页顺序编号
+二、页式虚拟存储器的地址映像，用LRU、 FIFO 、 OPT替换算法进行页面替换的过程模拟三、用LRU替换算法对页地址流的堆栈处理模拟及性能分析四、Cache存储器的盲接映像和组相联地址映像五、用LRU替换算法进行块替换的硬件实现及替换过程模拟六、Cache存储器的性能分析等。难点一、页式和段页式虚拟存储器中，虚、实地址的计算二、各种页面替换算法的模拟和页命中率的计算三、Cache组相联映像和块替换算法的模拟。</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/05/20/1.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%B9%B6%E8%A1%8C%E6%80%A7%E7%9A%84%E5%BC%80%E5%8F%91/" title="1.计算机系统结构基础及并行性的开发"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1.计算机系统结构基础及并行性的开发"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/20/1.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%B9%B6%E8%A1%8C%E6%80%A7%E7%9A%84%E5%BC%80%E5%8F%91/" title="1.计算机系统结构基础及并行性的开发">1.计算机系统结构基础及并行性的开发</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">系统结构</a></span></div><div class="content">1. 计算机系统结构基础及并行性的开发基本要求一、领会通用计算机系统的多级层次结构
+应用语言机器机器级M5
 
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://example.com/2022/05/20/hello-world/" data-id="cl3h44i4l0000b0vd4gvi99us" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
+应用语言
+应用语言程序经应用程序包翻译成高级语言程序
 
 
-  
+高级语言机器级M4
+
+高级语言
+高举语言程序经编译程序翻译成汇编语言（或中间语言程序，或机器语言程序）
 
 
-</section>
-        
-          <aside id="sidebar">
-  
-    
+汇编语言机器级M3
 
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2022/05/">May 2022</a></li></ul>
-    </div>
-  </div>
+汇编语言
+汇编语言程序经汇编程序翻译成机器语言程序
 
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2022/05/20/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
+操作系统机器级M2
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2022 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
-    
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+作业控制语言
+一般用机器语言解释作业控制语句
 
 
-  
-<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+传统机器语言机器级M1
 
-  
-<script src="/fancybox/jquery.fancybox.pack.js"></script>
+机器指令系统
+用微指令程序解释机器指令
+
+
+微程序机器级M0
+
+微指令系统
+微指令由硬件直接执行
 
 
 
+二、领会计算机系统设计的方法
+由上往下：考虑如何满足应用要求，定好面向应用的那个虚拟机器级的特性和工作环境
+由下往上：根据目前能用的器件，参照吸收已有的各种及其特点，将微程序机器级和传统机器级研制出来。
+从中间开始：考虑到硬件、器件的现状和发展，又考虑到可能使用的算法和数据结构，定义好这个界面，确定哪些功能由硬件实现，哪些功能由软件实现。
 
-<script src="/js/script.js"></script>
+三、理解系统结构为什么要求解决好软件的可移植性
+需要重新分配软、硬件功能，充分利用硬、器件技术发展带 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/20/2.%20%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E3%80%81%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E4%B8%8E%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" title="2.数据表示、寻址方式与指令系统"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2.数据表示、寻址方式与指令系统"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/20/2.%20%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E3%80%81%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E4%B8%8E%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" title="2.数据表示、寻址方式与指令系统">2.数据表示、寻址方式与指令系统</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">系统结构</a></span></div><div class="content">2. 数据表示、寻址方式与指令系统重点一、浮点数尾数基值的选择和下溢处理🌟1.浮点数尾数基值的选择基值**rm**：尾数采用的进制
+尾数的数位**m’**：长度为m的机器位数中，能存放几个rm位的数
+
+若rm=2，则m’ = m
+若rm=16，则 m’ = m/4
+
+阶值所占位数p
+N = 尾数 * rme
+条件：
+
+非负阶
+规格化：正尾数小数点后第一个rm进制数位不为0
+正尾数
+
+
+影响：
+
+数的范围：rm增大，可表示数的范围增大
+数的个数：rm增大，可表示数的个数增大
+数轴分布：rm增大，重叠范围内数的密度稀疏
+数的精度：rm增大，可表述数的精度下降
+精度损失：rm增大，数的精度损失减小
+运算速度：rm增大，运算速度提高
+
+2.浮点数尾数下溢的处理方法截断法：将尾数超过机器字长的部分截取
+
+实现简单、不增加硬件
+最大误差较大，平均误差大且无法调节
+很少使用
+
+舍入法：增加一位附加位，类似于四舍五入
+
+实现简单，增加硬件少
+最大误差小，平均误差接近于0且无法调节
+处理速度慢
+
+恒置“1”法：最低为恒置“1”
+
+实现最简单，不需要增加硬件与处理时间
+平均误差趋于0，最大误差最大
+
+查 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/05/20/3.%20%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%AD%E6%96%AD%E3%80%81%E6%80%BB%E7%BA%BF%E4%B8%8E%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" title="3.存储、中断、总线与输入/输出系统"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.存储、中断、总线与输入/输出系统"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/20/3.%20%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%AD%E6%96%AD%E3%80%81%E6%80%BB%E7%BA%BF%E4%B8%8E%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" title="3.存储、中断、总线与输入/输出系统">3.存储、中断、总线与输入/输出系统</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">系统结构</a></span></div><div class="content">3. 存储、中断、总线与输入/输出系统理解一、并行主存系统的组织形式、极限频宽和实际频宽的关系1.组织形式单体多字：同时读单存储器的n位
+多体单字：由许多容量较小、字长较短的存储器片子组搭而成的大容量半导体主存，每个存储片子都有其自己的外围电路
+
+Mj体的编制模式位m × i + j，m为模体总数量
+每个访问周期平均能访问到的次数 B = （1 - （ 1 - λ ）m ） /  λ
+
+多体多字
+2.关系实际频宽不到最大频宽的1/3
+
+程序指令中存在转移
+数据的顺序性比指令差
+模m越高，传输延迟越大（存储器数据总线越长，总线上并联的负载越重）
+
+二、通过使用主存的组成技术提高主存实际频宽的可能性、局限性和发展存储体系的必要性三、中断源的分类和分级的原因。理解中断响应次序、中断处理次序和中断处理完成次序的概念。1.中断源分类原因：减少中断处理程序的入口，每一类给一个中断服务程序总入口，可以减少中断服务程序入口地址形成的硬件数量
+中断：
+
+机器校验：设备故障
+访管：需要操作系统介入
+程序性：指令和数据格式错、程序执行中出现异常
+外部
+输入/输出
+重新启动
+
+2.中断源分级原因：当多个中断源 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/20/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E8%8C%83%E5%9B%B4/" title="系统结构考试范围"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="系统结构考试范围"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/20/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E8%8C%83%E5%9B%B4/" title="系统结构考试范围">系统结构考试范围</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/">系统结构</a></span></div><div class="content">系统结构考试范围小题第一章 计算机系统结构基础及并行性的开发一、多级层次结构1）意义与作用：
+推动了计算机系统结构的发展
+发展了多处理机、分布处理系统图、计算机网络系统等系统结构
+推动自虚拟机、多种操作系统共行计数
+
+2）结构
+应用语言机器机器级M5
+
+应用语言
+应用语言程序经应用程序包翻译成高级语言程序
+
+
+高级语言机器级M4
+
+高级语言
+
+高举语言程序经编译程序翻译成汇编语言（或中间语言程序，或机器语言程序）
+
+
+
+汇编语言机器级M3
+
+汇编语言
+
+汇编语言程序经汇编程序翻译成机器语言程序
+
+
+
+操作系统机器级M2
+
+作业控制语言
+
+一般用机器语言解释作业控制语句
+
+
+
+传统机器语言机器级M1
+
+机器指令系统
+
+用微指令程序解释机器指令
+
+
+
+微程序机器级M0
+
+微指令系统
+
+微指令由硬件直接执行
 
 
 
 
-  </div>
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/nipsilon.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":true},"log":false});</script></body>
-</html>
+二、透明性🌟1）定义客观存在的事务或属性，从某个角度去看，却看不到，称这些事务和属性对它是透明的。透明了就可以简化这部分的设计，然而因为透明而无法控制和干预，就会带来不利。
+2）对于计算机系统结构透明：
+
+存储器的模m交叉存取
+数据总线宽度
+阵列运算部件
+通道采用结合型还是独立 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/05/20/2.%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3%E6%8C%87%E4%BB%A4/" title="微机接口指令"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="微机接口指令"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/20/2.%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3%E6%8C%87%E4%BB%A4/" title="微机接口指令">微机接口指令</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3/">微机接口</a></span></div><div class="content">微机接口指令
+通用寄存器：AX、BX、CX、DX、SP、BP、DI、SI
+段寄存器：CS、DS、SS、ES
+状态标志：CF、AF、PF、ZF、SF、OF Parity奇偶
+控制标志：TF、IF、DF DF=1，减小
+
+寄存器间接/相对寻址：
+ a.  EA只能存放于BX、BP、SI、DI
+ b.  BX、SI、DI → DS
+ c.  BP → SS
+ 
+
+基址变址寻址：
+ a.  BX\BP + SI\DI +位移量
+
+
+指令
+
+MOV   DST,SRC  DST不能是CS、立即数
+PUSH SRC POP DST 以字为单位、DST不能是CS
+XCHG OPR1,OPR2 禁止存储器之间交换，禁止段寄存器之间交换
+XLAT ；AL←DS：[BX+AL]
+LEA   AX，[SI+2728H] AX←SI+2728H
+LDS   DI, [SI+2728H] 低二字节内容给DI，高二字节内容给DS
+LES   DI, [SI+2728H] DI、ES
+ADD  DST,SRC ;DST←DST+SRC
+ADC  DST,SRC ;DST←DST+SRC+CF
+INC   OPR ; ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/20/1.8086%E4%B9%A0%E9%A2%98/" title="8086习题"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="8086习题"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/20/1.8086%E4%B9%A0%E9%A2%98/" title="8086习题">8086习题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3/">微机接口</a></span></div><div class="content">1.8086作业题1.8086微处理器指令队列长度为
+6
+
+2.  8086CPU若在最小工作方式，下列控制信号在读/写总线周期怎样组合才能从存贮器中读出信息 M/IO  DT/R  RD  WR
+1001 
+
+3.当RESET信号进入高电平状态后（即初始化状态），将使8086微处理器的哪个寄存器置成FFFFH
+CS
+
+4.8086CPU的输入输出指令，它们的直接/间接寻址能力最大为
+256个端口地址
+
+5.8086CPU是在总线周期的哪个状态用地址锁存允许信号ALE将地址信息打入锁存器？
+T1
+
+6. 8086微处理器中，标志寄存器共有状态标志和控制标志各几位？
+6-状态、3-控制)
+
+7. CPU与接口之间数据传送，是以什么形式进行的？
+数据传送方式主要有查询方式、中断方式、DMA方式
+
+8.8086CPU的基本总线周期可分为几个时钟周期？
+4
+
+9.在微型计算机系统中，CPU 与外设数据常用的三种传送控制方式
+程序控制方式、中断方式、DMA方式
+
+10. 8086微处理器由哪两个部分组成的？
+总线接口部件BIU、执行部件EU
+
+11.当8086 CPU的工作方式引脚MN/MX 接 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/05/19/7.%E5%B9%B6%E8%A1%8C%E9%80%9A%E4%BF%A1%E5%8F%8A%E5%85%B6%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%EF%BC%888255A%EF%BC%89/" title="并行通信及其接口电路（8255A）"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="并行通信及其接口电路（8255A）"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/19/7.%E5%B9%B6%E8%A1%8C%E9%80%9A%E4%BF%A1%E5%8F%8A%E5%85%B6%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%EF%BC%888255A%EF%BC%89/" title="并行通信及其接口电路（8255A）">并行通信及其接口电路（8255A）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-19T05:59:10.000Z" title="Created 2022-05-19 13:59:10">2022-05-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3/">微机接口</a></span></div><div class="content">7.并行通信及其接口电路1.简单并行接口电路锁存器74LS373
+8位D锁存器电路
+输入端1D~8D,控制端G
+输出端1Q~8Q，输出允许端/OE
+
+缓冲器74LS244
+三态输出8位缓冲器电路
+输入输出分为两路
+1A11A4，/1G控制，有效则1Y11Y4值变为1A1~1A4
+2A1~2A4同
+
+数据总线收发器74LS245
+三态输出的8位双向总线收发器
+16个数据段A1A8与B1B8
+/G：允许收发器的操作
+DIR：1：A-&gt;B ；0： B-&gt;A
+
+2.可编程并行接口电路8255A的结构及工作原理内部组成
+数据总线缓冲器
+双向三态8位数据缓冲器，是8255A与CPU数据总线的接口
+
+
+端口：A、B、C
+端口C可作为一个独立的端口使用，但通常是配合端口A和端口B的工作，为这两个端口的输入输出提供控制联络信号
+
+
+A组控制与B组控制
+A组控制：控制端口A及端口C的高4位
+B组控制：控制端口B及端口C的低4位
+
+
+读写控制逻辑
+
+工作方式
+方式选择控制字（D7=1)
+D6D5：A组方式选择0、1、2
+D4：0，端口A输出；1，端口A输入
+D3：
+D2：B组方式选择0、1
+D1 ...</div></div></div><div class="recent-post-item"><div class="post_cover left"><a href="/2022/05/19/7.%E5%B9%B6%E8%A1%8C%E9%80%9A%E4%BF%A1%E5%8F%8A%E5%85%B6%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%EF%BC%888255A%EF%BC%89%E4%B9%A0%E9%A2%98/" title="并行通信及其接口电路（8255A）习题"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="并行通信及其接口电路（8255A）习题"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/19/7.%E5%B9%B6%E8%A1%8C%E9%80%9A%E4%BF%A1%E5%8F%8A%E5%85%B6%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%EF%BC%888255A%EF%BC%89%E4%B9%A0%E9%A2%98/" title="并行通信及其接口电路（8255A）习题">并行通信及其接口电路（8255A）习题</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-19T05:59:10.000Z" title="Created 2022-05-19 13:59:10">2022-05-19</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3/">微机接口</a></span></div><div class="content">8255练习题及答案一、填空题1、8255A端口C按位置位复位控制字的**__D3D2D1___**位用来指定要置位或复位的端口。
+2、8255A端口C按位置位复位控制字中的**___D0___**位决定对端口C的某一位置位或复位。
+3、8255A端口A工作在方式2时，使用端口C的**__P7~P3____**作为与CPU和外部设备的联络信号。
+4、8255A的每个端口的数据寄存器的长度为**__8__**位。
+5、Intel 8255A是一个**___可编程通用并行输入输出____**接口芯片。
+6、8255A控制字的最高位D7=**____1_____**时，表示该控制字为方式控制字。
+7、8255A的端口A的工作方式是由方式控制字的**_D6D5___**位决定。
+8、8255A的端口B的工作方式由方式控制字的**___D2_____**位决定。
+9、8255A内部具有**___3____**个输入输出端口。
+10、8255A与CPU连接时，地址线一般与CPU的地址总线的**__A1A0__**连接。
+11、8255是一种可编程的**并行**接口芯片，其中有 3个 8位的并行输入 ...</div></div></div><div class="recent-post-item"><div class="post_cover right"><a href="/2022/05/07/6.%20DMA%E6%8A%80%E6%9C%AF%EF%BC%888237A%EF%BC%89/" title="DMA技术（8237A）"><img class="post_bg" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="DMA技术（8237A）"></a></div><div class="recent-post-info"><a class="article-title" href="/2022/05/07/6.%20DMA%E6%8A%80%E6%9C%AF%EF%BC%888237A%EF%BC%89/" title="DMA技术（8237A）">DMA技术（8237A）</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">Created</span><time datetime="2022-05-07T05:59:10.000Z" title="Created 2022-05-07 13:59:10">2022-05-07</time></span><span class="article-meta"><span class="article-meta-separator">|</span><i class="fas fa-inbox"></i><a class="article-meta__categories" href="/categories/%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3/">微机接口</a></span></div><div class="content">6. DMA技术（8237A）
+1.DMA概述
+原理
+DMA方式通过专用接口，能让存储器与高速外设之间直接交换数据，不需要CPU干预
+内存地址的修改、传送开始和结束控制都由硬件电路实现，大大提高了传输速度。
+
+
+特点
+硬件控制代替软件控制。由DMA控制器来实现，是DMA传输的核心
+
+
+工作状态
+被动工作状态：CPU对DMAC进行控制和指挥。如：向DMAC写入内存传送区的首地址、传送字节数和控制字。此时DMAC相当于一个外设，称为总线从模块或受控器
+主动工作状态：DMAC取代CPU，获得总线控制权，向存储器和外设发信号，称为总线主模块或总控器
+
+
+DMA传送过程
+申请阶段
+外设向DMAC发出DREQ（DMA请求信号）
+DMAC通过CPU的HOLD引脚向CPU发出HRQ（总线请求信号）
+
+
+响应阶段
+当前总线周期结束后，CPU释放总线控制权，向DMAC发出HLDA（总DMA响应信号）
+DMAC向外设发出DACK（应答信号），通知可以开始进行DMA传输
+
+
+数据传送阶段
+DMAC送出地址和控制信号，进行外设与内存间的数据传输
+
+
+传送结束阶段
+DMAC产生结束信号给外设，外设撤销DREQ信号 ...</div></div></div><nav id="pagination"><div class="pagination"><span class="page-number current">1</span><a class="page-number" href="/page/2/#content-inner">2</a><a class="extend next" rel="next" href="/page/2/#content-inner"><i class="fas fa-chevron-right fa-fw"></i></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://i.loli.net/2021/02/24/5O1day2nriDzjSu.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">John Doe</div><div class="author-info__description"></div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">Tags</div><div class="length-num">5</div></a><a href="/categories/"><div class="headline">Categories</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xxxxxx"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>Announcement</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/4.%20%E5%AD%98%E5%82%A8%E4%BD%93%E7%B3%BB/" title="4.存储体系"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="4.存储体系"/></a><div class="content"><a class="title" href="/2022/05/20/4.%20%E5%AD%98%E5%82%A8%E4%BD%93%E7%B3%BB/" title="4.存储体系">4.存储体系</a><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/1.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%B9%B6%E8%A1%8C%E6%80%A7%E7%9A%84%E5%BC%80%E5%8F%91/" title="1.计算机系统结构基础及并行性的开发"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1.计算机系统结构基础及并行性的开发"/></a><div class="content"><a class="title" href="/2022/05/20/1.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%B9%B6%E8%A1%8C%E6%80%A7%E7%9A%84%E5%BC%80%E5%8F%91/" title="1.计算机系统结构基础及并行性的开发">1.计算机系统结构基础及并行性的开发</a><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/2.%20%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E3%80%81%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E4%B8%8E%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" title="2.数据表示、寻址方式与指令系统"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="2.数据表示、寻址方式与指令系统"/></a><div class="content"><a class="title" href="/2022/05/20/2.%20%E6%95%B0%E6%8D%AE%E8%A1%A8%E7%A4%BA%E3%80%81%E5%AF%BB%E5%9D%80%E6%96%B9%E5%BC%8F%E4%B8%8E%E6%8C%87%E4%BB%A4%E7%B3%BB%E7%BB%9F/" title="2.数据表示、寻址方式与指令系统">2.数据表示、寻址方式与指令系统</a><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/3.%20%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%AD%E6%96%AD%E3%80%81%E6%80%BB%E7%BA%BF%E4%B8%8E%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" title="3.存储、中断、总线与输入/输出系统"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.存储、中断、总线与输入/输出系统"/></a><div class="content"><a class="title" href="/2022/05/20/3.%20%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%AD%E6%96%AD%E3%80%81%E6%80%BB%E7%BA%BF%E4%B8%8E%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" title="3.存储、中断、总线与输入/输出系统">3.存储、中断、总线与输入/输出系统</a><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E8%8C%83%E5%9B%B4/" title="系统结构考试范围"><img src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="系统结构考试范围"/></a><div class="content"><a class="title" href="/2022/05/20/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E8%80%83%E8%AF%95%E8%8C%83%E5%9B%B4/" title="系统结构考试范围">系统结构考试范围</a><time datetime="2022-05-20T05:59:10.000Z" title="Created 2022-05-20 13:59:10">2022-05-20</time></div></div></div></div><div class="card-widget card-categories"><div class="item-headline">
+            <i class="fas fa-folder-open"></i>
+            <span>Categories</span>
+            
+            </div>
+            <ul class="card-category-list" id="aside-cat-list">
+            <li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3/"><span class="card-category-list-name">微机接口</span><span class="card-category-list-count">15</span></a></li><li class="card-category-list-item "><a class="card-category-list-link" href="/categories/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/"><span class="card-category-list-name">系统结构</span><span class="card-category-list-count">5</span></a></li>
+            </ul></div><div class="card-widget card-tags"><div class="item-headline"><i class="fas fa-tags"></i><span>Tags</span></div><div class="card-tag-cloud"><a href="/tags/%E4%B9%A0%E9%A2%98/" style="font-size: 1.2em; color: #999da3">习题</a> <a href="/tags/%E5%A4%A7%E4%B8%89/" style="font-size: 1.5em; color: #99a9bf">大三</a> <a href="/tags/%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3/" style="font-size: 1.4em; color: #99a5b6">微机接口</a> <a href="/tags/%E7%AC%94%E8%AE%B0/" style="font-size: 1.3em; color: #99a1ac">笔记</a> <a href="/tags/%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84/" style="font-size: 1.1em; color: #999">系统结构</a></div></div><div class="card-widget card-archives"><div class="item-headline"><i class="fas fa-archive"></i><span>Archives</span></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/05/"><span class="card-archive-list-date">May 2022</span><span class="card-archive-list-count">15</span></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2022/04/"><span class="card-archive-list-date">April 2022</span><span class="card-archive-list-count">5</span></a></li></ul></div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>Info</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">Article :</div><div class="item-count">20</div></div><div class="webinfo-item"><div class="item-name">UV :</div><div class="item-count" id="busuanzi_value_site_uv"></div></div><div class="webinfo-item"><div class="item-name">PV :</div><div class="item-count" id="busuanzi_value_site_pv"></div></div><div class="webinfo-item"><div class="item-name">Last Push :</div><div class="item-count" id="last-push-date" data-lastPushDate="2022-05-23T01:10:18.344Z"></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2022 By John Doe</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"debug":false,"model":{"jsonPath":"/live2dw/assets/nipsilon.model.json"},"display":{"position":"right","width":300,"height":600},"mobile":{"show":true},"log":false});</script></body></html>
