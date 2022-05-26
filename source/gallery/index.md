@@ -1,5 +1,5 @@
 ---
-title: gallery
+title: 画展~
 date: 2022-05-23 16:35:55
 ---
 
