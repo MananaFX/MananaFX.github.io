@@ -12,6 +12,27 @@ language: zh-CN
 timezone: 
 email: nbspfjh@126.com
 
+douban:
+  user: 169659815
+  builtin: true
+  book:
+    title: '愿推荐的书'
+    quote: '最要紧的是，我们首先应该善良，其次要诚实，再次是以后永远不要相互遗忘。——《卡拉马佐夫兄弟》'
+    meta: true
+    comments: true
+    top_img: https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/e6fc9cd5d662f455d104f3ca03cf9151.jpg
+    aside: true
+    path: books
+    limit:
+  movie:
+    title: '愿再看一遍的电影'
+    quote: '要正直地生活，别想入非非！要诚实地工作，才能前程远大。——陀思妥耶夫斯基'
+    meta: true
+    comments: true
+    top_img: https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/p457760035~1.jpg
+    aside: true
+    path: movies
+    limit:
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
 url: http://81.69.237.168

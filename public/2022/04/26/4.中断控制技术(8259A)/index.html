@@ -1,0 +1,633 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>中断控制技术(8259A) | 喵喵虎冲呀</title><meta name="keywords" content="大三,知识总结,微机接口"><meta name="author" content="MewTiger,nbspfjh@126.com"><meta name="copyright" content="MewTiger"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="4.中断控制技术(8259A) 4.1 中断的概念 为什么要用中断 中断：外设向CPU发中断请求，CPU接受到中断请求并在一定条件下，暂时停止执行原来的程序而转去处理中断，处理好中断服务再返回继续执行原来的程序 中断是CPU被动的相应外设要求服务   中断源 除法错中断：0 断点中断：3 指令中断 溢出中断：4 非屏蔽中断：2 可屏蔽中断 单步中断：1   中断系统的功能 中断响应 断点保护和中断">
+<meta property="og:type" content="article">
+<meta property="og:title" content="中断控制技术(8259A)">
+<meta property="og:url" content="http://81.69.237.168/2022/04/26/4.%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF(8259A)/index.html">
+<meta property="og:site_name" content="喵喵虎冲呀">
+<meta property="og:description" content="4.中断控制技术(8259A) 4.1 中断的概念 为什么要用中断 中断：外设向CPU发中断请求，CPU接受到中断请求并在一定条件下，暂时停止执行原来的程序而转去处理中断，处理好中断服务再返回继续执行原来的程序 中断是CPU被动的相应外设要求服务   中断源 除法错中断：0 断点中断：3 指令中断 溢出中断：4 非屏蔽中断：2 可屏蔽中断 单步中断：1   中断系统的功能 中断响应 断点保护和中断">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/30b39b52a40c1cdb21fb0378f891a0b.jpg">
+<meta property="article:published_time" content="2022-04-26T05:59:10.000Z">
+<meta property="article:modified_time" content="2022-05-30T06:56:14.989Z">
+<meta property="article:author" content="MewTiger">
+<meta property="article:tag" content="大三">
+<meta property="article:tag" content="知识总结">
+<meta property="article:tag" content="微机接口">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/30b39b52a40c1cdb21fb0378f891a0b.jpg"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://81.69.237.168/2022/04/26/4.%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF(8259A)/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery@2/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '中断控制技术(8259A)',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-05-30 14:56:14'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/js-heo@1.0.11/categoryBar/categoryBar.css"><script async src="http://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/hexo/categoryBar.js"></script><script src="http://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/hexo/autofont.js"></script><script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script><link rel="stylesheet" href="//at.alicdn.com/t/font_3438071_9ry2scekhk.css"/><link rel="stylesheet" href="//at.alicdn.com/t/font_3438071_ybyyxsdpzvc.css"/><link rel="stylesheet" href="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/bber/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/bber/showbb_in_index.css"><meta name="generator" content="Hexo 6.2.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/7A4D4AF18D661DBAB5D69C3BE2A3F8F4.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/bb/"><i class="fa-fw fa-brands fa-rocketchat"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/30b39b52a40c1cdb21fb0378f891a0b.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">喵喵虎冲呀</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/bb/"><i class="fa-fw fa-brands fa-rocketchat"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">中断控制技术(8259A)</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-04-26T05:59:10.000Z" title="发表于 2022-04-26 13:59:10">2022-04-26</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-05-30T06:56:14.989Z" title="更新于 2022-05-30 14:56:14">2022-05-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E4%B8%9A%E8%AF%BE%E7%A8%8B/">专业课程</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="4-中断控制技术-8259A"><a href="#4-中断控制技术-8259A" class="headerlink" title="4.中断控制技术(8259A)"></a>4.中断控制技术(8259A)</h2><hr>
+<h3 id="4-1-中断的概念"><a href="#4-1-中断的概念" class="headerlink" title="4.1 中断的概念"></a>4.1 中断的概念</h3><ol>
+<li><h4 id="为什么要用中断"><a href="#为什么要用中断" class="headerlink" title="为什么要用中断"></a>为什么要用中断</h4><ol>
+<li><strong>中断</strong>：外设向CPU发中断请求，CPU接受到中断请求并在一定条件下，暂时停止执行原来的程序而转去处理中断，处理好中断服务再返回继续执行原来的程序</li>
+<li>中断是CPU被动的相应外设要求服务</li>
+</ol>
+</li>
+<li><h4 id="中断源"><a href="#中断源" class="headerlink" title="中断源"></a>中断源</h4><ol>
+<li>除法错中断：0</li>
+<li>断点中断：3</li>
+<li>指令中断</li>
+<li>溢出中断：4</li>
+<li>非屏蔽中断：2</li>
+<li>可屏蔽中断</li>
+<li>单步中断：1</li>
+</ol>
+</li>
+<li><h4 id="中断系统的功能"><a href="#中断系统的功能" class="headerlink" title="中断系统的功能"></a>中断系统的功能</h4><ol>
+<li>中断响应</li>
+<li>断点保护和中断处理</li>
+<li>中断优先权排队</li>
+<li>中断嵌套</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-2-简单的中断情况"><a href="#4-2-简单的中断情况" class="headerlink" title="4.2 简单的中断情况"></a>4.2 简单的中断情况</h3><ol>
+<li><h4 id="CPU响应可屏蔽中断的条件"><a href="#CPU响应可屏蔽中断的条件" class="headerlink" title="CPU响应可屏蔽中断的条件"></a>CPU响应可屏蔽中断的条件</h4><ol>
+<li>有中断源发出的中断请求信号</li>
+<li>开放总中断：IF=1</li>
+<li>现行指令结束后相应中断</li>
+</ol>
+</li>
+<li><h4 id="CPU响应中断要自动完成的任务"><a href="#CPU响应中断要自动完成的任务" class="headerlink" title="CPU响应中断要自动完成的任务"></a>CPU响应中断要自动完成的任务</h4><ol>
+<li>关中断，保护断点</li>
+<li>保护现场</li>
+<li>开中断</li>
+<li>具体中断处理</li>
+<li>关中断</li>
+<li>恢复现场</li>
+<li>开中断、中断返回</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-3-确定中断优先权"><a href="#4-3-确定中断优先权" class="headerlink" title="4.3 确定中断优先权"></a>4.3 确定中断优先权</h3><ol>
+<li><h4 id="软件查询"><a href="#软件查询" class="headerlink" title="软件查询"></a>软件查询</h4><p>优点:</p>
+<ol>
+<li>询问次序就是优先权次序</li>
+<li>完成中断源识别</li>
+<li>省硬件，不需要优先权排队电路</li>
+</ol>
+</li>
+<li><h4 id="硬件排队电路"><a href="#硬件排队电路" class="headerlink" title="硬件排队电路"></a>硬件排队电路</h4></li>
+</ol>
+<h3 id="4-4-微机中断系统"><a href="#4-4-微机中断系统" class="headerlink" title="4.4 微机中断系统"></a>4.4 微机中断系统</h3><ol>
+<li><h4 id="8086中断系统"><a href="#8086中断系统" class="headerlink" title="8086中断系统"></a>8086中断系统</h4><ol>
+<li>向量中断机制</li>
+<li>中断向量号：<strong>0~255</strong></li>
+<li>借助专用中断控制器<strong>8259A</strong>实现优先权管理</li>
+</ol>
+</li>
+<li><h4 id="中断方式"><a href="#中断方式" class="headerlink" title="中断方式"></a>中断方式</h4><ol>
+<li><h5 id="软件中断"><a href="#软件中断" class="headerlink" title="软件中断"></a>软件中断</h5><ol>
+<li>与硬件无关，不执行中断响应周期。除单步中断外，不可屏蔽，优先级高于外部中断</li>
+<li><strong>除法错</strong>中断0、单步中断1（受TF影响）、<strong>断点</strong>中断3、<strong>溢出</strong>中断4、<strong>指令设置的</strong>中断</li>
+<li>中断是确定的</li>
+<li>中断类型码自动形成</li>
+</ol>
+</li>
+<li><h5 id="硬件中断"><a href="#硬件中断" class="headerlink" title="硬件中断"></a>硬件中断</h5><ol>
+<li>非屏蔽中断(NMI引脚) ：<strong>02H</strong></li>
+<li>可屏蔽中断(INTR引脚)：当<strong>IF=1</strong>，响应</li>
+<li>中断是随机的</li>
+<li>中断类型码由中断控制器提供</li>
+</ol>
+</li>
+</ol>
+</li>
+<li><h4 id="中断向量表"><a href="#中断向量表" class="headerlink" title="中断向量表"></a>中断向量表</h4><ol>
+<li>中断类型码：中断源对应的编号0~255</li>
+<li>中断向量：中断服务程序的入口地址（CS,IP）</li>
+<li>中断向量表：所有中断向量集中放在一起：00000H~003FFH</li>
+<li>中断向量指针：中断向量最低字节指针=中断类型号*4</li>
+</ol>
+</li>
+<li><h4 id="中断相应期间，CPU工作"><a href="#中断相应期间，CPU工作" class="headerlink" title="中断相应期间，CPU工作"></a>中断相应期间，CPU工作</h4><ol>
+<li>关闭中断</li>
+<li>CS、IP、FR中的内容入栈</li>
+<li>中断服务程序段地址送入CS中，偏移地址送入IP中</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-5-可编程中断控制器8259A"><a href="#4-5-可编程中断控制器8259A" class="headerlink" title="4.5  可编程中断控制器8259A"></a>4.5  可编程中断控制器8259A</h3><ol>
+<li><h4 id="8259A"><a href="#8259A" class="headerlink" title="8259A"></a>8259A</h4><ol>
+<li><h5 id="功能"><a href="#功能" class="headerlink" title="功能"></a>功能</h5><ol>
+<li>中断优先权管理</li>
+<li>接收中断请求</li>
+<li>提供中断类型号</li>
+<li>屏蔽与开放中断</li>
+</ol>
+</li>
+<li><h5 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h5><ol>
+<li>单片可处理8级中断</li>
+<li>9片级联64级中断</li>
+<li>片内寻址A0，2个端口地址</li>
+</ol>
+</li>
+<li><h4 id="内部结构"><a href="#内部结构" class="headerlink" title="内部结构"></a>内部结构</h4><ol>
+<li><h5 id="中断请求寄存器IRR"><a href="#中断请求寄存器IRR" class="headerlink" title="中断请求寄存器IRR"></a>中断请求寄存器IRR</h5><ul>
+<li>Di=1，IRi引脚有中断请求</li>
+</ul>
+</li>
+<li><h5 id="中断服务寄存器ISR"><a href="#中断服务寄存器ISR" class="headerlink" title="中断服务寄存器ISR"></a>中断服务寄存器ISR</h5><ul>
+<li>Di=1，IRi中断正在服务中</li>
+</ul>
+</li>
+<li><h5 id="中断屏蔽寄存器IMR"><a href="#中断屏蔽寄存器IMR" class="headerlink" title="中断屏蔽寄存器IMR"></a>中断屏蔽寄存器IMR</h5><ul>
+<li>Di=1，IRi中断已加屏蔽</li>
+</ul>
+</li>
+<li><h5 id="优先权分析器PR"><a href="#优先权分析器PR" class="headerlink" title="优先权分析器PR"></a>优先权分析器PR</h5><ul>
+<li>比较新进入中断与ISR中正被处理的中断的优先级，决定INT是否发出中断请求</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h4 id="端口"><a href="#端口" class="headerlink" title="端口"></a>端口</h4><ul>
+<li><p><strong>偶地址</strong>：<strong>IRR</strong>、<strong>ISR</strong>、<strong>ICW1</strong>、OCW2、OCW3</p>
+</li>
+<li><p><strong>奇地址</strong>：<strong>IMR</strong>、<strong>OCW1</strong>、ICW2、ICW3、ICW4</p>
+</li>
+</ul>
+</li>
+<li><h4 id="优先级的管理方式"><a href="#优先级的管理方式" class="headerlink" title="优先级的管理方式"></a>优先级的管理方式</h4><ul>
+<li>完全嵌套方式<ul>
+<li>中断被相应时，中断类型码被放在总线上，ISR对应位ISn被置1，CPU发出EOI前，始终保持</li>
+</ul>
+</li>
+<li>特殊完全嵌套方式<ul>
+<li>多片级联方式，特殊全嵌套仅设置在主片中</li>
+<li>可相应同级中断</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</li>
+<li><h4 id="初始化编程-ICW"><a href="#初始化编程-ICW" class="headerlink" title="初始化编程(ICW)"></a>初始化编程(ICW)</h4><ul>
+<li><h5 id="ICW1：芯片控制初始化命令字"><a href="#ICW1：芯片控制初始化命令字" class="headerlink" title="ICW1：芯片控制初始化命令字"></a>ICW1：芯片控制初始化命令字</h5><ul>
+<li><h6 id="D7-D5-0"><a href="#D7-D5-0" class="headerlink" title="D7~D5=0"></a>D7~D5=0</h6></li>
+<li><h6 id="D4-1，指示ICW1"><a href="#D4-1，指示ICW1" class="headerlink" title="D4=1，指示ICW1"></a>D4=1，指示ICW1</h6></li>
+<li><h6 id="D3-1，电平触发；D3-0，边沿触发"><a href="#D3-1，电平触发；D3-0，边沿触发" class="headerlink" title="D3=1，电平触发；D3=0，边沿触发"></a>D3=1，电平触发；D3=0，边沿触发</h6></li>
+<li><h6 id="D2-0"><a href="#D2-0" class="headerlink" title="D2=0"></a>D2=0</h6></li>
+<li><h6 id="D1-1，单片；D1-0，级联"><a href="#D1-1，单片；D1-0，级联" class="headerlink" title="D1=1，单片；D1=0，级联"></a>D1=1，单片；D1=0，级联</h6></li>
+<li><h6 id="D0-1，使用ICW4"><a href="#D0-1，使用ICW4" class="headerlink" title="D0=1，使用ICW4"></a>D0=1，使用ICW4</h6></li>
+</ul>
+</li>
+<li><h5 id="ICW2：设置中断类型码"><a href="#ICW2：设置中断类型码" class="headerlink" title="ICW2：设置中断类型码"></a>ICW2：设置中断类型码</h5><ul>
+<li><h6 id="输入中断类型码，再置零后三位"><a href="#输入中断类型码，再置零后三位" class="headerlink" title="输入中断类型码，再置零后三位"></a>输入中断类型码，再置零后三位</h6></li>
+</ul>
+</li>
+<li><h5 id="ICW3：主片-从片初始化命令字"><a href="#ICW3：主片-从片初始化命令字" class="headerlink" title="ICW3：主片/从片初始化命令字"></a>ICW3：主片/从片初始化命令字</h5><ul>
+<li><h6 id="主片：从片对应引脚-1"><a href="#主片：从片对应引脚-1" class="headerlink" title="主片：从片对应引脚=1"></a>主片：从片对应引脚=1</h6></li>
+<li><h6 id="从片：D2D1D0指出连于主片哪一个引脚"><a href="#从片：D2D1D0指出连于主片哪一个引脚" class="headerlink" title="从片：D2D1D0指出连于主片哪一个引脚"></a>从片：D2D1D0指出连于主片哪一个引脚</h6></li>
+</ul>
+</li>
+<li><h5 id="ICW4：方式控制初始化命令字"><a href="#ICW4：方式控制初始化命令字" class="headerlink" title="ICW4：方式控制初始化命令字"></a>ICW4：方式控制初始化命令字</h5><ul>
+<li><h6 id="D4-0，一般全嵌套方式；D4-1，特殊全嵌套"><a href="#D4-0，一般全嵌套方式；D4-1，特殊全嵌套" class="headerlink" title="D4=0，一般全嵌套方式；D4=1，特殊全嵌套"></a>D4=0，一般全嵌套方式；D4=1，特殊全嵌套</h6></li>
+<li><h6 id="D3-0-非缓冲方式；D3-1，缓冲方式"><a href="#D3-0-非缓冲方式；D3-1，缓冲方式" class="headerlink" title="D3=0,非缓冲方式；D3=1，缓冲方式"></a>D3=0,非缓冲方式；D3=1，缓冲方式</h6></li>
+<li><h6 id="D2-0，从片-D2-1，主片"><a href="#D2-0，从片-D2-1，主片" class="headerlink" title="D2=0，从片;D2=1，主片"></a>D2=0，从片;D2=1，主片</h6></li>
+<li><h6 id="D1-0，中断非自动结束；D1-1，自动结束"><a href="#D1-0，中断非自动结束；D1-1，自动结束" class="headerlink" title="D1=0，中断非自动结束；D1=1，自动结束"></a>D1=0，中断非自动结束；D1=1，自动结束</h6></li>
+<li><h6 id="D0-0，8位机；D0-1，16位机"><a href="#D0-0，8位机；D0-1，16位机" class="headerlink" title="D0=0，8位机；D0=1，16位机"></a>D0=0，8位机；D0=1，16位机</h6></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><h4 id="中断操作编程-OCW"><a href="#中断操作编程-OCW" class="headerlink" title="中断操作编程(OCW)"></a>中断操作编程(OCW)</h4><ol>
+<li><h5 id="OCW1：屏蔽命令字"><a href="#OCW1：屏蔽命令字" class="headerlink" title="OCW1：屏蔽命令字"></a>OCW1：屏蔽命令字</h5><ol>
+<li><h6 id="屏蔽对应位-1"><a href="#屏蔽对应位-1" class="headerlink" title="屏蔽对应位=1"></a>屏蔽对应位=1</h6></li>
+</ol>
+</li>
+<li><h5 id="OCW2：设置优先级循环方式、中断结束方式"><a href="#OCW2：设置优先级循环方式、中断结束方式" class="headerlink" title="OCW2：设置优先级循环方式、中断结束方式"></a>OCW2：设置优先级循环方式、中断结束方式</h5><ol>
+<li><h6 id="D7-1，优先级循环方式；D7-0，非循环使用D6"><a href="#D7-1，优先级循环方式；D7-0，非循环使用D6" class="headerlink" title="D7=1，优先级循环方式；D7=0，非循环使用D6"></a>D7=1，优先级循环方式；D7=0，非循环使用D6</h6></li>
+<li><h6 id="D6-1，用D2D1D0指定中断等级"><a href="#D6-1，用D2D1D0指定中断等级" class="headerlink" title="D6=1，用D2D1D0指定中断等级"></a>D6=1，用D2D1D0指定中断等级</h6></li>
+<li><h6 id="D5-1，中断结束后，发中断结束命令，使ISR中对应ISn；D5-0，不发EOI，自动清除对应ISn"><a href="#D5-1，中断结束后，发中断结束命令，使ISR中对应ISn；D5-0，不发EOI，自动清除对应ISn" class="headerlink" title="D5=1，中断结束后，发中断结束命令，使ISR中对应ISn；D5=0，不发EOI，自动清除对应ISn"></a>D5=1，中断结束后，发中断结束命令，使ISR中对应ISn；D5=0，不发EOI，自动清除对应ISn</h6></li>
+<li><h6 id="D4D3-00，特征位"><a href="#D4D3-00，特征位" class="headerlink" title="D4D3=00，特征位"></a>D4D3=00，特征位</h6></li>
+</ol>
+<p><img src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/image-20220527202208600.png" alt="image-20220527202208600"></p>
+<ol start="5">
+<li>若D<sub>5</sub> = 1，而D<sub>6</sub> = 0， 则清除<strong>优先级最高位</strong></li>
+<li>若D<sub>5</sub> = 0，则清<strong>对应位</strong></li>
+<li><strong>顺序</strong>：自动、正常、（置位）、特定</li>
+</ol>
+</li>
+<li><h5 id="OCW3：设置特殊屏蔽方式、查询、读寄存器"><a href="#OCW3：设置特殊屏蔽方式、查询、读寄存器" class="headerlink" title="OCW3：设置特殊屏蔽方式、查询、读寄存器"></a>OCW3：设置特殊屏蔽方式、查询、读寄存器</h5><ol>
+<li><h6 id="D6D5-11，置特殊屏蔽方式；D6D5-10，撤销"><a href="#D6D5-11，置特殊屏蔽方式；D6D5-10，撤销" class="headerlink" title="D6D5=11，置特殊屏蔽方式；D6D5=10，撤销"></a>D<sub>6</sub>D<sub>5</sub>=11，置特殊屏蔽方式；D<sub>6</sub>D<sub>5</sub>=10，撤销</h6></li>
+<li><h6 id="D4D3-01"><a href="#D4D3-01" class="headerlink" title="D4D3=01"></a>D4D3=01</h6></li>
+<li><h6 id="D2-1，查询是否有中断请求正在处理"><a href="#D2-1，查询是否有中断请求正在处理" class="headerlink" title="D2=1，查询是否有中断请求正在处理"></a>D2=1，查询是否有中断请求正在处理</h6></li>
+<li><h6 id="D1D0-10，读IRR；-D1D0-11，读ISR"><a href="#D1D0-10，读IRR；-D1D0-11，读ISR" class="headerlink" title="D1D0=10，读IRR；                D1D0=11，读ISR"></a>D<sub>1</sub>D<sub>0</sub>=10，读IRR；                D<sub>1</sub>D<sub>0</sub>=11，读ISR</h6></li>
+<li><h6 id="读IMR，直接用奇地址端口读"><a href="#读IMR，直接用奇地址端口读" class="headerlink" title="读IMR，直接用奇地址端口读"></a>读IMR，直接用奇地址端口读</h6></li>
+</ol>
+</li>
+</ol>
+</li>
+</ol>
+<h2 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h2><hr>
+<h3 id="1-8088-8086中断向量表的作用是什么"><a href="#1-8088-8086中断向量表的作用是什么" class="headerlink" title="1. 8088/8086中断向量表的作用是什么"></a>1. 8088/8086中断向量表的作用是什么</h3><p>集中存放中断服务程序入口地址</p>
+<h3 id="2-什么叫中断向量？它放在哪里？对应于1CH的中断向量在哪里？如1CH中断程序从5110H-2030H开始，则中断向量应怎样存放？"><a href="#2-什么叫中断向量？它放在哪里？对应于1CH的中断向量在哪里？如1CH中断程序从5110H-2030H开始，则中断向量应怎样存放？" class="headerlink" title="2. 什么叫中断向量？它放在哪里？对应于1CH的中断向量在哪里？如1CH中断程序从5110H:2030H开始，则中断向量应怎样存放？"></a>2. <strong>什么叫中断向量？它放在哪里？对应于1CH的中断向量在哪里？如</strong>1CH中断程序从5110H:2030H开始，则中断向量应怎样存放？</h3><ul>
+<li><p>中断服务程序的入口地址</p>
+</li>
+<li><p>00000H~003FFH</p>
+</li>
+<li><p> 1C*4=70H </p>
+</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>70H</strong></th>
+<th>30H</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>71H</strong></td>
+<td><strong>20H</strong></td>
+</tr>
+<tr>
+<td><strong>72H</strong></td>
+<td><strong>10H</strong></td>
+</tr>
+<tr>
+<td><strong>73H</strong></td>
+<td><strong>51H</strong></td>
+</tr>
+</tbody></table>
+<h3 id="3-叙述可屏蔽中断的响应过程，一个可屏蔽中断或者非屏蔽中断响应后，堆栈顶部四个单元中是什么内容？"><a href="#3-叙述可屏蔽中断的响应过程，一个可屏蔽中断或者非屏蔽中断响应后，堆栈顶部四个单元中是什么内容？" class="headerlink" title="3. 叙述可屏蔽中断的响应过程，一个可屏蔽中断或者非屏蔽中断响应后，堆栈顶部四个单元中是什么内容？"></a>3. 叙述可屏蔽中断的响应过程，一个可屏蔽中断或者非屏蔽中断响应后，堆栈顶部四个单元中是什么内容？</h3><ul>
+<li>CS+IP</li>
+</ul>
+<h3 id="4-非屏蔽中断处理程序的入口地址怎样寻找"><a href="#4-非屏蔽中断处理程序的入口地址怎样寻找" class="headerlink" title="4. 非屏蔽中断处理程序的入口地址怎样寻找"></a>4. 非屏蔽中断处理程序的入口地址怎样寻找</h3><ul>
+<li>02H*4</li>
+</ul>
+<h3 id="5-8259A中IRR、IMR和ISR三个寄存器的作用是什么？"><a href="#5-8259A中IRR、IMR和ISR三个寄存器的作用是什么？" class="headerlink" title="5. 8259A中IRR、IMR和ISR三个寄存器的作用是什么？"></a>5. 8259A中IRR、IMR和ISR三个寄存器的作用是什么？</h3><ol>
+<li><h5 id="中断请求寄存器IRR-1"><a href="#中断请求寄存器IRR-1" class="headerlink" title="中断请求寄存器IRR"></a>中断请求寄存器IRR</h5><ul>
+<li>Di=1，IRi引脚有中断请求</li>
+</ul>
+</li>
+<li><h5 id="中断服务寄存器ISR-1"><a href="#中断服务寄存器ISR-1" class="headerlink" title="中断服务寄存器ISR"></a>中断服务寄存器ISR</h5><ul>
+<li>Di=1，IRi中断正在服务中</li>
+</ul>
+</li>
+<li><h5 id="中断屏蔽寄存器IMR-1"><a href="#中断屏蔽寄存器IMR-1" class="headerlink" title="中断屏蔽寄存器IMR"></a>中断屏蔽寄存器IMR</h5><ul>
+<li>Di=1，IRi中断已加屏蔽</li>
+</ul>
+</li>
+</ol>
+<h3 id="6-如果1CH中断程序从5110H-2030H开始，则中断向量应该如何存放"><a href="#6-如果1CH中断程序从5110H-2030H开始，则中断向量应该如何存放" class="headerlink" title="6. 如果1CH中断程序从5110H:2030H开始，则中断向量应该如何存放"></a>6. 如果1CH中断程序从5110H:2030H开始，则中断向量应该如何存放</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CLI</span><br><span class="line">PUSH ES</span><br><span class="line">MOV AX,0</span><br><span class="line">MOV ES,AX</span><br><span class="line">MOV DI,4*1CH</span><br><span class="line">MOV [DI],5110H</span><br><span class="line">MOV [DI+2],2030H</span><br><span class="line">POP ES</span><br><span class="line">STI</span><br></pre></td></tr></table></figure>
+
+<h3 id="7-假设某中断的类型码为47H，其中断服务程序入口为SEV，试设置中断向量"><a href="#7-假设某中断的类型码为47H，其中断服务程序入口为SEV，试设置中断向量" class="headerlink" title="7.  假设某中断的类型码为47H，其中断服务程序入口为SEV，试设置中断向量"></a>7.  假设某中断的类型码为47H，其中断服务程序入口为SEV，试设置中断向量</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">CLI</span><br><span class="line">PUSH DS</span><br><span class="line">MOV AX,0</span><br><span class="line">MOV DS,AX</span><br><span class="line">MOV DI,4*47H</span><br><span class="line">MOV AX,OFFSET SEV</span><br><span class="line">MOV [DI],AX</span><br><span class="line">MOV AX,SEG SEV</span><br><span class="line">MOV [DI+2],AX</span><br><span class="line">POP DS</span><br><span class="line">STI</span><br></pre></td></tr></table></figure>
+
+<h3 id="8-某系统中用两片8259A级联组成中断系统"><a href="#8-某系统中用两片8259A级联组成中断系统" class="headerlink" title="8.某系统中用两片8259A级联组成中断系统"></a>8.某系统中用两片8259A级联组成中断系统</h3><ol>
+<li><p>8259A主片的IR1、IR5上引入两个中断源，其中断类型码为31H、35H，中断服务程序的入口地址为1000：2000H和1000：3000H。</p>
+</li>
+<li><p>从片接在主片的IR3上，从片的IR4、IR5上引入两个中断源，其中断类型码为44H、45H，中断服务程序的入口地址为2000：3600H和2000：4500H。</p>
+</li>
+<li><p>8259A主片口地址为C8H/C9H，从片口地址为CAH/ CBH。</p>
+</li>
+<li><p>边沿触发、非缓冲</p>
+<p><img src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/202205231113718.png" alt="image-20220523111357645">主片初始化程序</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,00010001B //ICW1</span><br><span class="line">OUT 0C8H,AL</span><br><span class="line">MOV AL,00110000 //ICW2  16进制转2进制</span><br><span class="line">OUT 0C9H,AL</span><br><span class="line">MOV AL,00001000 //ICW3 只需管从片</span><br><span class="line">OUT 0C9H,AL</span><br><span class="line">MOV AL,00010101 //ICW4</span><br><span class="line">OUT 0C9H,AL</span><br><span class="line">MOV AL,11010101 //OCW1</span><br><span class="line">OUT 0C9H,AL</span><br></pre></td></tr></table></figure></li>
+<li><h4 id="从片初始化程序"><a href="#从片初始化程序" class="headerlink" title="从片初始化程序"></a>从片初始化程序</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">MOV AL,00010001B </span><br><span class="line">OUT 0CAH,AL</span><br><span class="line">MOV AL,00101000B</span><br><span class="line">OUT 0CBH,AL</span><br><span class="line">MOV AL,00000011B</span><br><span class="line">OUT 0CBH,AL</span><br><span class="line">MOV AL,00000001B</span><br><span class="line">OUT 0CBH,AL</span><br><span class="line">MOV AL,00110000B</span><br><span class="line">OUT 0CBH,AL</span><br></pre></td></tr></table></figure></li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://81.69.237.168">MewTiger</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://81.69.237.168/2022/04/26/4.%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF(8259A)/">http://81.69.237.168/2022/04/26/4.中断控制技术(8259A)/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://81.69.237.168" target="_blank">喵喵虎冲呀</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E4%B8%89/">大三</a><a class="post-meta__tags" href="/tags/%E7%9F%A5%E8%AF%86%E6%80%BB%E7%BB%93/">知识总结</a><a class="post-meta__tags" href="/tags/%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3/">微机接口</a></div><div class="post_share"><div class="social-share" data-image="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/30b39b52a40c1cdb21fb0378f891a0b.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/gh/overtrue/share.js@master/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2022/04/26/4.%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF(8259A)%E4%B9%A0%E9%A2%98/"><img class="prev-cover" src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/0549c8a66e4fd657b9068603e1cfdd8.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">中断控制技术(8259A)习题</div></div></a></div><div class="next-post pull-right"><a href="/2022/04/25/3.%E7%AB%AF%E5%8F%A3%E5%9C%B0%E5%9D%80%E8%AF%91%E7%A0%81%E6%8A%80%E6%9C%AF/"><img class="next-cover" src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/ab55214f57641083d57fda3e42e5b5b.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">端口地址译码技术</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/2022/05/20/1.8086%E4%B9%A0%E9%A2%98/" title="8086习题"><img class="cover" src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/30b39b52a40c1cdb21fb0378f891a0b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-20</div><div class="title">8086习题</div></div></a></div><div><a href="/2022/04/20/2.%E5%BE%AE%E6%9C%BA%E6%8E%A5%E5%8F%A3%E6%8C%87%E4%BB%A4/" title="微机接口指令"><img class="cover" src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/30b39b52a40c1cdb21fb0378f891a0b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-20</div><div class="title">微机接口指令</div></div></a></div><div><a href="/2022/04/25/3.%E7%AB%AF%E5%8F%A3%E5%9C%B0%E5%9D%80%E8%AF%91%E7%A0%81%E6%8A%80%E6%9C%AF/" title="端口地址译码技术"><img class="cover" src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/ab55214f57641083d57fda3e42e5b5b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-25</div><div class="title">端口地址译码技术</div></div></a></div><div><a href="/2022/04/27/5.%E8%AE%A1%E6%95%B0%E5%99%A8%E5%92%8C%E5%AE%9A%E6%97%B6%E7%94%B5%E8%B7%AF%EF%BC%888254A%EF%BC%89/" title="计数器和定时电路（8254A）"><img class="cover" src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/30b39b52a40c1cdb21fb0378f891a0b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-27</div><div class="title">计数器和定时电路（8254A）</div></div></a></div><div><a href="/2022/04/29/6.%20DMA%E6%8A%80%E6%9C%AF%EF%BC%888237A%EF%BC%89/" title="DMA技术（8237A）"><img class="cover" src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/0549c8a66e4fd657b9068603e1cfdd8.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-04-29</div><div class="title">DMA技术（8237A）</div></div></a></div><div><a href="/2022/05/09/7.%E5%B9%B6%E8%A1%8C%E9%80%9A%E4%BF%A1%E5%8F%8A%E5%85%B6%E6%8E%A5%E5%8F%A3%E7%94%B5%E8%B7%AF%EF%BC%888255A%EF%BC%89/" title="并行通信及其接口电路（8255A）"><img class="cover" src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/ab55214f57641083d57fda3e42e5b5b.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2022-05-09</div><div class="title">并行通信及其接口电路（8255A）</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/7A4D4AF18D661DBAB5D69C3BE2A3F8F4.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">MewTiger</div><div class="author-info__description">In me the tiger sniffs the rose</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">9</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">2</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/MananaFX"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/MananaFX" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:nbspfjh@126.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://xn--5ts203a3u7b.xn--6qq986b3xl" target="_blank" title="Manana"><i class="iconfont icon-rabbit1"></i></a><a class="social-icon" href="https://www.douban.com/people/169659815/?_i=39037888bisBXk" target="_blank" title="douban"><i class="iconfont icon-douban"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E6%8A%80%E6%9C%AF-8259A"><span class="toc-number">1.</span> <span class="toc-text">4.中断控制技术(8259A)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E4%B8%AD%E6%96%AD%E7%9A%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.</span> <span class="toc-text">4.1 中断的概念</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8%E4%B8%AD%E6%96%AD"><span class="toc-number">1.1.1.</span> <span class="toc-text">为什么要用中断</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%BA%90"><span class="toc-number">1.1.2.</span> <span class="toc-text">中断源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.3.</span> <span class="toc-text">中断系统的功能</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E7%AE%80%E5%8D%95%E7%9A%84%E4%B8%AD%E6%96%AD%E6%83%85%E5%86%B5"><span class="toc-number">1.2.</span> <span class="toc-text">4.2 简单的中断情况</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E5%93%8D%E5%BA%94%E5%8F%AF%E5%B1%8F%E8%94%BD%E4%B8%AD%E6%96%AD%E7%9A%84%E6%9D%A1%E4%BB%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text">CPU响应可屏蔽中断的条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU%E5%93%8D%E5%BA%94%E4%B8%AD%E6%96%AD%E8%A6%81%E8%87%AA%E5%8A%A8%E5%AE%8C%E6%88%90%E7%9A%84%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.2.2.</span> <span class="toc-text">CPU响应中断要自动完成的任务</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E7%A1%AE%E5%AE%9A%E4%B8%AD%E6%96%AD%E4%BC%98%E5%85%88%E6%9D%83"><span class="toc-number">1.3.</span> <span class="toc-text">4.3 确定中断优先权</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E6%9F%A5%E8%AF%A2"><span class="toc-number">1.3.1.</span> <span class="toc-text">软件查询</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E6%8E%92%E9%98%9F%E7%94%B5%E8%B7%AF"><span class="toc-number">1.3.2.</span> <span class="toc-text">硬件排队电路</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%BE%AE%E6%9C%BA%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.4.</span> <span class="toc-text">4.4 微机中断系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8086%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.4.1.</span> <span class="toc-text">8086中断系统</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%96%B9%E5%BC%8F"><span class="toc-number">1.4.2.</span> <span class="toc-text">中断方式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%BD%AF%E4%BB%B6%E4%B8%AD%E6%96%AD"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">软件中断</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%A1%AC%E4%BB%B6%E4%B8%AD%E6%96%AD"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">硬件中断</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E8%A1%A8"><span class="toc-number">1.4.3.</span> <span class="toc-text">中断向量表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E7%9B%B8%E5%BA%94%E6%9C%9F%E9%97%B4%EF%BC%8CCPU%E5%B7%A5%E4%BD%9C"><span class="toc-number">1.4.4.</span> <span class="toc-text">中断相应期间，CPU工作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E5%8F%AF%E7%BC%96%E7%A8%8B%E4%B8%AD%E6%96%AD%E6%8E%A7%E5%88%B6%E5%99%A88259A"><span class="toc-number">1.5.</span> <span class="toc-text">4.5  可编程中断控制器8259A</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#8259A"><span class="toc-number">1.5.1.</span> <span class="toc-text">8259A</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">功能</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%89%B9%E7%82%B9"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">特点</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84"><span class="toc-number">1.5.2.</span> <span class="toc-text">内部结构</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%E5%AF%84%E5%AD%98%E5%99%A8IRR"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">中断请求寄存器IRR</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E5%AF%84%E5%AD%98%E5%99%A8ISR"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">中断服务寄存器ISR</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%B1%8F%E8%94%BD%E5%AF%84%E5%AD%98%E5%99%A8IMR"><span class="toc-number">1.5.2.3.</span> <span class="toc-text">中断屏蔽寄存器IMR</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E6%9D%83%E5%88%86%E6%9E%90%E5%99%A8PR"><span class="toc-number">1.5.2.4.</span> <span class="toc-text">优先权分析器PR</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AB%AF%E5%8F%A3"><span class="toc-number">1.5.3.</span> <span class="toc-text">端口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E7%9A%84%E7%AE%A1%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">1.5.4.</span> <span class="toc-text">优先级的管理方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E7%BC%96%E7%A8%8B-ICW"><span class="toc-number">1.5.5.</span> <span class="toc-text">初始化编程(ICW)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#ICW1%EF%BC%9A%E8%8A%AF%E7%89%87%E6%8E%A7%E5%88%B6%E5%88%9D%E5%A7%8B%E5%8C%96%E5%91%BD%E4%BB%A4%E5%AD%97"><span class="toc-number">1.5.5.1.</span> <span class="toc-text">ICW1：芯片控制初始化命令字</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#D7-D5-0"><span class="toc-number">1.5.5.1.1.</span> <span class="toc-text">D7~D5&#x3D;0</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D4-1%EF%BC%8C%E6%8C%87%E7%A4%BAICW1"><span class="toc-number">1.5.5.1.2.</span> <span class="toc-text">D4&#x3D;1，指示ICW1</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D3-1%EF%BC%8C%E7%94%B5%E5%B9%B3%E8%A7%A6%E5%8F%91%EF%BC%9BD3-0%EF%BC%8C%E8%BE%B9%E6%B2%BF%E8%A7%A6%E5%8F%91"><span class="toc-number">1.5.5.1.3.</span> <span class="toc-text">D3&#x3D;1，电平触发；D3&#x3D;0，边沿触发</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D2-0"><span class="toc-number">1.5.5.1.4.</span> <span class="toc-text">D2&#x3D;0</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D1-1%EF%BC%8C%E5%8D%95%E7%89%87%EF%BC%9BD1-0%EF%BC%8C%E7%BA%A7%E8%81%94"><span class="toc-number">1.5.5.1.5.</span> <span class="toc-text">D1&#x3D;1，单片；D1&#x3D;0，级联</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D0-1%EF%BC%8C%E4%BD%BF%E7%94%A8ICW4"><span class="toc-number">1.5.5.1.6.</span> <span class="toc-text">D0&#x3D;1，使用ICW4</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ICW2%EF%BC%9A%E8%AE%BE%E7%BD%AE%E4%B8%AD%E6%96%AD%E7%B1%BB%E5%9E%8B%E7%A0%81"><span class="toc-number">1.5.5.2.</span> <span class="toc-text">ICW2：设置中断类型码</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%BE%93%E5%85%A5%E4%B8%AD%E6%96%AD%E7%B1%BB%E5%9E%8B%E7%A0%81%EF%BC%8C%E5%86%8D%E7%BD%AE%E9%9B%B6%E5%90%8E%E4%B8%89%E4%BD%8D"><span class="toc-number">1.5.5.2.1.</span> <span class="toc-text">输入中断类型码，再置零后三位</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ICW3%EF%BC%9A%E4%B8%BB%E7%89%87-%E4%BB%8E%E7%89%87%E5%88%9D%E5%A7%8B%E5%8C%96%E5%91%BD%E4%BB%A4%E5%AD%97"><span class="toc-number">1.5.5.3.</span> <span class="toc-text">ICW3：主片&#x2F;从片初始化命令字</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%B8%BB%E7%89%87%EF%BC%9A%E4%BB%8E%E7%89%87%E5%AF%B9%E5%BA%94%E5%BC%95%E8%84%9A-1"><span class="toc-number">1.5.5.3.1.</span> <span class="toc-text">主片：从片对应引脚&#x3D;1</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E4%BB%8E%E7%89%87%EF%BC%9AD2D1D0%E6%8C%87%E5%87%BA%E8%BF%9E%E4%BA%8E%E4%B8%BB%E7%89%87%E5%93%AA%E4%B8%80%E4%B8%AA%E5%BC%95%E8%84%9A"><span class="toc-number">1.5.5.3.2.</span> <span class="toc-text">从片：D2D1D0指出连于主片哪一个引脚</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#ICW4%EF%BC%9A%E6%96%B9%E5%BC%8F%E6%8E%A7%E5%88%B6%E5%88%9D%E5%A7%8B%E5%8C%96%E5%91%BD%E4%BB%A4%E5%AD%97"><span class="toc-number">1.5.5.4.</span> <span class="toc-text">ICW4：方式控制初始化命令字</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#D4-0%EF%BC%8C%E4%B8%80%E8%88%AC%E5%85%A8%E5%B5%8C%E5%A5%97%E6%96%B9%E5%BC%8F%EF%BC%9BD4-1%EF%BC%8C%E7%89%B9%E6%AE%8A%E5%85%A8%E5%B5%8C%E5%A5%97"><span class="toc-number">1.5.5.4.1.</span> <span class="toc-text">D4&#x3D;0，一般全嵌套方式；D4&#x3D;1，特殊全嵌套</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D3-0-%E9%9D%9E%E7%BC%93%E5%86%B2%E6%96%B9%E5%BC%8F%EF%BC%9BD3-1%EF%BC%8C%E7%BC%93%E5%86%B2%E6%96%B9%E5%BC%8F"><span class="toc-number">1.5.5.4.2.</span> <span class="toc-text">D3&#x3D;0,非缓冲方式；D3&#x3D;1，缓冲方式</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D2-0%EF%BC%8C%E4%BB%8E%E7%89%87-D2-1%EF%BC%8C%E4%B8%BB%E7%89%87"><span class="toc-number">1.5.5.4.3.</span> <span class="toc-text">D2&#x3D;0，从片;D2&#x3D;1，主片</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D1-0%EF%BC%8C%E4%B8%AD%E6%96%AD%E9%9D%9E%E8%87%AA%E5%8A%A8%E7%BB%93%E6%9D%9F%EF%BC%9BD1-1%EF%BC%8C%E8%87%AA%E5%8A%A8%E7%BB%93%E6%9D%9F"><span class="toc-number">1.5.5.4.4.</span> <span class="toc-text">D1&#x3D;0，中断非自动结束；D1&#x3D;1，自动结束</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D0-0%EF%BC%8C8%E4%BD%8D%E6%9C%BA%EF%BC%9BD0-1%EF%BC%8C16%E4%BD%8D%E6%9C%BA"><span class="toc-number">1.5.5.4.5.</span> <span class="toc-text">D0&#x3D;0，8位机；D0&#x3D;1，16位机</span></a></li></ol></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%93%8D%E4%BD%9C%E7%BC%96%E7%A8%8B-OCW"><span class="toc-number">1.5.6.</span> <span class="toc-text">中断操作编程(OCW)</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#OCW1%EF%BC%9A%E5%B1%8F%E8%94%BD%E5%91%BD%E4%BB%A4%E5%AD%97"><span class="toc-number">1.5.6.1.</span> <span class="toc-text">OCW1：屏蔽命令字</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%B1%8F%E8%94%BD%E5%AF%B9%E5%BA%94%E4%BD%8D-1"><span class="toc-number">1.5.6.1.1.</span> <span class="toc-text">屏蔽对应位&#x3D;1</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#OCW2%EF%BC%9A%E8%AE%BE%E7%BD%AE%E4%BC%98%E5%85%88%E7%BA%A7%E5%BE%AA%E7%8E%AF%E6%96%B9%E5%BC%8F%E3%80%81%E4%B8%AD%E6%96%AD%E7%BB%93%E6%9D%9F%E6%96%B9%E5%BC%8F"><span class="toc-number">1.5.6.2.</span> <span class="toc-text">OCW2：设置优先级循环方式、中断结束方式</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#D7-1%EF%BC%8C%E4%BC%98%E5%85%88%E7%BA%A7%E5%BE%AA%E7%8E%AF%E6%96%B9%E5%BC%8F%EF%BC%9BD7-0%EF%BC%8C%E9%9D%9E%E5%BE%AA%E7%8E%AF%E4%BD%BF%E7%94%A8D6"><span class="toc-number">1.5.6.2.1.</span> <span class="toc-text">D7&#x3D;1，优先级循环方式；D7&#x3D;0，非循环使用D6</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D6-1%EF%BC%8C%E7%94%A8D2D1D0%E6%8C%87%E5%AE%9A%E4%B8%AD%E6%96%AD%E7%AD%89%E7%BA%A7"><span class="toc-number">1.5.6.2.2.</span> <span class="toc-text">D6&#x3D;1，用D2D1D0指定中断等级</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D5-1%EF%BC%8C%E4%B8%AD%E6%96%AD%E7%BB%93%E6%9D%9F%E5%90%8E%EF%BC%8C%E5%8F%91%E4%B8%AD%E6%96%AD%E7%BB%93%E6%9D%9F%E5%91%BD%E4%BB%A4%EF%BC%8C%E4%BD%BFISR%E4%B8%AD%E5%AF%B9%E5%BA%94ISn%EF%BC%9BD5-0%EF%BC%8C%E4%B8%8D%E5%8F%91EOI%EF%BC%8C%E8%87%AA%E5%8A%A8%E6%B8%85%E9%99%A4%E5%AF%B9%E5%BA%94ISn"><span class="toc-number">1.5.6.2.3.</span> <span class="toc-text">D5&#x3D;1，中断结束后，发中断结束命令，使ISR中对应ISn；D5&#x3D;0，不发EOI，自动清除对应ISn</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D4D3-00%EF%BC%8C%E7%89%B9%E5%BE%81%E4%BD%8D"><span class="toc-number">1.5.6.2.4.</span> <span class="toc-text">D4D3&#x3D;00，特征位</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#OCW3%EF%BC%9A%E8%AE%BE%E7%BD%AE%E7%89%B9%E6%AE%8A%E5%B1%8F%E8%94%BD%E6%96%B9%E5%BC%8F%E3%80%81%E6%9F%A5%E8%AF%A2%E3%80%81%E8%AF%BB%E5%AF%84%E5%AD%98%E5%99%A8"><span class="toc-number">1.5.6.3.</span> <span class="toc-text">OCW3：设置特殊屏蔽方式、查询、读寄存器</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#D6D5-11%EF%BC%8C%E7%BD%AE%E7%89%B9%E6%AE%8A%E5%B1%8F%E8%94%BD%E6%96%B9%E5%BC%8F%EF%BC%9BD6D5-10%EF%BC%8C%E6%92%A4%E9%94%80"><span class="toc-number">1.5.6.3.1.</span> <span class="toc-text">D6D5&#x3D;11，置特殊屏蔽方式；D6D5&#x3D;10，撤销</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D4D3-01"><span class="toc-number">1.5.6.3.2.</span> <span class="toc-text">D4D3&#x3D;01</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D2-1%EF%BC%8C%E6%9F%A5%E8%AF%A2%E6%98%AF%E5%90%A6%E6%9C%89%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%E6%AD%A3%E5%9C%A8%E5%A4%84%E7%90%86"><span class="toc-number">1.5.6.3.3.</span> <span class="toc-text">D2&#x3D;1，查询是否有中断请求正在处理</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#D1D0-10%EF%BC%8C%E8%AF%BBIRR%EF%BC%9B-D1D0-11%EF%BC%8C%E8%AF%BBISR"><span class="toc-number">1.5.6.3.4.</span> <span class="toc-text">D1D0&#x3D;10，读IRR；                D1D0&#x3D;11，读ISR</span></a></li><li class="toc-item toc-level-6"><a class="toc-link" href="#%E8%AF%BBIMR%EF%BC%8C%E7%9B%B4%E6%8E%A5%E7%94%A8%E5%A5%87%E5%9C%B0%E5%9D%80%E7%AB%AF%E5%8F%A3%E8%AF%BB"><span class="toc-number">1.5.6.3.5.</span> <span class="toc-text">读IMR，直接用奇地址端口读</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%A0%E9%A2%98"><span class="toc-number">2.</span> <span class="toc-text">习题</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-8088-8086%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E8%A1%A8%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.1.</span> <span class="toc-text">1. 8088&#x2F;8086中断向量表的作用是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%BB%80%E4%B9%88%E5%8F%AB%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%EF%BC%9F%E5%AE%83%E6%94%BE%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F%E5%AF%B9%E5%BA%94%E4%BA%8E1CH%E7%9A%84%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E5%9C%A8%E5%93%AA%E9%87%8C%EF%BC%9F%E5%A6%821CH%E4%B8%AD%E6%96%AD%E7%A8%8B%E5%BA%8F%E4%BB%8E5110H-2030H%E5%BC%80%E5%A7%8B%EF%BC%8C%E5%88%99%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E5%BA%94%E6%80%8E%E6%A0%B7%E5%AD%98%E6%94%BE%EF%BC%9F"><span class="toc-number">2.2.</span> <span class="toc-text">2. 什么叫中断向量？它放在哪里？对应于1CH的中断向量在哪里？如1CH中断程序从5110H:2030H开始，则中断向量应怎样存放？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E5%8F%99%E8%BF%B0%E5%8F%AF%E5%B1%8F%E8%94%BD%E4%B8%AD%E6%96%AD%E7%9A%84%E5%93%8D%E5%BA%94%E8%BF%87%E7%A8%8B%EF%BC%8C%E4%B8%80%E4%B8%AA%E5%8F%AF%E5%B1%8F%E8%94%BD%E4%B8%AD%E6%96%AD%E6%88%96%E8%80%85%E9%9D%9E%E5%B1%8F%E8%94%BD%E4%B8%AD%E6%96%AD%E5%93%8D%E5%BA%94%E5%90%8E%EF%BC%8C%E5%A0%86%E6%A0%88%E9%A1%B6%E9%83%A8%E5%9B%9B%E4%B8%AA%E5%8D%95%E5%85%83%E4%B8%AD%E6%98%AF%E4%BB%80%E4%B9%88%E5%86%85%E5%AE%B9%EF%BC%9F"><span class="toc-number">2.3.</span> <span class="toc-text">3. 叙述可屏蔽中断的响应过程，一个可屏蔽中断或者非屏蔽中断响应后，堆栈顶部四个单元中是什么内容？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E9%9D%9E%E5%B1%8F%E8%94%BD%E4%B8%AD%E6%96%AD%E5%A4%84%E7%90%86%E7%A8%8B%E5%BA%8F%E7%9A%84%E5%85%A5%E5%8F%A3%E5%9C%B0%E5%9D%80%E6%80%8E%E6%A0%B7%E5%AF%BB%E6%89%BE"><span class="toc-number">2.4.</span> <span class="toc-text">4. 非屏蔽中断处理程序的入口地址怎样寻找</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-8259A%E4%B8%ADIRR%E3%80%81IMR%E5%92%8CISR%E4%B8%89%E4%B8%AA%E5%AF%84%E5%AD%98%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.5.</span> <span class="toc-text">5. 8259A中IRR、IMR和ISR三个寄存器的作用是什么？</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E8%AF%B7%E6%B1%82%E5%AF%84%E5%AD%98%E5%99%A8IRR-1"><span class="toc-number">2.5.0.1.</span> <span class="toc-text">中断请求寄存器IRR</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E5%AF%84%E5%AD%98%E5%99%A8ISR-1"><span class="toc-number">2.5.0.2.</span> <span class="toc-text">中断服务寄存器ISR</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%AD%E6%96%AD%E5%B1%8F%E8%94%BD%E5%AF%84%E5%AD%98%E5%99%A8IMR-1"><span class="toc-number">2.5.0.3.</span> <span class="toc-text">中断屏蔽寄存器IMR</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E5%A6%82%E6%9E%9C1CH%E4%B8%AD%E6%96%AD%E7%A8%8B%E5%BA%8F%E4%BB%8E5110H-2030H%E5%BC%80%E5%A7%8B%EF%BC%8C%E5%88%99%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F%E5%BA%94%E8%AF%A5%E5%A6%82%E4%BD%95%E5%AD%98%E6%94%BE"><span class="toc-number">2.6.</span> <span class="toc-text">6. 如果1CH中断程序从5110H:2030H开始，则中断向量应该如何存放</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%81%87%E8%AE%BE%E6%9F%90%E4%B8%AD%E6%96%AD%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%A0%81%E4%B8%BA47H%EF%BC%8C%E5%85%B6%E4%B8%AD%E6%96%AD%E6%9C%8D%E5%8A%A1%E7%A8%8B%E5%BA%8F%E5%85%A5%E5%8F%A3%E4%B8%BASEV%EF%BC%8C%E8%AF%95%E8%AE%BE%E7%BD%AE%E4%B8%AD%E6%96%AD%E5%90%91%E9%87%8F"><span class="toc-number">2.7.</span> <span class="toc-text">7.  假设某中断的类型码为47H，其中断服务程序入口为SEV，试设置中断向量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-%E6%9F%90%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%94%A8%E4%B8%A4%E7%89%878259A%E7%BA%A7%E8%81%94%E7%BB%84%E6%88%90%E4%B8%AD%E6%96%AD%E7%B3%BB%E7%BB%9F"><span class="toc-number">2.8.</span> <span class="toc-text">8.某系统中用两片8259A级联组成中断系统</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E7%89%87%E5%88%9D%E5%A7%8B%E5%8C%96%E7%A8%8B%E5%BA%8F"><span class="toc-number">2.8.1.</span> <span class="toc-text">从片初始化程序</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/05/24/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E5%8C%BF%E5%90%8D%E6%80%A7/" title="比特币的匿名性"><img src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/0549c8a66e4fd657b9068603e1cfdd8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="比特币的匿名性"/></a><div class="content"><a class="title" href="/2022/05/24/%E6%AF%94%E7%89%B9%E5%B8%81%E7%9A%84%E5%8C%BF%E5%90%8D%E6%80%A7/" title="比特币的匿名性">比特币的匿名性</a><time datetime="2022-05-24T01:58:32.000Z" title="发表于 2022-05-24 09:58:32">2022-05-24</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/23/%E5%A1%AB%E7%A9%BA%E9%A2%98%E5%8F%8A%E7%AE%80%E7%AD%94%E9%A2%98/" title="填空题及简答题"><img src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/0549c8a66e4fd657b9068603e1cfdd8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="填空题及简答题"/></a><div class="content"><a class="title" href="/2022/05/23/%E5%A1%AB%E7%A9%BA%E9%A2%98%E5%8F%8A%E7%AE%80%E7%AD%94%E9%A2%98/" title="填空题及简答题">填空题及简答题</a><time datetime="2022-05-23T08:20:16.000Z" title="发表于 2022-05-23 16:20:16">2022-05-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/1.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%B9%B6%E8%A1%8C%E6%80%A7%E7%9A%84%E5%BC%80%E5%8F%91/" title="1.计算机系统结构基础及并行性的开发"><img src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/ab55214f57641083d57fda3e42e5b5b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="1.计算机系统结构基础及并行性的开发"/></a><div class="content"><a class="title" href="/2022/05/20/1.%20%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9F%BA%E7%A1%80%E5%8F%8A%E5%B9%B6%E8%A1%8C%E6%80%A7%E7%9A%84%E5%BC%80%E5%8F%91/" title="1.计算机系统结构基础及并行性的开发">1.计算机系统结构基础及并行性的开发</a><time datetime="2022-05-20T05:59:10.000Z" title="发表于 2022-05-20 13:59:10">2022-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/1.8086%E4%B9%A0%E9%A2%98/" title="8086习题"><img src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/30b39b52a40c1cdb21fb0378f891a0b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="8086习题"/></a><div class="content"><a class="title" href="/2022/05/20/1.8086%E4%B9%A0%E9%A2%98/" title="8086习题">8086习题</a><time datetime="2022-05-20T05:59:10.000Z" title="发表于 2022-05-20 13:59:10">2022-05-20</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/05/20/3.%20%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%AD%E6%96%AD%E3%80%81%E6%80%BB%E7%BA%BF%E4%B8%8E%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" title="3.存储、中断、总线与输入/输出系统"><img src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/ab55214f57641083d57fda3e42e5b5b.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="3.存储、中断、总线与输入/输出系统"/></a><div class="content"><a class="title" href="/2022/05/20/3.%20%E5%AD%98%E5%82%A8%E3%80%81%E4%B8%AD%E6%96%AD%E3%80%81%E6%80%BB%E7%BA%BF%E4%B8%8E%E8%BE%93%E5%85%A5%E8%BE%93%E5%87%BA%E7%B3%BB%E7%BB%9F/" title="3.存储、中断、总线与输入/输出系统">3.存储、中断、总线与输入/输出系统</a><time datetime="2022-05-20T05:59:10.000Z" title="发表于 2022-05-20 13:59:10">2022-05-20</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By MewTiger</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>浙ICP备2022015449号-2</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script>var preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',preloader.endLoading())</script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'freestyle-3g9v9rpzb8e69793',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'freestyle-3g9v9rpzb8e69793',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/twikoo/1.4.18/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const getComment = () => {
+    const runTwikoo = () => {
+      twikoo.getRecentComments({
+        envId: 'freestyle-3g9v9rpzb8e69793',
+        region: '',
+        pageSize: 6,
+        includeReply: true
+      }).then(function (res) {
+        const twikooArray = res.map(e => {
+          return {
+            'content': changeContent(e.comment),
+            'avatar': e.avatar,
+            'nick': e.nick,
+            'url': e.url + '#' + e.id,
+            'date': new Date(e.created).toISOString()
+          }
+        })
+
+        saveToLocal.set('twikoo-newest-comments', JSON.stringify(twikooArray), 10/(60*24))
+        generateHtml(twikooArray)
+      }).catch(function (err) {
+        const $dom = document.querySelector('#card-newest-comments .aside-list')
+        $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+      })
+    }
+
+    if (typeof twikoo === 'object') {
+      runTwikoo()
+    } else {
+      getScript('https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/twikoo/1.4.18/twikoo.all.min.js').then(runTwikoo)
+    }
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+        
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${btf.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('twikoo-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script src="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/live2dw/autoload.js"></script><div class="aplayer no-destroy" data-id="7459239663" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="true" data-order="random" data-lrctype="0"> </div><script defer="defer" id="ribbon" src="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script><link rel="stylesheet" href="https://lf6-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/aplayer/1.10.1/APlayer.min.js"></script><script src="https://npm.elemecdn.com/js-heo@1.0.12/metingjs/Meting.min.js"></script><script src="https://npm.elemecdn.com/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  typeof preloader === 'object' && preloader.initLoading()
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+
+  typeof preloader === 'object' && preloader.endLoading()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script></div></body></html>
