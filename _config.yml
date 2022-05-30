@@ -130,3 +130,9 @@ deploy:
      mycloud: root@81.69.237.168:/var/repo/hexo.git
   branch: master
 
+# APlayer
+# https://github.com/MoePlayer/hexo-tag-aplayer/blob/master/docs/README-zh_cn.md
+aplayer:
+  meting: true
+  asset_inject: false
+
