@@ -1,20 +1,40 @@
-- class_name: 友情链接
-  class_desc: 那些人，那些事
+- class_name: Manana小屋
+  class_desc: 是曼曼和nana的秘密基地
+  link_list:
+    - name: 曼曼喜欢你
+      link: https://奚黎曼.我爱你
+      avatar: https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/7A4D4AF18D661DBAB5D69C3BE2A3F8F4.png
+      descr: 只有曼曼才能进入哦！
+
+- class_name: 好朋友~
+  class_desc: 是我好朋友的网站呢！
   link_list:
     - name: Kingsley
       link: https://Kingsleydoright.top
       avatar: https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/1653482944.jpg
       descr: 咚咚
 
-- class_name: 网站
-  class_desc: 值得推荐的网站
+- class_name: 想感谢的
+  class_desc: 框架、主题、样式、插件，从中学到了很多呢
   link_list:
-    - name: Youtube
-      link: https://www.youtube.com/
-      avatar: https://i.loli.net/2020/05/14/9ZkGg8v3azHJfM1.png
-      descr: 视频网站
+    - name: CrazyWong
+      link: https://crazywong.com/
+      avatar: https://crazywong.com/img/avatar.png
+      descr: 熱衷學習，熱衷生活
     - name: Hexo
       link: https://hexo.io/zh-tw/
       avatar: https://d33wubrfki0l68.cloudfront.net/6657ba50e702d84afb32fe846bed54fba1a77add/827ae/logo.svg
       descr: 快速、简单且强大的网站框架
+    - name: MJ's Blog
+      descr: 醒亦念卿，梦亦念卿
+      link: https://blog.justlovesmile.top
+      avatar: https://npm.elemecdn.com/justlovesmile-img/logo.jpg
+    - name: 张洪Heo
+      link: https://blog.zhheo.com/
+      avatar: https://npm.elemecdn.com/guli-heo/img/avatar2.png
+      descr: 分享设计与科技生活
+    - name: Akilarの糖果屋
+      link: https://akilar.top/
+      avatar: https://npm.elemecdn.com/akilar-candyassets/image/siteicon/favicon.png
+      descr: 期待您的光临！
     
