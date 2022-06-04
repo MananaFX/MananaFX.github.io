@@ -14,7 +14,7 @@ email: nbspfjh@126.com
 
 douban:
   user: 169659815
-  builtin: true
+  builtin: false
   book:
     title: '愿推荐的书'
     quote: '最要紧的是，我们首先应该善良，其次要诚实，再次是以后永远不要相互遗忘。——《卡拉马佐夫兄弟》'
