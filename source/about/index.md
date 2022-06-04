@@ -51,11 +51,45 @@ ISFP：意义存在于生命的每个角落
 
 高纯度LSP：我太爱看美女了！
 
-## 💬喜欢的话
+## 💬喜欢的诗
 
-### **桃李不言，下自成蹊**
+{% poem 桃花庵歌,唐寅 %}
 
+*桃花*坞里*桃花庵*，*桃花庵*里桃花仙。
 
+桃花仙人种桃树，又摘桃花卖酒钱。
 
+酒醒只在花前坐，酒醉还来花下眠。
 
+半醒半醉日复日，花落花开年复年。
+
+但愿老死花酒间，不愿鞠躬车马前。
+
+车尘马足富者趣，酒盏花枝贫者缘。
+
+若将富贵比贫贱，一在平地一在天。
+
+若将贫贱比车马，他得驱驰我得闲。
+
+{% endpoem %}
+
+## 📷照片
+
+{% gallery %}
+
+![](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/0e4d1b1e5ef4070bc7c3cd0373dfdd6.jpg)
+
+![](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/5c85b0c7deaab6d8a87a8b4999a3083.jpg)
+
+![](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/dd69f0f8f5e72c308dcc5ec90d9c46e.jpg)
+
+![](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/3630c49bceede0114424911e0f07f79.jpg)
+
+![](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/49699043ee373b0bcd464526463c256.jpg)
+
+![](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/25badb86d35555f614ddd9846f71112.jpg)
+
+![](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/2add26e70327f20cc9ae15c9d376154.jpg)
+
+{% endgallery %}
 

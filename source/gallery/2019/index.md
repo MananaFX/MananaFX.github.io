@@ -4,7 +4,7 @@
 
 {% gallery %}
 
-![6d6509ea7862f0eaea26ad8572d6591](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/6d6509ea7862f0eaea26ad8572d6591.jpg)![95be778f5adf0bb997317041f4b271e](C:\Users\Fjunhao\Desktop\2019\95be778f5adf0bb997317041f4b271e.jpg)
+![6d6509ea7862f0eaea26ad8572d6591](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/6d6509ea7862f0eaea26ad8572d6591.jpg)
 
 ![37e0a688c35e435c70a85ce4617b971](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/37e0a688c35e435c70a85ce4617b971.jpg)
 
