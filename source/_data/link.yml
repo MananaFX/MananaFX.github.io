@@ -4,14 +4,14 @@
     - name: 曼曼喜欢你
       link: https://奚黎曼.我爱你
       avatar: https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/7A4D4AF18D661DBAB5D69C3BE2A3F8F4.png
-      descr: 只有曼曼才能进入哦！
+      descr: 一首长长的诗
 
 - class_name: 好朋友~
   class_desc: 是我好朋友的网站呢！
   link_list:
     - name: Kingsley
-      link: https://Kingsleydoright.top
-      avatar: https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/1653482944.jpg
+      link: http://101.42.162.72/
+      avatar: http://101.42.162.72/img/avatar.png
       descr: 咚咚
 
 - class_name: 想感谢的
