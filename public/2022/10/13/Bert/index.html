@@ -1,0 +1,378 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>Bert | 喵喵虎冲呀</title><meta name="keywords" content="大四上,预训练模型,Bert,Transformer,情感分类"><meta name="author" content="MewTiger,nbspfjh@126.com"><meta name="copyright" content="MewTiger"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Bert理论 1.作用 来自Transformer模型的编码器，给定某单词可以获得其包含句子信息的词向量。 2.预训练输入表示 2.1 Embedding 用于将输入转换为词向量 2.1.1 Token Embedding 分词并进行标记  [CLS] 句子开始标记，表明用于分类任务 [SEP] 分割标记，每个句子的结尾  转换为Token Embedding  2.1.2 Segment Emb">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Bert">
+<meta property="og:url" content="http://81.69.237.168/2022/10/13/Bert/index.html">
+<meta property="og:site_name" content="喵喵虎冲呀">
+<meta property="og:description" content="Bert理论 1.作用 来自Transformer模型的编码器，给定某单词可以获得其包含句子信息的词向量。 2.预训练输入表示 2.1 Embedding 用于将输入转换为词向量 2.1.1 Token Embedding 分词并进行标记  [CLS] 句子开始标记，表明用于分类任务 [SEP] 分割标记，每个句子的结尾  转换为Token Embedding  2.1.2 Segment Emb">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://81.69.237.168/img/11.jpg">
+<meta property="article:published_time" content="2022-10-13T08:30:17.000Z">
+<meta property="article:modified_time" content="2022-10-13T12:21:48.911Z">
+<meta property="article:author" content="MewTiger">
+<meta property="article:tag" content="大四上">
+<meta property="article:tag" content="预训练模型">
+<meta property="article:tag" content="Bert">
+<meta property="article:tag" content="Transformer">
+<meta property="article:tag" content="情感分类">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://81.69.237.168/img/11.jpg"><link rel="shortcut icon" href="/img/favicon1.png"><link rel="canonical" href="http://81.69.237.168/2022/10/13/Bert/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://lf26-cdn-tos.bytecdntp.com/cdn/expire-1-M/font-awesome/6.0.0/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.奚黎曼.我爱你/js/flickr-justified-gallery-master/dist/fjGallery.js',
+      css: 'https://cdn.奚黎曼.我爱你/js/flickr-justified-gallery-master/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Bert',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-10-13 20:21:48'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/js-heo@1.0.11/mainColor/heoMainColor.css"><link rel="stylesheet" type="text/css" href="https://npm.elemecdn.com/js-heo@1.0.11/categoryBar/categoryBar.css"><script async src="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/hexo/categoryBar.js"></script><script defer src="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/hexo/autofont.js"></script><link rel="stylesheet" href="https://cdn.奚黎曼.我爱你/dist/dist/css/index.801cd833.css"><link rel="stylesheet" href="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/js/katex/katex.min.css"><script defer src="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/js/katex/katex.min.js"></script><script defer src ="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/js/katex/contrib/auto-render.min.js"><script src="//apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script><link rel="stylesheet" href="//at.alicdn.com/t/font_3438071_9ry2scekhk.css"/><link rel="stylesheet" href="//at.alicdn.com/t/font_3438071_ybyyxsdpzvc.css"/><link rel="stylesheet" href="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/bber/swiper-bundle.min.css"><link rel="stylesheet" href="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/bber/showbb_in_index.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.2.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/7A4D4AF18D661DBAB5D69C3BE2A3F8F4.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/bb/"><i class="fa-fw fa-brands fa-rocketchat"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('/img/11.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">喵喵虎冲呀</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/bb/"><i class="fa-fw fa-brands fa-rocketchat"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-list"></i><span> 清单</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></li><li><a class="site-page child" href="/gallery/"><i class="fa-fw fas fa-images"></i><span> 照片</span></a></li><li><a class="site-page child" href="/movies/"><i class="fa-fw fas fa-video"></i><span> 电影</span></a></li><li><a class="site-page child" href="/books/"><i class="fa-fw fa-solid fa-book"></i><span> 书籍</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Bert</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2022-10-13T08:30:17.000Z" title="发表于 2022-10-13 16:30:17">2022-10-13</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2022-10-13T12:21:48.911Z" title="更新于 2022-10-13 20:21:48">2022-10-13</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/NLP/">NLP</a></span></div><div class="meta-secondline"></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1>Bert理论</h1>
+<h2 id="1-作用">1.作用</h2>
+<p>来自Transformer模型的编码器，给定<strong>某单词</strong>可以获得其包含句子信息的<strong>词向量</strong>。</p>
+<h2 id="2-预训练输入表示">2.预训练输入表示</h2>
+<h3 id="2-1-Embedding">2.1 Embedding</h3>
+<p>用于将输入转换为词向量</p>
+<h4 id="2-1-1-Token-Embedding">2.1.1 Token Embedding</h4>
+<p>分词并进行标记</p>
+<ol>
+<li>[CLS] 句子开始标记，表明用于分类任务</li>
+<li>[SEP] 分割标记，每个句子的结尾</li>
+</ol>
+<p>转换为Token Embedding</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/cd80828d38f5023a4f0a0af7fdb25981.png" alt="image-20210908223205534"></p>
+<h4 id="2-1-2-Segment-Embedding">2.1.2 Segment Embedding</h4>
+<p>将句子分为两段，用以区别两个句子</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/16e3107a08b13f43eac1f5719658f487.png" alt="image-20210908223807047"></p>
+<h4 id="2-1-3-Position-Embedding">2.1.3 Position Embedding</h4>
+<p>用记录句子中单词的顺序信息</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/b17d44a2ab24f393d82e402310564ffa.png" alt="image-20210908224210612"></p>
+<h4 id="2-1-4">2.1.4</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210131547702.png" alt="image-20210908230519995"></p>
+<h3 id="2-2-WordPiece分词器">2.2 WordPiece分词器</h3>
+<h3 id="2-2-1-Tokenization">2.2.1 Tokenization</h3>
+<h5 id="2-2-1-1-单词级">2.2.1.1 单词级</h5>
+<p>优点：</p>
+<ol>
+<li>拉丁语系Tokenization简单</li>
+<li>能够很好地保留词的语义和边界信息</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li>词典过大，影响计算效率及内存</li>
+<li>由于词汇的不断发展，造成OOV（Out Of Vocabulary）</li>
+<li>低频词/稀疏词得不到充分训练</li>
+<li>一个单词因为不同的形态会产生不同的词，如由“look”衍 生出的“looks”, “looking”, 但是意义相近，对他们都进行训练是不必要的。</li>
+</ol>
+<h5 id="2-2-2-2-字粒度">2.2.2.2 字粒度</h5>
+<p>没人用</p>
+<h3 id="2-2-Subword-Tokenization">2.2 Subword Tokenization</h3>
+<h4 id="2-2-1-Byte-Pair-Encoding">2.2.1 Byte Pair Encoding</h4>
+<p>BPE迭代地合并最频繁出现的字符或字符序列</p>
+<h5 id="2-2-1-1-词汇表生成">2.2.1.1 词汇表生成</h5>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210131954943.jpg" alt="img"></p>
+<h5 id="2-2-1-2-编码">2.2.1.2 编码</h5>
+<ol>
+<li>将字词词表由大到小排序</li>
+<li>从前向后遍历字词词表，依次判断一个子词是否为单词的子串</li>
+<li>单词中仍然有子串没有被切分，那么这些子串一定为低频词，则使用统一的标记<code>&lt;UNK&gt;</code>进行替换</li>
+</ol>
+<p>[‘the</w>’, ‘highest</w>’, ‘mountain</w>’] -&gt; [‘the</w>’, ‘high’, ‘est</w>’, ‘moun’, ‘tain</w>’]</p>
+<h4 id="2-2-2-WordPiece">2.2.2 WordPiece</h4>
+<p>与BPE相比</p>
+<ul>
+<li>相同点：每次从统计语料中选取出两个新的子词进行合并</li>
+<li>不同点：WordPiece按能够使得LM（似然）概率最大的相邻子词加入词表</li>
+</ul>
+<p>设句子 s = {t<sub>1</sub>, t<sub>2</sub>, t<sub>3</sub>, t<sub>4</sub>, t<sub>5</sub>, …, t<sub>n</sub>}, 共有n个子词, 则句子s的语言模型对数似然值为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>P</mi><mo stretchy="false">(</mo><mi>s</mi><mo stretchy="false">)</mo><mo>=</mo><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>N</mi></munderover><mi>l</mi><mi>o</mi><mi>g</mi><mi>P</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">logP(s)=∑_{i=1}^{N}logP(t_i)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathnormal">s</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:3.106em;vertical-align:-1.2777em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.8283em;"><span style="top:-1.8723em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.05em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.10903em;">N</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.2777em;"><span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<p>合并某两个子词后，对数似然值增益为：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>l</mi><mi>o</mi><mi>g</mi><mi>P</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mi>x</mi></msub><mo stretchy="false">)</mo><mo>−</mo><mo stretchy="false">(</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>P</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mo>+</mo><mi>l</mi><mi>o</mi><mi>g</mi><mi>P</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mi>j</mi></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo>=</mo><mi>l</mi><mi>o</mi><mi>g</mi><mo stretchy="false">(</mo><mfrac><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mi>x</mi></msub><mo stretchy="false">)</mo></mrow><mrow><mi>P</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mi>i</mi></msub><mo stretchy="false">)</mo><mi>P</mi><mo stretchy="false">(</mo><msub><mi>t</mi><mi>j</mi></msub><mo stretchy="false">)</mo></mrow></mfrac><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">logP(t_x)−(logP(t_i)+logP(t_j))=log(\frac{P(t_x)}{P(t_i)P(t_j)})
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">))</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3991em;vertical-align:-0.9721em;"></span><span class="mord mathnormal" style="margin-right:0.01968em;">l</span><span class="mord mathnormal">o</span><span class="mord mathnormal" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">j</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">t</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.1514em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">x</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9721em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mclose">)</span></span></span></span></span></p>
+<h2 id="3-预训练策略">3.预训练策略</h2>
+<h3 id="3-1-Masked-LM">3.1 Masked LM</h3>
+<h4 id="3-1-1-方式">3.1.1 方式</h4>
+<p>在在每一个训练序列中以15%的概率随机地选中某个token位置用于预测</p>
+<ol>
+<li>80%的概率下，用<code>[MASK]</code>标记替换该token</li>
+<li>10%的概率下，用<code>随机单词</code>替换该token</li>
+<li>10%的概率下，该token<code>保持不变</code></li>
+</ol>
+<p>预测出原来的token并计算loss</p>
+<h4 id="3-1-2-意义">3.1.2 意义</h4>
+<p>利用这种高度不确定的情况，可以倒逼模型快速学习该token的<code>上下文语义</code>，令到BERT不再只对[MASK]敏感，而是对所有的token都敏感，以致能抽取出任何token的表征信息。</p>
+<h4 id="3-1-3-实现">3.1.3 实现</h4>
+<p>1.通过 Encoder，将经过MASK的<strong>词嵌入E</strong>转换为<strong>词嵌入R</strong></p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210131602277.png" alt="img"></p>
+<p>2.将R<sub>MASK</sub>喂给带有softmax的前馈神经网络，得到<strong>词表</strong>中每个单词属于该MASK的概率</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210131608252.png" alt="Screenshot 2022-10-13 at 16.08.19"></p>
+<h3 id="3-2-Next-Sentence-Prediction">3.2 Next Sentence Prediction</h3>
+<h4 id="3-2-1-方式">3.2.1 方式</h4>
+<p>NSP为二分类任务。将两个句子送入Bert中，Bert需要判断第二个句子是否为第一个句子的下一句</p>
+<ol>
+<li>从语料库中，选取相连句子标记为isNext，随机选取不相连句子标记为notNext，各为50%</li>
+</ol>
+<h4 id="3-2-2-意义">3.2.2 意义</h4>
+<p>使得模型可以理解两个句子之间的关系，有利于很多下游任务，像问答和文本生成。</p>
+<h4 id="3-2-3-模型">3.2.3 模型</h4>
+<p>经过了Encoder的每一个词嵌入R都包含了整个句子的信息，因此可以直接使用R<sub>[CLS]</sub>进行二分类，以判断两个句子是否相连</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210131617738.png" alt="img"></p>
+<h2 id="4-预训练细节">4.预训练细节</h2>
+<h3 id="4-1-Learning-Rate-Scheduling">4.1 Learning Rate Scheduling</h3>
+<p>意义：在初始迭代期设置较大的学习率而在之后的迭代期减少学习率</p>
+<h4 id="4-1-2-Warmup-Steps">4.1.2 Warmup Steps</h4>
+<ol>
+<li>
+<p>在前10%的steps中，lr从0线性增加到 init_learning_rate</p>
+</li>
+<li>
+<p>之后lr又从 init_learning_rate 线性衰减到0（完成所有steps）</p>
+</li>
+</ol>
+<p>意义：</p>
+<ol>
+<li>可以避免较早的对mini-batch过拟合，即较早的进入<strong>不好的局部最优</strong>而无法跳出</li>
+<li>保持模型深层的稳定性</li>
+</ol>
+<h3 id="4-2-激活函数-GELU-Gaussian-Error-Linear-Unit">4.2 激活函数-GELU(<strong>Gaussian Error Linear Unit</strong>)</h3>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>G</mi><mi>E</mi><mi>L</mi><mi>U</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo><mo>=</mo><mi>X</mi><mi>ϕ</mi><mo stretchy="false">(</mo><mi>X</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">GELU(X) = Xϕ(X)
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">GE</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal">Xϕ</span><span class="mopen">(</span><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="mclose">)</span></span></span></span></span></p>
+<p>意义：在<u>激活中引入了随机正则</u>的思想，使得<u>随机依赖于输入</u>，直观上更符合自然的认识，同时实验效果要比Relu与ELU都要好。</p>
+<h4 id="4-2-1-激活函数作用">4.2.1 激活函数作用</h4>
+<p>非线性，如在二分类问题中，不是一刀切，而是弯弯扭扭切</p>
+<ul>
+<li>Relu-缺乏随机因素</li>
+<li>Sigmoid-容易饱和</li>
+</ul>
+<p>提升模型泛化能力</p>
+<ul>
+<li>使用dropout</li>
+</ul>
+<h4 id="4-2-2-Input-Features-：X-sub-ij-sub">4.2.2 Input Features ：X<sub>ij</sub></h4>
+<ul>
+<li>X<sub>ij</sub>∼N(0,1), X∈R<sup>mxn</sup></li>
+<li>输入值X<sub>ij</sub>满足正态分布，即均值为0，方差为1</li>
+</ul>
+<h4 id="4-2-3-ϕ-X">4.2.3 ϕ(X)</h4>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>B</mi><mi>e</mi><mi>r</mi><mi>n</mi><mi>o</mi><mi>u</mi><mi>l</mi><mi>l</mi><mi>i</mi><mo stretchy="false">(</mo><mi>ϕ</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="false">)</mo><mo stretchy="false">)</mo><mo separator="true">,</mo><mi>w</mi><mi>h</mi><mi>e</mi><mi>r</mi><mi>e</mi><mi>ϕ</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="false">)</mo><mo>=</mo><mi>P</mi><mo stretchy="false">(</mo><msub><mi>X</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo>≤</mo><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">Bernoulli(ϕ(x_{ij})), where ϕ(x_{ij}) = P(X_{ij}≤x_{ij})
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.05017em;">B</span><span class="mord mathnormal" style="margin-right:0.02778em;">er</span><span class="mord mathnormal">n</span><span class="mord mathnormal">o</span><span class="mord mathnormal">u</span><span class="mord mathnormal" style="margin-right:0.01968em;">ll</span><span class="mord mathnormal">i</span><span class="mopen">(</span><span class="mord mathnormal">ϕ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">))</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord mathnormal" style="margin-right:0.02691em;">w</span><span class="mord mathnormal">h</span><span class="mord mathnormal">ere</span><span class="mord mathnormal">ϕ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal" style="margin-right:0.07847em;">X</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:-0.0785em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></span></p>
+<ul>
+<li>zero-or-identity的映射</li>
+<li>在输入中越大的特征，更容易被保留</li>
+</ul>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>ϕ</mi><mo stretchy="false">(</mo><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub><mo stretchy="false">)</mo><mo>=</mo><msubsup><mo>∫</mo><mrow><mo>−</mo><mi mathvariant="normal">∞</mi></mrow><msub><mi>x</mi><mrow><mi>i</mi><mi>j</mi></mrow></msub></msubsup><mfrac><mn>1</mn><msqrt><mrow><mn>2</mn><mi>π</mi></mrow></msqrt></mfrac><msup><mi>e</mi><mrow><mo>−</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msup><mi>t</mi><mn>2</mn></msup></mrow></msup><mi>d</mi><mi>t</mi></mrow><annotation encoding="application/x-tex">ϕ(x_{ij})=∫^{x_{ij}}_{−∞}\frac{1}{\sqrt{2\pi}}e^{−\frac12t^2}dt
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.0361em;vertical-align:-0.2861em;"></span><span class="mord mathnormal">ϕ</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2861em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.3846em;vertical-align:-0.9703em;"></span><span class="mop"><span class="mop op-symbol large-op" style="margin-right:0.44445em;position:relative;top:-0.0011em;">∫</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.4143em;"><span style="top:-1.7881em;margin-left:-0.4445em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight">∞</span></span></span></span><span style="top:-3.8129em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight"><span class="mord mathnormal mtight">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3281em;"><span style="top:-2.357em;margin-left:0em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mathnormal mtight" style="margin-right:0.05724em;">ij</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2819em;"><span></span></span></span></span></span></span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.9703em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.3214em;"><span style="top:-2.2028em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9072em;"><span class="svg-align" style="top:-3em;"><span class="pstrut" style="height:3em;"></span><span class="mord" style="padding-left:0.833em;"><span class="mord">2</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span><span style="top:-2.8672em;"><span class="pstrut" style="height:3em;"></span><span class="hide-tail" style="min-width:0.853em;height:1.08em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.08em' viewBox='0 0 400000 1080' preserveAspectRatio='xMinYMin slice'><path d='M95,702
+c-2.7,0,-7.17,-2.7,-13.5,-8c-5.8,-5.3,-9.5,-10,-9.5,-14
+c0,-2,0.3,-3.3,1,-4c1.3,-2.7,23.83,-20.7,67.5,-54
+c44.2,-33.3,65.8,-50.3,66.5,-51c1.3,-1.3,3,-2,5,-2c4.7,0,8.7,3.3,12,10
+s173,378,173,378c0.7,0,35.3,-71,104,-213c68.7,-142,137.5,-285,206.5,-429
+c69,-144,104.5,-217.7,106.5,-221
+l0 -0
+c5.3,-9.3,12,-14,20,-14
+H400000v40H845.2724
+s-225.272,467,-225.272,467s-235,486,-235,486c-2.7,4.7,-9,7,-19,7
+c-6,0,-10,-1,-12,-3s-194,-422,-194,-422s-65,47,-65,47z
+M834 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.1328em;"><span></span></span></span></span></span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.93em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mord"><span class="mord mathnormal">e</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:1.0369em;"><span style="top:-3.413em;margin-right:0.05em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mtight">−</span><span class="mord mtight"><span class="mopen nulldelimiter sizing reset-size3 size6"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.8443em;"><span style="top:-2.656em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">2</span></span></span></span><span style="top:-3.2255em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line mtight" style="border-bottom-width:0.049em;"></span></span><span style="top:-3.384em;"><span class="pstrut" style="height:3em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight"><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.344em;"><span></span></span></span></span></span><span class="mclose nulldelimiter sizing reset-size3 size6"></span></span><span class="mord mtight"><span class="mord mathnormal mtight">t</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8913em;"><span style="top:-2.931em;margin-right:0.0714em;"><span class="pstrut" style="height:2.5em;"></span><span class="sizing reset-size3 size1 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></span></span></span></span><span class="mord mathnormal">d</span><span class="mord mathnormal">t</span></span></span></span></span></p>
+<ul>
+<li>
+<p>对于特定值x，任何输入值 X小于或等于x的概率，即为该x被保留的概率</p>
+</li>
+<li>
+<p>由于X满足正态分布，因此可以使用概率密度函数计算出X在输入中的位置，使用积分（公式3）来获得</p>
+</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210131751939.png" alt=""></p>
+<h4 id="4-2-4-近似数学公式">4.2.4 近似数学公式</h4>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><semantics><mrow><mi>G</mi><mi>E</mi><mi>L</mi><mi>U</mi><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo><mo>=</mo><mn>0.5</mn><mi>x</mi><mo stretchy="false">(</mo><mn>1</mn><mo>+</mo><mi>t</mi><mi>a</mi><mi>n</mi><mi>h</mi><mo stretchy="false">[</mo><msqrt><mrow><mn>2</mn><mi mathvariant="normal">/</mi><mi>π</mi></mrow></msqrt><mo stretchy="false">(</mo><mi>x</mi><mo>+</mo><mn>0.044715</mn><msup><mi>x</mi><mn>3</mn></msup><mo stretchy="false">)</mo><mo stretchy="false">]</mo><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">GELU(x) = 0.5x(1+tanh[\sqrt{2/π}(x+0.044715x^3)])
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.05764em;">GE</span><span class="mord mathnormal" style="margin-right:0.10903em;">LU</span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0.5</span><span class="mord mathnormal">x</span><span class="mopen">(</span><span class="mord">1</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.24em;vertical-align:-0.2561em;"></span><span class="mord mathnormal">t</span><span class="mord mathnormal">anh</span><span class="mopen">[</span><span class="mord sqrt"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.9839em;"><span class="svg-align" style="top:-3.2em;"><span class="pstrut" style="height:3.2em;"></span><span class="mord" style="padding-left:1em;"><span class="mord">2/</span><span class="mord mathnormal" style="margin-right:0.03588em;">π</span></span></span><span style="top:-2.9439em;"><span class="pstrut" style="height:3.2em;"></span><span class="hide-tail" style="min-width:1.02em;height:1.28em;"><svg xmlns="http://www.w3.org/2000/svg" width='400em' height='1.28em' viewBox='0 0 400000 1296' preserveAspectRatio='xMinYMin slice'><path d='M263,681c0.7,0,18,39.7,52,119
+c34,79.3,68.167,158.7,102.5,238c34.3,79.3,51.8,119.3,52.5,120
+c340,-704.7,510.7,-1060.3,512,-1067
+l0 -0
+c4.7,-7.3,11,-11,19,-11
+H40000v40H1012.3
+s-271.3,567,-271.3,567c-38.7,80.7,-84,175,-136,283c-52,108,-89.167,185.3,-111.5,232
+c-22.3,46.7,-33.8,70.3,-34.5,71c-4.7,4.7,-12.3,7,-23,7s-12,-1,-12,-1
+s-109,-253,-109,-253c-72.7,-168,-109.3,-252,-110,-252c-10.7,8,-22,16.7,-34,26
+c-22,17.3,-33.3,26,-34,26s-26,-26,-26,-26s76,-59,76,-59s76,-60,76,-60z
+M1001 80h400000v40h-400000z'/></svg></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.2561em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathnormal">x</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222em;"></span></span><span class="base"><span class="strut" style="height:1.1141em;vertical-align:-0.25em;"></span><span class="mord">0.044715</span><span class="mord"><span class="mord mathnormal">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span></span></span></span></span><span class="mclose">)])</span></span></span></span></span></p>
+<h4 id="4-2-5-源码表示">4.2.5 源码表示</h4>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">gelu</span>(<span class="params">input_tensor</span>):</span><br><span class="line">	cdf = <span class="number">0.5</span> * (<span class="number">1.0</span> + tf.erf(input_tensor / tf.sqrt(<span class="number">2.0</span>)))</span><br><span class="line">	<span class="keyword">return</span> input_tesnsor*cdf</span><br></pre></td></tr></table></figure>
+<h4 id="4-2-6-函数图像">4.2.6 函数图像</h4>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210131633790.png" alt="GeLU"></p>
+<h1>参考资料</h1>
+<ol>
+<li><a target="_blank" rel="noopener" href="https://helloai.blog.csdn.net/article/details/120211601">https://helloai.blog.csdn.net/article/details/120211601</a> 【理论篇】是时候彻底弄懂BERT模型了</li>
+<li><a target="_blank" rel="noopener" href="http://www.360doc.com/content/20/0825/16/7673502_932137230.shtml">http://www.360doc.com/content/20/0825/16/7673502_932137230.shtml</a> 通俗讲解从Transformer到Bert模型！</li>
+<li><a target="_blank" rel="noopener" href="https://alaaalatif.github.io/2019-04-11-gelu/">https://alaaalatif.github.io/2019-04-11-gelu/</a> On the GELU Activation Function-What the hell is that?</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/349492378">https://zhuanlan.zhihu.com/p/349492378</a> BERT中的激活函数GELU：高斯误差线性单元</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/444774532">https://zhuanlan.zhihu.com/p/444774532</a> NLP中的Tokenization</li>
+</ol>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a target="_blank" rel="noopener" href="https://mewtiger.top">MewTiger</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://81.69.237.168/2022/10/13/Bert/">http://81.69.237.168/2022/10/13/Bert/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://81.69.237.168" target="_blank">喵喵虎冲呀</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E5%A4%A7%E5%9B%9B%E4%B8%8A/">大四上</a><a class="post-meta__tags" href="/tags/%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B/">预训练模型</a><a class="post-meta__tags" href="/tags/Bert/">Bert</a><a class="post-meta__tags" href="/tags/Transformer/">Transformer</a><a class="post-meta__tags" href="/tags/%E6%83%85%E6%84%9F%E5%88%86%E7%B1%BB/">情感分类</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/2022/07/10/%E6%B9%BF%E6%B8%A9%E7%97%85/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/image-20220601161404223.png" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">湿温病</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div id="twikoo-wrap"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/7A4D4AF18D661DBAB5D69C3BE2A3F8F4.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">MewTiger</div><div class="author-info__description">In me the tiger sniffs the rose</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">73</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">36</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">9</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/MananaFX"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/MananaFX" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:nbspfjh@126.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://xn--5ts203a3u7b.xn--6qq986b3xl" target="_blank" title="Manana"><i class="iconfont icon-rabbit1"></i></a><a class="social-icon" href="https://www.douban.com/people/169659815/?_i=39037888bisBXk" target="_blank" title="douban"><i class="iconfont icon-douban"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">Bert理论</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E4%BD%9C%E7%94%A8"><span class="toc-number">1.1.</span> <span class="toc-text">1.作用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E9%A2%84%E8%AE%AD%E7%BB%83%E8%BE%93%E5%85%A5%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.2.</span> <span class="toc-text">2.预训练输入表示</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-Embedding"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 Embedding</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-Token-Embedding"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">2.1.1 Token Embedding</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-Segment-Embedding"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2.1.2 Segment Embedding</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-3-Position-Embedding"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">2.1.3 Position Embedding</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-4"><span class="toc-number">1.2.1.4.</span> <span class="toc-text">2.1.4</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-WordPiece%E5%88%86%E8%AF%8D%E5%99%A8"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 WordPiece分词器</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-1-Tokenization"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.2.1 Tokenization</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-1-1-%E5%8D%95%E8%AF%8D%E7%BA%A7"><span class="toc-number">1.2.3.0.1.</span> <span class="toc-text">2.2.1.1 单词级</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-2-2-%E5%AD%97%E7%B2%92%E5%BA%A6"><span class="toc-number">1.2.3.0.2.</span> <span class="toc-text">2.2.2.2 字粒度</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-Subword-Tokenization"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.2 Subword Tokenization</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-Byte-Pair-Encoding"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">2.2.1 Byte Pair Encoding</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-1-1-%E8%AF%8D%E6%B1%87%E8%A1%A8%E7%94%9F%E6%88%90"><span class="toc-number">1.2.4.1.1.</span> <span class="toc-text">2.2.1.1 词汇表生成</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-2-1-2-%E7%BC%96%E7%A0%81"><span class="toc-number">1.2.4.1.2.</span> <span class="toc-text">2.2.1.2 编码</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-WordPiece"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">2.2.2 WordPiece</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E9%A2%84%E8%AE%AD%E7%BB%83%E7%AD%96%E7%95%A5"><span class="toc-number">1.3.</span> <span class="toc-text">3.预训练策略</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Masked-LM"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 Masked LM</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">3.1.1 方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-%E6%84%8F%E4%B9%89"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">3.1.2 意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-3-%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">3.1.3 实现</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-Next-Sentence-Prediction"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 Next Sentence Prediction</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E6%96%B9%E5%BC%8F"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">3.2.1 方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E6%84%8F%E4%B9%89"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">3.2.2 意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-3-%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">3.2.3 模型</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E9%A2%84%E8%AE%AD%E7%BB%83%E7%BB%86%E8%8A%82"><span class="toc-number">1.4.</span> <span class="toc-text">4.预训练细节</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Learning-Rate-Scheduling"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 Learning Rate Scheduling</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-Warmup-Steps"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">4.1.2 Warmup Steps</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0-GELU-Gaussian-Error-Linear-Unit"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 激活函数-GELU(Gaussian Error Linear Unit)</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0%E4%BD%9C%E7%94%A8"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">4.2.1 激活函数作用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-Input-Features-%EF%BC%9AX-sub-ij-sub"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">4.2.2 Input Features ：Xij</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-%CF%95-X"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">4.2.3 ϕ(X)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-%E8%BF%91%E4%BC%BC%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">4.2.4 近似数学公式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5-%E6%BA%90%E7%A0%81%E8%A1%A8%E7%A4%BA"><span class="toc-number">1.4.2.5.</span> <span class="toc-text">4.2.5 源码表示</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-6-%E5%87%BD%E6%95%B0%E5%9B%BE%E5%83%8F"><span class="toc-number">1.4.2.6.</span> <span class="toc-text">4.2.6 函数图像</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">参考资料</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2022/10/13/Bert/" title="Bert"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/11.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Bert"/></a><div class="content"><a class="title" href="/2022/10/13/Bert/" title="Bert">Bert</a><time datetime="2022-10-13T08:30:17.000Z" title="发表于 2022-10-13 16:30:17">2022-10-13</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/10/%E6%B9%BF%E6%B8%A9%E7%97%85/" title="湿温病"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/image-20220601161404223.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="湿温病"/></a><div class="content"><a class="title" href="/2022/07/10/%E6%B9%BF%E6%B8%A9%E7%97%85/" title="湿温病">湿温病</a><time datetime="2022-07-10T10:36:50.000Z" title="发表于 2022-07-10 18:36:50">2022-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/07/10/%E6%B9%BF%E7%83%AD%E7%97%85%E8%BE%A8%E6%B2%BB%E6%A6%82%E8%BF%B0/" title="湿热病辨治概述"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/post/微信图片_20220603184717.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="湿热病辨治概述"/></a><div class="content"><a class="title" href="/2022/07/10/%E6%B9%BF%E7%83%AD%E7%97%85%E8%BE%A8%E6%B2%BB%E6%A6%82%E8%BF%B0/" title="湿热病辨治概述">湿热病辨治概述</a><time datetime="2022-07-10T10:36:50.000Z" title="发表于 2022-07-10 18:36:50">2022-07-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/23/%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90%E8%B0%83%E7%A0%94/" title="情感分析调研"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/8.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="情感分析调研"/></a><div class="content"><a class="title" href="/2022/06/23/%E6%83%85%E6%84%9F%E5%88%86%E6%9E%90%E8%B0%83%E7%A0%94/" title="情感分析调研">情感分析调研</a><time datetime="2022-06-23T04:35:17.000Z" title="发表于 2022-06-23 12:35:17">2022-06-23</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2022/06/19/%E8%AE%AD%E7%BB%83%E5%AE%89%E6%8E%92/" title="假期减脂训练计划"><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" data-lazy-src="/img/3.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="假期减脂训练计划"/></a><div class="content"><a class="title" href="/2022/06/19/%E8%AE%AD%E7%BB%83%E5%AE%89%E6%8E%92/" title="假期减脂训练计划">假期减脂训练计划</a><time datetime="2022-06-19T01:54:38.000Z" title="发表于 2022-06-19 09:54:38">2022-06-19</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2021 - 2022 By MewTiger</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text"><a target="_blank" rel="noopener" href="https://beian.miit.gov.cn"><span>浙ICP备2022015449号-2</span></a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="//instant.page/5.1.0" type="module"></script><script src="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/vanilla-lazyload-master/dist/lazyload.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>(()=>{
+  const init = () => {
+    twikoo.init(Object.assign({
+      el: '#twikoo-wrap',
+      envId: 'cloudbase-prepaid-1es1bia77588a6',
+      region: '',
+      onCommentLoaded: function () {
+        btf.loadLightbox(document.querySelectorAll('#twikoo .tk-content img:not(.tk-owo-emotion)'))
+      }
+    }, null))
+  }
+
+  const getCount = () => {
+    const countELement = document.getElementById('twikoo-count')
+    if(!countELement) return
+    twikoo.getCommentsCount({
+      envId: 'cloudbase-prepaid-1es1bia77588a6',
+      region: '',
+      urls: [window.location.pathname],
+      includeReply: false
+    }).then(function (res) {
+      countELement.innerText = res[0].count
+    }).catch(function (err) {
+      console.error(err);
+    });
+  }
+
+  const runFn = () => {
+    init()
+    GLOBAL_CONFIG_SITE.isPost && getCount()
+  }
+
+  const loadTwikoo = () => {
+    if (typeof twikoo === 'object') {
+      setTimeout(runFn,0)
+      return
+    } 
+    getScript('https://cdn.staticfile.org/twikoo/1.5.10/twikoo.all.min.js').then(runFn)
+  }
+
+  if ('Twikoo' === 'Twikoo' || !true) {
+    if (true) btf.loadComment(document.getElementById('twikoo-wrap'), loadTwikoo)
+    else loadTwikoo()
+  } else {
+    window.loadOtherComment = () => {
+      loadTwikoo()
+    }
+  }
+})()</script></div><script async src="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/live2dw/autoload.js"></script><script defer="defer" id="ribbon" src="https://cdn.xn--5ts203a3u7b.xn--6qq986b3xl/dist/canvas-ribbon.min.js" size="150" alpha="0.6" zIndex="-1" mobile="false" data-click="false"></script></div><!-- hexo injector body_end start --><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --></body></html>
