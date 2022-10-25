@@ -3,6 +3,7 @@ title: CS224N
 date: 2022-10-23 18:30:54
 categories: NLP
 tags: [大四上,CS224N,NLP]
+cover: https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210251150254.png
 
 ---
 

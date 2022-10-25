@@ -3,6 +3,7 @@ title: Bert
 date: 2022-10-13 16:30:17
 categories: NLP
 tags: [大四上,预训练模型,Bert,Transformer,情感分类]
+cover: https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210131617738.png
 ---
 
 # Bert理论
