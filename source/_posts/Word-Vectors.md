@@ -148,7 +148,7 @@ $$
 
 Need to store count for all n-grams in the corpus
 
-## RNN: Recurrent 
+# RNN: Recurrent Neural Networks
 
 ![img](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210251129294.webp)
 
@@ -163,3 +163,69 @@ Disadvantages:
 
 1. Recurrent computation is **slow**
 2. In practice, difficilt to access information from **many steps back**
+
+## Train
+
+### Loss
+
+$$
+Loss = J(\theta)=\frac{1}{T}\sum^T_{t=1}J^{(t)}(\theta)
+$$
+
+SGD can be used：such as compute loss J(θ) for a sentence
+
+### Backpropagation
+
+$$
+\frac{\rm d J^{(t)}}{\rm d W_h} = \sum^{t}_{i=1}\frac{\rm d J^{(t)}}{\rm d W_h}|_{(i)}
+$$
+
+The gradident a repeated weight is the sum of the gradient each time it appears![Screenshot 2022-10-25 at 17.00.50](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210251700405.png)
+
+### Vanishing and Exploding Gradients
+
+梯度消失：
+
+- 起因于链式法则中的某些导数过小，导致梯度过小
+- 导致模型无法学习到距离较远的知识
+
+梯度爆炸：
+
+- 梯度过大，导致越过了收敛点
+
+## Generating
+
+1. Give a begin words/token to RNN
+2. RNN will generate text by repeated sampling
+
+![Screenshot 2022-10-25 at 16.26.37](https://mewtiger-1311904225.cos.ap-nanjing.myqcloud.com/liman/202210251626535.png)
+
+## Evalutate
+
+Standard **evaluation metric** for Language Model is **perplexity**
+
+- **lower** is better
+
+$$
+perplexity =
+\prod^T_{t=1}(\frac{1}{P_{LM}(x^{(t+1)}|x^{(t)},...,x^{(1)})})^{1/T}
+$$
+
+$$
+=\prod^T_{t=1}(\frac{1}{\hat{y}^{t}_{x_{t+1}}})^{1/T}
+=exp(J(\theta))
+$$
+
+如果perplexity=7，则对于预测出的结果的不确定性为：
+
+- 掷出一个7面的骰子，得到一个正确答案的不确定性
+
+## Importance
+
+1. **Benchmark task**: <u>measure our progress</u> on understanding language
+2. **Subcomponent** of many NLP tasks, especially involving <u>generating</u> text or <u>estimating the probability of text</u>
+
+
+
+# LSTM: Long Short-Term Memory RNNs
+
