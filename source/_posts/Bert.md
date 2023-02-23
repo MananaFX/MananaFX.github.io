@@ -229,6 +229,14 @@ def gelu(input_tensor):
 
 
 
+# 代码
+
+## Bert
+
+### Embedding
+
+### Transformer
+
 # 参考资料
 
 1. https://helloai.blog.csdn.net/article/details/120211601 【理论篇】是时候彻底弄懂BERT模型了
